@@ -10,3 +10,6 @@ https://github.com/thinkful-ei-panda/buddyup-client.git
 ## API repo
 https://github.com/thinkful-ei-panda/buddyup-api
 https://github.com/thinkful-ei-panda/buddyup-api.git
+
+## Trello
+https://trello.com/b/gnD5pmC0/buddyup
