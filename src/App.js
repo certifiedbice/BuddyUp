@@ -1,26 +1,28 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+	return (
+		<div className='App'>
+			<header className='header'>
+				<h1>BuddyUp</h1>
+				<p>Welcome back to BuddyUp! Log in to find your next buddy!</p>
+			</header>
+			<div className='login__container'>
+				<form className='login__form'>
+					<input aria-label='Username' placeholder='Username' />
+					<input aria-label='Password' placeholder='Password' />
+					<input
+						aria-label='Confirm Password'
+						placeholder='*Confirm Password -- conditionally render'
+					/>
+					<button arial-label='Login' type='button'>
+						LOGIN
+					</button>
+				</form>
+			</div>
+		</div>
+	);
 }
 
 export default App;
