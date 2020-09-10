@@ -1,6 +1,7 @@
 import React from 'react';
 import './Login.css';
 import Input from '../../components/form/Input';
+import { Link, useRouteMatch } from 'react-router-dom';
 
 export default function Login() {
 	return (
@@ -20,6 +21,7 @@ export default function Login() {
 					<button arial-label='Login' type='button'>
 						LOGIN
 					</button>
+					<Link to='/register'>Already have an acount?</Link>
 				</form>
 			</div>
 		</>

@@ -8,14 +8,8 @@ function App() {
 	return (
 		<div className='App'>
 			<Switch>
-				<Route
-					path='/login'
-					render={(renderProps) => <Login {...renderProps} />}
-				/>
-				<Route
-					path='/register'
-					render={(renderProps) => <Register {...renderProps} />}
-				/>
+				<Route path='/login' component={Login} />
+				<Route path='/register' component={Register} />
 			</Switch>
 		</div>
 	);

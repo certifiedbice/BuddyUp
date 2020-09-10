@@ -1,6 +1,7 @@
 import React from 'react';
 import SubmitButton from '../../components/form/SubmitButton';
 import Input from '../../components/form/Input';
+import { useRouteMatch } from 'react-router';
 
 export default function Register() {
 	return (
