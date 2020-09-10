@@ -1,26 +1,22 @@
 import React from 'react';
 import './App.css';
+import Login from './routes/login/Login';
+import { Switch, Route } from 'react-router';
+import Register from './routes/register/Register';
 
 function App() {
 	return (
 		<div className='App'>
-			<header className='header'>
-				<h1>BuddyUp</h1>
-				<p>Welcome back to BuddyUp! Log in to find your next buddy!</p>
-			</header>
-			<div className='login__container'>
-				<form className='login__form'>
-					<input aria-label='Username' placeholder='Username' />
-					<input aria-label='Password' placeholder='Password' />
-					<input
-						aria-label='Confirm Password'
-						placeholder='*Confirm Password -- conditionally render'
-					/>
-					<button arial-label='Login' type='button'>
-						LOGIN
-					</button>
-				</form>
-			</div>
+			<Switch>
+				<Route
+					path='/login'
+					render={(renderProps) => <Login {...renderProps} />}
+				/>
+				<Route
+					path='/register'
+					render={(renderProps) => <Register {...renderProps} />}
+				/>
+			</Switch>
 		</div>
 	);
 }
