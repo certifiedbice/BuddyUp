@@ -19,6 +19,8 @@ export default function Login() {
 		const { username, password, password_2 } = values
 		if (password !== password_2) {
 			setError('Passwords do not match')
+		} else if (password.split().join() === ' ') {
+			setError('Passwords cannot be blank')
 		} else {
 			console.log(values)
 			reset()
