@@ -1,9 +1,9 @@
 import React, { useState } from 'react'
+import useForm from '../../hooks/useForm'
 import SubmitButton from '../../components/form/SubmitButton'
 import Input from '../../components/form/Input'
-import { useRouteMatch } from 'react-router'
-import useForm from '../../hooks/useForm'
 import { Link } from 'react-router-dom'
+import './Register.css'
 
 export default function Register() {
 	const [error, setError] = useState(null)
@@ -42,7 +42,7 @@ export default function Register() {
 				<form className='login__form' onSubmit={handleSubmit}>
 					<div className='input__container'>
 						{error && (
-							<div className='error__'>error</div>
+							<div className='error__'>{error}</div>
 						)}
 						<Input
 							aria-label='Name'
@@ -94,12 +94,14 @@ export default function Register() {
 							required
 						/>
 					</div>
-
 					<SubmitButton
 						arial-label='Register'
+						type='button'
 						text='REGISTER'
 					/>
-					<Link to='/login'>Already have an acount?</Link>
+					<Link to='/login' className='signup-login'>
+						Already have an account? Click here to log in
+					</Link>
 				</form>
 			</div>
 		</>

@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import './Login.css'
 import Input from '../../components/form/Input'
-import { Link, useRouteMatch } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import useForm from '../../hooks/useForm'
 import SubmitButton from '../../components/form/SubmitButton'
 
@@ -78,6 +78,9 @@ export default function Login() {
 					</div>
 
 					<SubmitButton arial-label='Login' text='LOGIN' />
+					<Link to='/register' className='signup-login'>
+						No Account? Sign up now
+					</Link>
 				</form>
 			</div>
 		</>
