@@ -1,34 +1,54 @@
-import React from 'react';
-import SubmitButton from '../../components/form/SubmitButton';
-import Input from '../../components/form/Input';
-import { useRouteMatch } from 'react-router';
-import useForm from '../../hooks/useForm';
-import { Link } from 'react-router-dom';
+import React, { useState } from 'react'
+import SubmitButton from '../../components/form/SubmitButton'
+import Input from '../../components/form/Input'
+import { useRouteMatch } from 'react-router'
+import useForm from '../../hooks/useForm'
+import { Link } from 'react-router-dom'
 
 export default function Register() {
-	const { values, handleChange, reset } = useForm({
+	const [error, setError] = useState(null)
+	const {
+		values,
+		formError,
+		handleChange,
+		reset,
+		passwordValidation,
+	} = useForm({
 		name: '',
 		username: '',
 		password: '',
 		password_2: '',
 		zip_code: '',
-	});
+	})
+
 	const handleSubmit = (e) => {
-		e.preventDefault();
-		console.log(values);
-		reset();
-	};
+		e.preventDefault()
+		const { username, password, password_2 } = values
+
+		if (password !== password_2) {
+			setError('Passwords do not match')
+		} else {
+			console.log(values)
+			reset()
+		}
+	}
 	return (
 		<>
 			<header className='header'>
 				<h1>
 					<Link to='/'>BuddyUp</Link>
 				</h1>
-				<p>Welcome to BuddyUp! Log in to find your next buddy!</p>
+				<p>
+					Welcome to BuddyUp! Log in to find your next
+					buddy!
+				</p>
 			</header>
 			<div className='login__container'>
 				<form className='login__form' onSubmit={handleSubmit}>
 					<div className='input__container'>
+						{error && (
+							<div className='error__'>error</div>
+						)}
 						<Input
 							aria-label='Name'
 							placeholder='Name'
@@ -48,7 +68,10 @@ export default function Register() {
 							placeholder='Password'
 							name='password'
 							value={values.password}
-							onChange={handleChange}
+							onChange={(e) => {
+								handleChange(e)
+								setError(null)
+							}}
 						/>
 						{values.password && (
 							<Input
@@ -69,10 +92,13 @@ export default function Register() {
 						/>
 					</div>
 
-					<SubmitButton arial-label='Register' text='REGISTER' />
+					<SubmitButton
+						arial-label='Register'
+						text='REGISTER'
+					/>
 					<Link to='/login'>Already have an acount?</Link>
 				</form>
 			</div>
 		</>
-	);
+	)
 }

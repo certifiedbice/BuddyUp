@@ -12,7 +12,8 @@
 }
 .input__container {
 	height: 8rem;
-	margin-bottom: 2rem;
+	padding: 1rem;
+	margin-bottom: 1rem;
 }
 
 .login__form input {
@@ -22,4 +23,7 @@
 
 .login__form button {
 	margin-top: 1rem;
+}
+.error__ {
+	color: red;
 }
