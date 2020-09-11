@@ -20,7 +20,7 @@ function isValidActivity(activity) {
   const hasStart = typeof start_time === 'string' && start_time.length > 0;
   const hasEnd = typeof end_time === 'string' && end_time.length > 0;
 
-  return hasTitle && hasZip && hasUser && hasStart && hasEnd;
+  return hasTitle && hasDescription && hasZip && hasUser && hasStart && hasEnd;
 }
 
 module.exports = { isValidActivity };
