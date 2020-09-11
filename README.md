@@ -1,5 +1,12 @@
 # BuddyUp API!
 
+Migration command
+
+- UP (win) knex migrate:latest (mac) npx knex migrate:latest
+- DOWN (win) knex migrate:rollback (mac) npx knex migrate:rollback
+
+Seed command (win) knex seed:run (mac) npx knex seed:run
+
 ## End Points
 
 ### /auth
