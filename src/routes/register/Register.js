@@ -55,6 +55,7 @@ export default function Register() {
 							name='name'
 							value={values.name}
 							onChange={handleChange}
+							required
 						/>
 						<Input
 							aria-label='Username'
@@ -62,6 +63,7 @@ export default function Register() {
 							name='username'
 							value={values.username}
 							onChange={handleChange}
+							required
 						/>
 						<Input
 							aria-label='Password'
@@ -72,6 +74,7 @@ export default function Register() {
 								handleChange(e)
 								setError(null)
 							}}
+							required
 						/>
 						{values.password && (
 							<Input
@@ -80,6 +83,7 @@ export default function Register() {
 								name='password_2'
 								value={values.password_2}
 								onChange={handleChange}
+								required
 							/>
 						)}
 
@@ -89,6 +93,7 @@ export default function Register() {
 							name='zip_code'
 							value={values.zip_code}
 							onChange={handleChange}
+							required
 						/>
 					</div>
 
