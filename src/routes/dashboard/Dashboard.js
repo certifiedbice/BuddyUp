@@ -24,6 +24,13 @@ export default function Dashboard() {
 								<button>INFO</button>
 							</div>
 						</div>
+						
+						<div className='event__item_expanded'>
+								<p className='expanded__info'><span className='info-bold'>Event Host:</span> David M.</p>
+								<p className='expanded__info'><span className='info-bold'>Location:</span> Inman Park</p>
+								<p className='expanded__info'><span className='info-bold'>Time:</span> 4:15PM</p>
+								<p className='expanded__info'><span className='info-bold'>Notes:</span> Music requests are allowed</p>
+						</div>
 					</li>
 					<li>
 						<div className='event__item'>
