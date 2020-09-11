@@ -2,10 +2,8 @@ import { useState } from 'react'
 
 export default function useForm(initialValues) {
 	const [values, setValues] = useState(initialValues)
-	const [formError, setFormError] = useState(null)
 	return {
 		values,
-		formError,
 		handleChange: (e) => {
 			setValues({
 				...values,
@@ -13,7 +11,5 @@ export default function useForm(initialValues) {
 			})
 		},
 		reset: () => setValues(initialValues),
-		passwordValidation: () =>
-			setFormError('Passwords do not match'),
 	}
 }

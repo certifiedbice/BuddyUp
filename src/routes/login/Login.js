@@ -66,7 +66,11 @@ export default function Login() {
 								placeholder='Confirm Password'
 								name='password_2'
 								value={values.password_2}
-								onChange={handleChange}
+								onChange={(e) => {
+									handleChange(e)
+									setError(null)
+								}}
+								required
 							/>
 						)}
 					</div>

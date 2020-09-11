@@ -7,13 +7,7 @@ import { Link } from 'react-router-dom'
 
 export default function Register() {
 	const [error, setError] = useState(null)
-	const {
-		values,
-		formError,
-		handleChange,
-		reset,
-		passwordValidation,
-	} = useForm({
+	const { values, handleChange, reset } = useForm({
 		name: '',
 		username: '',
 		password: '',
@@ -82,7 +76,10 @@ export default function Register() {
 								placeholder='Confirm Password'
 								name='password_2'
 								value={values.password_2}
-								onChange={handleChange}
+								onChange={(e) => {
+									handleChange(e)
+									setError(null)
+								}}
 								required
 							/>
 						)}
