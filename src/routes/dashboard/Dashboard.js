@@ -18,18 +18,38 @@ export default function Dashboard() {
 							</div>
 							<div className='info__container'>
 								<h5>Swing</h5>
-								<h6>disco dancing with me</h6>
+								<p>disco dancing with me</p>
 							</div>
 							<div className='info__button'>
 								<button>INFO</button>
 							</div>
 						</div>
-						
+
 						<div className='event__item_expanded'>
-								<p className='expanded__info'><span className='info-bold'>Event Host:</span> David M.</p>
-								<p className='expanded__info'><span className='info-bold'>Location:</span> Inman Park</p>
-								<p className='expanded__info'><span className='info-bold'>Time:</span> 4:15PM</p>
-								<p className='expanded__info'><span className='info-bold'>Notes:</span> Music requests are allowed</p>
+							<p className='expanded__info'>
+								<span className='info-bold'>
+									Event Host:
+								</span>{' '}
+								David M.
+							</p>
+							<p className='expanded__info'>
+								<span className='info-bold'>
+									Location:
+								</span>{' '}
+								Inman Park
+							</p>
+							<p className='expanded__info'>
+								<span className='info-bold'>
+									Time:
+								</span>{' '}
+								4:15PM
+							</p>
+							<p className='expanded__info'>
+								<span className='info-bold'>
+									Notes:
+								</span>{' '}
+								Music requests are allowed
+							</p>
 						</div>
 					</li>
 					<li>
@@ -39,10 +59,10 @@ export default function Dashboard() {
 							</div>
 							<div className='info__container'>
 								<h5>Funeral</h5>
-								<h6>
+								<p>
 									Come with me to my cousins'
 									friend's uncle's funeral
-								</h6>
+								</p>
 							</div>
 							<div className='info__button'>
 								<button>INFO</button>
@@ -56,7 +76,7 @@ export default function Dashboard() {
 							</div>
 							<div className='info__container'>
 								<h5>Title</h5>
-								<h6>Description</h6>
+								<p>Description</p>
 							</div>
 							<div className='info__button'>
 								<button>INFO</button>
@@ -70,7 +90,7 @@ export default function Dashboard() {
 							</div>
 							<div className='info__container'>
 								<h5>Title</h5>
-								<h6>Description</h6>
+								<p>Description</p>
 							</div>
 							<div className='info__button'>
 								<button>INFO</button>
@@ -84,7 +104,7 @@ export default function Dashboard() {
 							</div>
 							<div className='info__container'>
 								<h5>Title</h5>
-								<h6>Description</h6>
+								<p>Description</p>
 							</div>
 							<div className='info__button'>
 								<button>INFO</button>
@@ -98,7 +118,7 @@ export default function Dashboard() {
 							</div>
 							<div className='info__container'>
 								<h5>Title</h5>
-								<h6>Description</h6>
+								<p>Description</p>
 							</div>
 							<div className='info__button'>
 								<button>INFO</button>
@@ -112,7 +132,7 @@ export default function Dashboard() {
 							</div>
 							<div className='info__container'>
 								<h5>Title</h5>
-								<h6>Description</h6>
+								<p>Description</p>
 							</div>
 							<div className='info__button'>
 								<button>INFO</button>
@@ -126,7 +146,7 @@ export default function Dashboard() {
 							</div>
 							<div className='info__container'>
 								<h5>Title</h5>
-								<h6>Description</h6>
+								<p>Description</p>
 							</div>
 							<div className='info__button'>
 								<button>INFO</button>

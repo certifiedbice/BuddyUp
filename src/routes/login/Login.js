@@ -1,12 +1,15 @@
 import React, { useState } from 'react'
 import './Login.css'
 import Input from '../../components/form/Input'
-import { Link } from 'react-router-dom'
+import { Link, useHistory } from 'react-router-dom'
 import useForm from '../../hooks/useForm'
 import SubmitButton from '../../components/form/SubmitButton'
+import config from '../../config'
+import TokenService from '../../services/token-service'
 
 export default function Login() {
 	const [error, setError] = useState(null)
+	const history = useHistory()
 
 	const { values, handleChange, reset } = useForm({
 		username: '',
@@ -23,7 +26,26 @@ export default function Login() {
 			setError('Passwords cannot be blank')
 		} else {
 			console.log(values)
+			handleLogin({ username, password })
 			reset()
+		}
+	}
+
+	const handleLogin = async (user) => {
+		try {
+			const response = await fetch(
+				`${config.API_ENDPOINT}/auth/login`,
+				{
+					method: 'POST',
+					headers: { 'content-type': 'application/json' },
+					body: JSON.stringify(user),
+				}
+			)
+			const data = await response.json()
+			TokenService.saveAuthToken(data.authToken)
+			history.push('/dashboard')
+		} catch (error) {
+			setError(error.error)
 		}
 	}
 	return (
