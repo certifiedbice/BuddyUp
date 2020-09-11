@@ -21,7 +21,7 @@ export default function Login() {
 					<button arial-label='Login' type='button'>
 						LOGIN
 					</button>
-					<Link to='/register'>Already have an acount?</Link>
+					<Link to='/register' class='signup-login'>No Account? Sign up now</Link>
 				</form>
 			</div>
 		</>
