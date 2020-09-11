@@ -4,7 +4,6 @@ import Login from './routes/login/Login'
 import { Switch, Route } from 'react-router'
 import Register from './routes/register/Register'
 import Dashboard from './routes/dashboard/Dashboard'
-import Demo from './routes/demo/Demo'
 import Landing from './routes/landing/Landing'
 
 function App() {
