@@ -1,0 +1,14 @@
+.landing__container {
+  display: flex;
+  flex-direction: column;
+  max-width: 450px;
+	margin: auto;
+}
+
+.landing__header {
+
+}
+
+.landing_message {
+
+}
