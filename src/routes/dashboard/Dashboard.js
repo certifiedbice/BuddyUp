@@ -41,8 +41,8 @@ export default function Dashboard() {
 				<div>x number of events in your area</div>
 				<div>
 					<button
-						onClick={() => {
-							TokenService.clearAuthToken()
+						onClick={async () => {
+							await TokenService.clearAuthToken()
 							history.push('/')
 						}}
 					>
