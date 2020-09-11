@@ -27,29 +27,33 @@ export default function Login() {
 			</header>
 			<div className='login__container'>
 				<form className='login__form' onSubmit={handleSubmit}>
-					<Input
-						aria-label='Username'
-						name='username'
-						placeholder='Username'
-						onChange={handleChange}
-						value={values.username}
-					/>
-					<Input
-						aria-label='Password'
-						name='password'
-						placeholder='Password'
-						onChange={handleChange}
-						value={values.password}
-					/>
-					<Input
-						aria-label='Confirm Password'
-						name='password_2'
-						placeholder='*Confirm Password -- conditionally render'
-						onChange={handleChange}
-						value={values.password_2}
-					/>
+					<div className='input__container'>
+						<Input
+							aria-label='Username'
+							name='username'
+							placeholder='Username'
+							onChange={handleChange}
+							value={values.username}
+						/>
+						<Input
+							aria-label='Password'
+							name='password'
+							placeholder='Password'
+							onChange={handleChange}
+							value={values.password}
+						/>
+						{values.password && (
+							<Input
+								aria-label='Confirm Password'
+								placeholder='Confirm Password'
+								name='password_2'
+								value={values.password_2}
+								onChange={handleChange}
+							/>
+						)}
+					</div>
+
 					<SubmitButton arial-label='Login' text='LOGIN' />
-					<Link to='/register'>Already have an acount?</Link>
 				</form>
 			</div>
 		</>

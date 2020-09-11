@@ -28,42 +28,49 @@ export default function Register() {
 			</header>
 			<div className='login__container'>
 				<form className='login__form' onSubmit={handleSubmit}>
-					<Input
-						aria-label='Name'
-						placeholder='Name'
-						name='name'
-						value={values.name}
-						onChange={handleChange}
-					/>
-					<Input
-						aria-label='Username'
-						placeholder='Username'
-						name='username'
-						value={values.username}
-						onChange={handleChange}
-					/>
-					<Input
-						aria-label='Password'
-						placeholder='Password'
-						name='password'
-						value={values.password}
-						onChange={handleChange}
-					/>
-					<Input
-						aria-label='Confirm Password'
-						placeholder='Confirm Password'
-						name='password_2'
-						value={values.password_2}
-						onChange={handleChange}
-					/>
-					<Input
-						aria-label='Zip Code'
-						placeholder='Zip Code -- this is used to filter your results!'
-						name='zip_code'
-						value={values.zip_code}
-						onChange={handleChange}
-					/>
+					<div className='input__container'>
+						<Input
+							aria-label='Name'
+							placeholder='Name'
+							name='name'
+							value={values.name}
+							onChange={handleChange}
+						/>
+						<Input
+							aria-label='Username'
+							placeholder='Username'
+							name='username'
+							value={values.username}
+							onChange={handleChange}
+						/>
+						<Input
+							aria-label='Password'
+							placeholder='Password'
+							name='password'
+							value={values.password}
+							onChange={handleChange}
+						/>
+						{values.password && (
+							<Input
+								aria-label='Confirm Password'
+								placeholder='Confirm Password'
+								name='password_2'
+								value={values.password_2}
+								onChange={handleChange}
+							/>
+						)}
+
+						<Input
+							aria-label='Zip Code'
+							placeholder='Zip Code -- this is used to filter your results!'
+							name='zip_code'
+							value={values.zip_code}
+							onChange={handleChange}
+						/>
+					</div>
+
 					<SubmitButton arial-label='Register' text='REGISTER' />
+					<Link to='/login'>Already have an acount?</Link>
 				</form>
 			</div>
 		</>

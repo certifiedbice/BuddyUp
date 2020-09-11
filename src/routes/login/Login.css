@@ -3,11 +3,16 @@
 	margin: auto;
 }
 
-.login__form {
+.login__form,
+.input__container {
 	display: flex;
 	flex-direction: column;
 	max-width: 80%;
 	margin: auto;
+}
+.input__container {
+	height: 8rem;
+	margin-bottom: 2rem;
 }
 
 .login__form input {
