@@ -23,7 +23,7 @@ usersRouter.get('/:id', async (req, res, next) => {
 });
 
 usersRouter.post('/', jsonBodyParser, (req, res, next) => {
-  const { username, name, password, zipcode } = req.body;
+  const { username, name, password, zip_code } = req.body;
   for (const field of ['username', 'name', 'password', 'zip_code']) {
     if (!req.body[field]) {
       return res

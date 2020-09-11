@@ -9,15 +9,81 @@ Seed command (win) knex seed:run (mac) npx knex seed:run
 
 ## End Points
 
-### /auth
+### /api/auth/login
 
-### /users
+POST method for logging in.
 
-### /activities
+Requires username and password in request body.
 
-### /signups
+Responds with auth token.
 
-### /signups/approved
+### /api/auth/refresh
+
+POST method for refreshing auth token.
+
+### /api/users
+
+POST method for registering.
+
+Requires username, name, password, and zip_code of new user in request body.
+
+### /api/user/:id
+
+GET method for fetching user by id
+
+No body required.
+
+Responds with name, username, zip_code, and date_registered of user with given id.
+
+### /api/activities
+
+GET method for fetching list of activities.
+
+Responds with list of all activities by default.
+
+Optional body: zip_code OR user_id.
+
+If given zip_code or user_id, responds with list of activities with matching zip_code or user_id.
+
+If given both zip_code and user_id, only zip_code will be used.
+
+POST method for creating new activities.
+
+Requires body with title string, description string, 5-digit zip_code integer, user_id integer (must exist in users table) start_time string, and end_time string.
+
+### /api/activities/:id
+
+GET method to fetch single activity by activity id.
+
+No body required.
+
+Responds with activity with matching id.
+
+PATCH method to update activity with given id.
+
+Requires body with values to be updated.
+
+Responds with updated activity values
+
+### /api/signups
+
+GET method to fetch list of signups.
+
+Responds with list of all signups by default.
+
+Optional body: activity_id
+
+If activity_id included in body, responds with signups with matching activity_id column values.
+
+activity_id value must be present within "activities" table.
+
+### /api/signups/approved
+
+GET method to fetch list of signups for given activity which have been approved. Primarily for gathering activity attendees.
+
+Requires body with valid activity_id.
+
+Responds with list of all signups with given activity_id column value and "true" is_approved column value.
 
 ## GIST:
 
