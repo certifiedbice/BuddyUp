@@ -6,6 +6,12 @@ const ActivitiesService = {
   getAll() {
     return knex('activities');
   },
+  getAllForZip(zip_code) {
+    return knex('activities').where({ zip_code }).select('*');
+  },
+  getAllForUser(user_id) {
+    return knex('activities').where({ user_id }).select('*');
+  },
   getOne(id) {
     return knex('activities').where({ id }).first('*');
   },

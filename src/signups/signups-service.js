@@ -6,6 +6,14 @@ const SignupsService = {
   getAll() {
     return knex('signups');
   },
+  getAllForActivity(activity_id) {
+    return knex('signups').where({ activity_id }).select('*');
+  },
+  getApprovedForActivity(activity_id) {
+    return knex('signups')
+      .where({ activity_id, is_approved: true })
+      .select('*');
+  },
   getOne(id) {
     return knex('signups').where({ id }).first('*');
   },

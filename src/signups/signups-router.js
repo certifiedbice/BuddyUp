@@ -1,15 +1,18 @@
 'use strict';
 
 const express = require('express');
+const jsonBodyParser = express.json();
 
 const SignupsService = require('./signups-service');
 const { isValidSignup } = require('../../utils/isValidSignup');
 
-const signupsRouters = express.Router();
+const signupsRouter = express.Router();
 
-signupsRouters.get('/', async (_, res, next) => {
+signupsRouter.get('/', jsonBodyParser, async (req, res, next) => {
   try {
-    const signups = await SignupsService.getAll();
+    const signups = req.body.activity_id
+      ? await SignupsService.getAllForActivity(req.body.activity_id)
+      : await SignupsService.getAll();
 
     if (!signups)
       return next({
@@ -23,19 +26,42 @@ signupsRouters.get('/', async (_, res, next) => {
   }
 });
 
-signupsRouters.post('/', async (req, res, next) => {
-  const { user_id, activity_id, contact_info, is_approved } = req.body;
+signupsRouter.get('/approved', jsonBodyParser, async (req, res, next) => {
+  try {
+    if (!req.body.activity_id)
+      return next({
+        status: 400,
+        message: 'Activity ID required in request body',
+      });
+
+    const { activity_id } = req.body;
+    const signups = await SignupsService.getApprovedForActivity(activity_id);
+
+    if (!signups)
+      return next({
+        status: 404,
+        message: `No signups found`,
+      });
+
+    return res.status(200).json(signups);
+  } catch (error) {
+    return next({ status: 500, message: error.message });
+  }
+});
+
+signupsRouter.post('/', jsonBodyParser, async (req, res, next) => {
+  const { user_id, activity_id, contact_info } = req.body;
   const newSignup = {
     user_id,
     activity_id,
     contact_info,
-    is_approved,
+    is_approved: false,
   };
 
   if (!isValidSignup(newSignup))
     return next({
       status: 400,
-      message: `An signup should include a user ID, activity ID, contact info, and is_approved boolean`,
+      message: `An signup should include a user ID, activity ID, and contact info.`,
     });
 
   try {
@@ -46,7 +72,7 @@ signupsRouters.post('/', async (req, res, next) => {
   }
 });
 
-signupsRouters.get('/:id', async (req, res, next) => {
+signupsRouter.get('/:id', async (req, res, next) => {
   const { id } = req.params;
 
   try {
@@ -64,7 +90,7 @@ signupsRouters.get('/:id', async (req, res, next) => {
   }
 });
 
-signupsRouters.patch('/:id', async (req, res, next) => {
+signupsRouter.patch('/:id', async (req, res, next) => {
   const { id } = req.params;
 
   try {
@@ -83,7 +109,7 @@ signupsRouters.patch('/:id', async (req, res, next) => {
   }
 });
 
-signupsRouters.delete('/:id', async (req, res, next) => {
+signupsRouter.delete('/:id', async (req, res, next) => {
   const { id } = req.params;
 
   try {
@@ -101,4 +127,4 @@ signupsRouters.delete('/:id', async (req, res, next) => {
   }
 });
 
-module.exports = signupsRouters;
+module.exports = signupsRouter;

@@ -1,15 +1,20 @@
 'use strict';
 
 const express = require('express');
+const jsonBodyParser = express.json();
 
 const ActivitiesService = require('./activities-service');
 const { isValidActivity } = require('../../utils/isValidActivity');
 
 const activitiesRouter = express.Router();
 
-activitiesRouter.get('/', async (_, res, next) => {
+activitiesRouter.get('/', jsonBodyParser, async (req, res, next) => {
   try {
-    const activities = await ActivitiesService.getAll();
+    const activities = req.body.zip_code
+      ? await ActivitiesService.getAllForZip(req.body.zip_code)
+      : req.body.user_id
+      ? await ActivitiesService.getAllForUser(req.body.user_id)
+      : await ActivitiesService.getAll();
 
     if (!activities)
       return next({
@@ -23,7 +28,7 @@ activitiesRouter.get('/', async (_, res, next) => {
   }
 });
 
-activitiesRouter.post('/', async (req, res, next) => {
+activitiesRouter.post('/', jsonBodyParser, async (req, res, next) => {
   const {
     title,
     description,
