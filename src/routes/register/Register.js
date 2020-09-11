@@ -2,10 +2,13 @@ import React, { useState } from 'react'
 import useForm from '../../hooks/useForm'
 import SubmitButton from '../../components/form/SubmitButton'
 import Input from '../../components/form/Input'
-import { Link } from 'react-router-dom'
+import { Link, useHistory } from 'react-router-dom'
 import './Register.css'
+import config from '../../config'
+import TokenService from '../../services/token-service'
 
 export default function Register() {
+	const history = useHistory()
 	const [error, setError] = useState(null)
 	const { values, handleChange, reset } = useForm({
 		name: '',
@@ -17,14 +20,48 @@ export default function Register() {
 
 	const handleSubmit = (e) => {
 		e.preventDefault()
-		const { username, password, password_2 } = values
+		const {
+			name,
+			username,
+			password,
+			password_2,
+			zip_code,
+		} = values
 		if (password !== password_2) {
 			setError('Passwords do not match')
 		} else if (password.split().join() === ' ') {
 			setError('Passwords cannot be blank')
 		} else {
-			console.log(values)
+			let user = {
+				name,
+				username,
+				password,
+				zip_code: parseInt(zip_code),
+			}
+
+			handleRegister(user)
 			reset()
+		}
+	}
+	const handleRegister = async (user) => {
+		try {
+			const response = await fetch(
+				`${config.API_ENDPOINT}/users`,
+				{
+					method: 'POST',
+					headers: {
+						'content-type': 'application/json',
+					},
+					body: JSON.stringify(user),
+				}
+			)
+			const data = await response.json()
+			const { authToken } = data.password
+			const { saveAuthToken } = TokenService
+			saveAuthToken(authToken)
+			history.push('/dashboard')
+		} catch (error) {
+			setError(error.error)
 		}
 	}
 	return (

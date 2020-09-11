@@ -1,158 +1,64 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
+import { useHistory } from 'react-router'
+import config from '../../config'
+import TokenService from '../../services/token-service'
+import Activity from './ActivitiesList/Activity/Activity'
 import './Dashboard.css'
 
 export default function Dashboard() {
+	const history = useHistory()
+	const [error, setError] = useState(null)
+	const [activities, setActivities] = useState([])
+
+	useEffect(() => {
+		const getActivities = async () => {
+			try {
+				const response = await fetch(
+					`${config.API_ENDPOINT}/activities`,
+					{
+						method: 'GET',
+					}
+				)
+				const data = await response.json()
+				if (data.error) throw data.error
+
+				setActivities(data)
+			} catch (error) {
+				setError(error)
+			}
+		}
+
+		if (!error) {
+			getActivities()
+		}
+		return () => {}
+	}, [error])
 	return (
 		<main>
 			<header className='dashboard__header'>
 				<h1>BuddyUp</h1>
 				<h2>Find or create your next event</h2>
 				<div>x number of events in your area</div>
+				<div>
+					<button
+						onClick={() => {
+							TokenService.clearAuthToken()
+							history.push('/')
+						}}
+					>
+						LOGOUT
+					</button>
+				</div>
 			</header>
 			<section className='event__section'>
 				<ul className='event__list'>
-					<li>
-						<div className='event__item'>
-							<div className='date__container'>
-								<h3>9/11/2020</h3>
-							</div>
-							<div className='info__container'>
-								<h5>Swing</h5>
-								<p>disco dancing with me</p>
-							</div>
-							<div className='info__button'>
-								<button>INFO</button>
-							</div>
-						</div>
-
-						<div className='event__item_expanded'>
-							<p className='expanded__info'>
-								<span className='info-bold'>
-									Event Host:
-								</span>{' '}
-								David M.
-							</p>
-							<p className='expanded__info'>
-								<span className='info-bold'>
-									Location:
-								</span>{' '}
-								Inman Park
-							</p>
-							<p className='expanded__info'>
-								<span className='info-bold'>
-									Time:
-								</span>{' '}
-								4:15PM
-							</p>
-							<p className='expanded__info'>
-								<span className='info-bold'>
-									Notes:
-								</span>{' '}
-								Music requests are allowed
-							</p>
-						</div>
-					</li>
-					<li>
-						<div className='event__item'>
-							<div className='date__container'>
-								<h3>9/11/2020</h3>
-							</div>
-							<div className='info__container'>
-								<h5>Funeral</h5>
-								<p>
-									Come with me to my cousins'
-									friend's uncle's funeral
-								</p>
-							</div>
-							<div className='info__button'>
-								<button>INFO</button>
-							</div>
-						</div>
-					</li>
-					<li>
-						<div className='event__item'>
-							<div className='date__container'>
-								<h3>9/11/2020</h3>
-							</div>
-							<div className='info__container'>
-								<h5>Title</h5>
-								<p>Description</p>
-							</div>
-							<div className='info__button'>
-								<button>INFO</button>
-							</div>
-						</div>
-					</li>
-					<li>
-						<div className='event__item'>
-							<div className='date__container'>
-								<h3>9/11/2020</h3>
-							</div>
-							<div className='info__container'>
-								<h5>Title</h5>
-								<p>Description</p>
-							</div>
-							<div className='info__button'>
-								<button>INFO</button>
-							</div>
-						</div>
-					</li>
-					<li>
-						<div className='event__item'>
-							<div className='date__container'>
-								<h3>9/11/2020</h3>
-							</div>
-							<div className='info__container'>
-								<h5>Title</h5>
-								<p>Description</p>
-							</div>
-							<div className='info__button'>
-								<button>INFO</button>
-							</div>
-						</div>
-					</li>
-					<li>
-						<div className='event__item'>
-							<div className='date__container'>
-								<h3>9/11/2020</h3>
-							</div>
-							<div className='info__container'>
-								<h5>Title</h5>
-								<p>Description</p>
-							</div>
-							<div className='info__button'>
-								<button>INFO</button>
-							</div>
-						</div>
-					</li>
-					<li>
-						<div className='event__item'>
-							<div className='date__container'>
-								<h3>9/11/2020</h3>
-							</div>
-							<div className='info__container'>
-								<h5>Title</h5>
-								<p>Description</p>
-							</div>
-							<div className='info__button'>
-								<button>INFO</button>
-							</div>
-						</div>
-					</li>
-					<li>
-						<div className='event__item'>
-							<div className='date__container'>
-								<h3>9/11/2020</h3>
-							</div>
-							<div className='info__container'>
-								<h5>Title</h5>
-								<p>Description</p>
-							</div>
-							<div className='info__button'>
-								<button>INFO</button>
-							</div>
-						</div>
-					</li>
+					{activities &&
+						activities.map((activity) => (
+							<Activity
+								key={activity.id}
+								{...activity}
+							/>
+						))}
 				</ul>
 			</section>
 		</main>

@@ -36,19 +36,13 @@ h2 {
 	list-style-type: none;
 }
 
-.event__item {
-	display: flex;
-	flex-direction: row;
-	border: 0.1rem solid hsl(0, 0%, 80%);
-	margin: 3px 0;
-	background-color: #455a64;
-}
-
+.event__item,
 .event__item_expanded {
 	display: flex;
 	flex-direction: row;
 	border: 0.1rem solid hsl(0, 0%, 80%);
 	margin: 3px 0;
+	background-color: #455a64;
 }
 
 .expanded__info {
