@@ -6,8 +6,11 @@ body {
 		'Droid Sans', 'Helvetica Neue', sans-serif;
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
+	background-color: #e1e2e1;
 }
-
+body::-webkit-scrollbar {
+	display: none;
+}
 code {
 	font-family: source-code-pro, Menlo, Monaco, Consolas,
 		'Courier New', monospace;

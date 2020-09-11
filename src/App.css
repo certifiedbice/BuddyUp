@@ -2,9 +2,26 @@
 	text-align: center;
 }
 
+.header {
+	top: 0;
+	background-color: #1c313a;
+	padding: 1rem;
+}
+
+.header h1,
+p {
+	margin: 0;
+	color: white;
+	padding: 0.25rem;
+	letter-spacing: 1px;
+}
+.header p {
+	font-size: x-small;
+}
+
 a {
 	text-decoration: none;
 }
 a:visited {
-	color: black;
+	color: white;
 }

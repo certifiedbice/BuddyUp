@@ -87,7 +87,7 @@ export default function Register() {
 
 						<Input
 							aria-label='Zip Code'
-							placeholder='Zip Code -- this is used to filter your results!'
+							placeholder='Zip Code'
 							name='zip_code'
 							value={values.zip_code}
 							onChange={handleChange}
@@ -98,6 +98,7 @@ export default function Register() {
 						arial-label='Register'
 						type='button'
 						text='REGISTER'
+						className='login__btn'
 					/>
 					<Link to='/login' className='signup-login'>
 						Already have an account? Click here to log in

@@ -77,7 +77,11 @@ export default function Login() {
 						)}
 					</div>
 
-					<SubmitButton arial-label='Login' text='LOGIN' />
+					<SubmitButton
+						arial-label='Login'
+						text='LOGIN'
+						className='login__btn'
+					/>
 					<Link to='/register' className='signup-login'>
 						No Account? Sign up now
 					</Link>
