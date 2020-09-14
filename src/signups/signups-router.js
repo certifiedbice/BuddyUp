@@ -95,6 +95,7 @@ signupsRouter.patch('/:id', async (req, res, next) => {
 
   try {
     const signup = await SignupsService.update(id, req.body);
+    console.log(req.body);
     console.log(signup);
 
     if (!signup)
