@@ -85,6 +85,7 @@ export default function Register() {
 							aria-label='Name'
 							placeholder='Name'
 							name='name'
+							type='text'
 							value={values.name}
 							onChange={handleChange}
 							required
@@ -93,6 +94,7 @@ export default function Register() {
 							aria-label='Username'
 							placeholder='Username'
 							name='username'
+							type='text'
 							value={values.username}
 							onChange={handleChange}
 							required
@@ -101,6 +103,7 @@ export default function Register() {
 							aria-label='Password'
 							placeholder='Password'
 							name='password'
+							type='password'
 							value={values.password}
 							onChange={(e) => {
 								handleChange(e)
@@ -113,6 +116,7 @@ export default function Register() {
 								aria-label='Confirm Password'
 								placeholder='Confirm Password'
 								name='password_2'
+								type='password'
 								value={values.password_2}
 								onChange={(e) => {
 									handleChange(e)

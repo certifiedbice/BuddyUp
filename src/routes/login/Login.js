@@ -68,6 +68,7 @@ export default function Login() {
 						<Input
 							aria-label='Username'
 							name='username'
+							type='text'
 							placeholder='Username'
 							onChange={handleChange}
 							value={values.username}
@@ -76,6 +77,7 @@ export default function Login() {
 						<Input
 							aria-label='Password'
 							name='password'
+							type='password'
 							placeholder='Password'
 							onChange={(e) => {
 								handleChange(e)
@@ -89,6 +91,7 @@ export default function Login() {
 								aria-label='Confirm Password'
 								placeholder='Confirm Password'
 								name='password_2'
+								type='password'
 								value={values.password_2}
 								onChange={(e) => {
 									handleChange(e)

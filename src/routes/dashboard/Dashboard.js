@@ -33,6 +33,15 @@ export default function Dashboard() {
 		}
 		return () => {}
 	}, [error])
+
+	const handleLogOut = async () => {
+		try {
+			await TokenService.clearAuthToken()
+			history.push('/')
+		} catch (error) {
+			setError(error.message)
+		}
+	}
 	return (
 		<main>
 			<header className='dashboard__header'>
@@ -40,14 +49,7 @@ export default function Dashboard() {
 				<h2>Find or create your next event</h2>
 				<div>{activities.length} events in your area</div>
 				<div>
-					<button
-						onClick={async () => {
-							await TokenService.clearAuthToken()
-							history.push('/')
-						}}
-					>
-						LOGOUT
-					</button>
+					<button onClick={handleLogOut}>LOGOUT</button>
 				</div>
 			</header>
 			<section className='event__section'>
