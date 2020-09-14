@@ -67,7 +67,7 @@ export default function Activity({
 				</div>
 				<div className='info__container'>
 					<h5>{title}</h5>
-					<p>{`${concat.slice(0, 8)}...`}</p>
+					<p>{`${concat.slice(0, 12)}...`}</p>
 				</div>
 				<div className='info__button'>
 					<button

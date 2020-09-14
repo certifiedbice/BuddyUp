@@ -40,6 +40,7 @@ h2 {
 .event__item_expanded {
 	display: flex;
 	flex-direction: row;
+	justify-content: space-around;
 	border: 0.1rem solid hsl(0, 0%, 80%);
 	margin: 3px 0;
 	background-color: #455a64;
@@ -99,6 +100,9 @@ h6 {
 
 .info__button {
 	display: flex;
+	flex: 0.12;
+	flex-basis: auto;
+	justify-content: center;
 }
 .info__button button {
 	background-color: #ff9800;
@@ -106,10 +110,10 @@ h6 {
 	font-family: 'Roboto', sans-serif;
 	font-size: 10px;
 	font-weight: 500;
-	/* border-radius: 50%; */
-	height: 40px;
+	border-radius: 10%;
+	max-height: 40px;
+	min-height: 20px;
 	align-self: center;
-	/* margin: 0 2px; */
 }
 .info__button button:hover {
 	cursor: pointer;
