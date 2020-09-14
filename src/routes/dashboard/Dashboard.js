@@ -9,7 +9,7 @@ export default function Dashboard() {
 	const history = useHistory()
 	const [error, setError] = useState(null)
 	const [activities, setActivities] = useState([])
-
+	const numActivities = activities.length || 0
 	useEffect(() => {
 		const getActivities = async () => {
 			try {
@@ -47,7 +47,7 @@ export default function Dashboard() {
 			<header className='dashboard__header'>
 				<h1>BuddyUp</h1>
 				<h2>Find or create your next event</h2>
-				<div>{activities.length} events in your area</div>
+				<div>{numActivities} events in your area</div>
 				<div>
 					<button onClick={handleLogOut}>LOGOUT</button>
 				</div>
