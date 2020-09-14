@@ -4,6 +4,7 @@ import config from '../../config'
 import TokenService from '../../services/token-service'
 import Activity from './ActivitiesList/Activity/Activity'
 import './Dashboard.css'
+import DashboardHeader from './DashboardHeader/DashboardHeader'
 
 export default function Dashboard() {
 	const history = useHistory()
@@ -44,14 +45,11 @@ export default function Dashboard() {
 	}
 	return (
 		<main>
-			<header className='dashboard__header'>
-				<h1>BuddyUp</h1>
-				<h2>Find or create your next event</h2>
-				<div>{numActivities} events in your area</div>
-				<div>
-					<button onClick={handleLogOut}>LOGOUT</button>
-				</div>
-			</header>
+			<DashboardHeader
+				props={numActivities}
+				numActivities={numActivities}
+				handleLogOut={handleLogOut}
+			/>
 			<section className='event__section'>
 				<ul className='event__list'>
 					{activities &&

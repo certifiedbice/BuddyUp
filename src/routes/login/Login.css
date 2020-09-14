@@ -43,7 +43,7 @@
 	margin: auto;
 	padding: 4px;
 	width: 80px;
-	background-color: #ff9800;
+	background-color: hsl(42, 100%, 64%);
 	border: none;
 	font-family: 'Roboto', sans-serif;
 	font-size: x-small;

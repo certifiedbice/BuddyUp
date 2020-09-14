@@ -20,11 +20,11 @@ export default function Activity({
 	let expandedInfo = (
 		<div className='event__item_expanded'>
 			<div className='expanded__info'>
-				<h5 className='info-bold'>Event Host:</h5>{' '}
+				<h5 className='info-bold'>Event Host:</h5>
 				<p>{name}</p>
 			</div>
 			<div className='expanded__info'>
-				<h5 className='info-bold'>Location:</h5>
+				<h5 className='info-bold'>Zip Code:</h5>
 				<p>{zip_code}</p>
 			</div>
 			<div className='expanded__info'>
