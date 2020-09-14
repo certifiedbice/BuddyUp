@@ -86,24 +86,24 @@ h2 {
 	font-family: 'Roboto', sans-serif;
 	margin: 3px 0 0 3px;
 	padding: 4px;
-	font-size: x-small;
+	font-size: 14px;
 	font-weight: 400;
-	letter-spacing: 0.2mm;
-	color: hsl(0, 0%, 89%);
+	letter-spacing: 1pt;
+	color: hsla(0, 0%, 100%, 90%);
 }
 .info__container {
 	flex: 1;
 	text-align: left;
 }
-.info__container h5,
-h6 {
+.info__container h4,
+h5 {
 	font-family: 'Roboto', sans-serif;
 	padding: 4px;
 	margin: 0;
 }
-.info__container h5 {
+.info__container h4 {
 	font-family: 'Montserrat', sans-serif;
-	color: hsl(0, 0%, 89%);
+	color: hsla(0, 0%, 89%, 72%);
 	font-weight: 500;
 }
 .info__container p {
@@ -111,7 +111,7 @@ h6 {
 	font-weight: 500;
 	font-family: 'Roboto', sans-serif;
 	letter-spacing: 1px;
-	color: black;
+	color: hsla(0, 0%, 100%, 90%);
 }
 
 .info__button {
