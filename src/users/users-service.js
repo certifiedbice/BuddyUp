@@ -7,7 +7,10 @@ const AuthService = require('../auth/auth-service');
 
 const UsersService = {
   getOne(id) {
-    return knex('users').where({ id }).first('*');
+    return knex('users')
+      .select('username', 'name', 'zip_code', 'date_registered')
+      .where({ id })
+      .first();
   },
   hasUserWithUserName(db, username) {
     return db('users')
@@ -48,7 +51,7 @@ const UsersService = {
       password: {
         authToken: AuthService.createJwt(user.username, { user_id: user.id }),
       },
-      zipcode: xss(user.zipcode),
+      zip_code: xss(user.zip_code),
       date_registered: new Date(user.date_registered),
     };
   },

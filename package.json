@@ -17,7 +17,10 @@
   "keywords": [
     "BuddyUp"
   ],
-  "author": "Camden <camdenquin@gmail.com>, Christoper <Ambitiousking712@gmail.com>, Bice <certifiedbice@gmail.com>, George <sumthnabtgeorge@gmail.com>, Matt <matt@matt.com>",
+  "engines": {
+    "node": "14.1.0"
+  },
+  "author": "Camden <camdenquin@gmail.com>, Christoper <Ambitiousking712@gmail.com>, Bice <certifiedbice@gmail.com>, George <sumthnabtgeorge@gmail.com>, Matt <themlp@icloud.com>",
   "license": "ISC",
   "dependencies": {
     "bcryptjs": "^2.4.3",
