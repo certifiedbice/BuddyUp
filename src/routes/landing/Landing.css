@@ -6,8 +6,6 @@
 	background-color: #445963;
 }
 
-.landing__header {
-}
-
-.landing_message {
+#start_btn:link, #start_btn:visited, #start_btn:hover, #start_btn:active {
+	color: black;
 }

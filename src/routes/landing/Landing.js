@@ -14,7 +14,7 @@ export default function Landing() {
 				below to get started.
 			</p>
 			<button type='button'>
-				<Link to='/register'>Get Started!</Link>
+				<Link to='/register' id='start_btn'>Get Started!</Link>
 			</button>
 		</div>
 	)
