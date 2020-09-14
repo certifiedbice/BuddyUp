@@ -24,8 +24,8 @@ export default function Activity({
 				<span className='info-bold'>Time:</span> {time}
 			</p>
 			<p className='expanded__info'>
-				<span className='info-bold'>Notes:</span> Music
-				requests are allowed
+				<span className='info-bold'>Notes:</span>{' '}
+				{description}
 			</p>
 		</div>
 	)

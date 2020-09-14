@@ -38,7 +38,7 @@ export default function Dashboard() {
 			<header className='dashboard__header'>
 				<h1>BuddyUp</h1>
 				<h2>Find or create your next event</h2>
-				<div>x number of events in your area</div>
+				<div>{activities.length} events in your area</div>
 				<div>
 					<button
 						onClick={async () => {
