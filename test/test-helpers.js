@@ -70,7 +70,7 @@ function makeActivitiesArray() {
   ];
 }
 
-function makeSignupsArray(users, orgs) {
+function makeSignupsArray() {
   return [
     {
       user_id: 1,
