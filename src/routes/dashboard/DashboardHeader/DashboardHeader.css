@@ -1,3 +1,26 @@
+.dashboard__header {
+	display: flex;
+	flex-direction: column;
+	background-color: #1b3039;
+}
+.dashboard__header h1,
+h2 {
+	font-family: 'Montserrat', sans-serif;
+	margin: 0;
+	color: white;
+}
+.dashboard__header h2 {
+	font-size: 18px;
+	padding: 0.5rem;
+}
+.dashboard__header div {
+	color: hsl(0, 0%, 87%);
+	font-family: 'Roboto', sans-serif;
+}
+.header__text {
+	padding: 0.5rem;
+}
+
 .navlink__list {
 	list-style-type: none;
 	display: flex;
@@ -9,6 +32,7 @@
 .navlink__item {
 	flex: 1;
 	color: #fff;
+	font-size: 14px;
 	font-weight: 500;
 	letter-spacing: 0.45pt;
 	padding: 1rem;

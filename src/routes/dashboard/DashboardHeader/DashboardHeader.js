@@ -25,7 +25,7 @@ export default function DashboardHeader({
 						className='navlink__item'
 						to='activity-requests'
 					>
-						Activity Requests
+						Requests
 					</Link>
 					<li
 						onClick={handleLogOut}
