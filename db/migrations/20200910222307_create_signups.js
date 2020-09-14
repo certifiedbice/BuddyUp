@@ -8,7 +8,7 @@ exports.up = function (knex) {
       .inTable('activities')
       .notNullable();
     table.text('contact_info').notNullable();
-    table.boolean('is_approved').defaultTo(false).notNullable();
+    table.boolean('is_approved').defaultTo(true).notNullable();
   });
 };
 
