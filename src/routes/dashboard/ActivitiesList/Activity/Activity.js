@@ -20,18 +20,18 @@ export default function Activity({
 	let expandedInfo = (
 		<div className='event__item_expanded'>
 			<div className='expanded__info'>
-				<h6 className='info-bold'>Event Host:</h6>{' '}
+				<h5 className='info-bold'>Event Host:</h5>{' '}
 				<p>{name}</p>
 			</div>
 			<div className='expanded__info'>
-				<h6 className='info-bold'>Location:</h6>
+				<h5 className='info-bold'>Location:</h5>
 				<p>{zip_code}</p>
 			</div>
 			<div className='expanded__info'>
-				<h6 className='info-bold'>Time:</h6> <p>{time}</p>
+				<h5 className='info-bold'>Time:</h5> <p>{time}</p>
 			</div>
 			<div className='expanded__info'>
-				<h6 className='info-bold'>Notes:</h6>
+				<h5 className='info-bold'>Notes:</h5>
 				<p>{description}</p>
 			</div>
 		</div>
@@ -67,7 +67,7 @@ export default function Activity({
 					<h3>{date}</h3>
 				</div>
 				<div className='info__container'>
-					<h5>{title}</h5>
+					<h4>{title}</h4>
 					<p>{`${concat.slice(0, 12)}...`}</p>
 				</div>
 				<div className='info__button'>
