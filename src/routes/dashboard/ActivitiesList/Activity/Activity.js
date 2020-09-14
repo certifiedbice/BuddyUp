@@ -19,20 +19,21 @@ export default function Activity({
 	const { name } = user
 	let expandedInfo = (
 		<div className='event__item_expanded'>
-			<p className='expanded__info'>
-				<span className='info-bold'>Event Host:</span> {name}
-			</p>
-			<p className='expanded__info'>
-				<span className='info-bold'>Location:</span>
-				{zip_code}
-			</p>
-			<p className='expanded__info'>
-				<span className='info-bold'>Time:</span> {time}
-			</p>
-			<p className='expanded__info'>
-				<span className='info-bold'>Notes:</span>{' '}
-				{description}
-			</p>
+			<div className='expanded__info'>
+				<h6 className='info-bold'>Event Host:</h6>{' '}
+				<p>{name}</p>
+			</div>
+			<div className='expanded__info'>
+				<h6 className='info-bold'>Location:</h6>
+				<p>{zip_code}</p>
+			</div>
+			<div className='expanded__info'>
+				<h6 className='info-bold'>Time:</h6> <p>{time}</p>
+			</div>
+			<div className='expanded__info'>
+				<h6 className='info-bold'>Notes:</h6>
+				<p>{description}</p>
+			</div>
 		</div>
 	)
 

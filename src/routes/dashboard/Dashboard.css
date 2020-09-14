@@ -11,29 +11,33 @@ h2 {
 	color: white;
 }
 .dashboard__header div {
-	color: hsl(0, 0%, 75%);
+	color: hsl(0, 0%, 87%);
 	font-family: 'Roboto', sans-serif;
 }
-.event__section {
-	max-height: 300px;
-	overflow-y: scroll;
-	margin: 2rem 4rem;
-	padding: 1rem;
-}
+
 .event__section::-webkit-scrollbar {
 	display: none;
 }
 .event__section {
+	margin-top: 5px;
+	max-height: 300px;
+	overflow-y: scroll;
 	-ms-overflow-style: none;
 	scrollbar-width: none;
-	max-width: 700px;
-	margin: 4rem auto;
+	max-width: 720px;
+	background-color: #1b3039;
 }
 .event__list {
-	padding: 0.5rem;
-	margin: auto;
 	max-width: 100%;
+	padding: 0;
+	margin: auto;
 	list-style-type: none;
+	border: 0.1rem solid hsl(0, 0%, 80%);
+}
+.event__list li {
+	padding: 2px;
+	margin: 2px;
+	background-color: #455a64;
 }
 
 .event__item,
@@ -41,27 +45,37 @@ h2 {
 	display: flex;
 	flex-direction: row;
 	justify-content: space-around;
-	border: 0.1rem solid hsl(0, 0%, 80%);
-	margin: 3px 0;
-	background-color: #455a64;
+}
+.event__item_expanded {
+	background-color: #708690;
+	border: none;
 }
 
 .expanded__info {
+	flex: 0.5;
+	flex-basis: auto;
 	font-family: 'Roboto', sans-serif;
-	margin: 0;
-	padding: 4px;
-	font-size: smaller;
+	font-size: 12px;
+}
+.expanded__info h6 {
+	color: hsla(0, 0%, 100%, 90%);
+}
+.expanded__info p {
+	font-weight: 500;
+	color: hsl(0, 0%, 0%);
 }
 
 .info-bold {
 	font-family: 'Roboto', sans-serif;
+	font-size: 14px;
 	margin: 0;
 	padding: 4px;
-	font-weight: bold;
+	font-weight: 500;
 }
 
 .info-details {
 	font-family: 'Roboto', sans-serif;
+	font-weight: 400;
 }
 
 .date__container {
@@ -73,6 +87,7 @@ h2 {
 	margin: 3px 0 0 3px;
 	padding: 4px;
 	font-size: x-small;
+	font-weight: 400;
 	letter-spacing: 0.2mm;
 	color: hsl(0, 0%, 89%);
 }
@@ -89,6 +104,7 @@ h6 {
 .info__container h5 {
 	font-family: 'Montserrat', sans-serif;
 	color: hsl(0, 0%, 89%);
+	font-weight: 500;
 }
 .info__container p {
 	font-size: 12px;
@@ -105,17 +121,29 @@ h6 {
 	justify-content: center;
 }
 .info__button button {
-	background-color: #ff9800;
+	background-color: transparent;
 	border: 2px;
 	font-family: 'Roboto', sans-serif;
 	font-size: 10px;
 	font-weight: 500;
-	border-radius: 10%;
+	letter-spacing: 1pt;
+	color: hsla(0, 0%, 100%, 90%);
+	border-radius: 6%;
 	max-height: 40px;
 	min-height: 20px;
 	align-self: center;
 }
 .info__button button:hover {
 	cursor: pointer;
-	background-color: #ffc947;
+	color: hsla(0, 0%, 0%, 89%);
+	background-color: hsl(42, 100%, 64%);
+}
+
+@media screen and (min-width: 700px) {
+	.event__section {
+		margin: 5px auto;
+	}
+	.event__list {
+		margin: auto;
+	}
 }
