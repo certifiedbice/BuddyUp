@@ -339,22 +339,19 @@ function cleanTables(db){
     return db.transaction(trx=>
     	trx.raw(
         	`TRUNCATE
-				users,
-				organizations,
-				comments,
-				endorsements
+				users
 			`
       	)
       	.then(()=>
         	Promise.all([
 				trx.raw(`ALTER SEQUENCE organizations_id_seq minvalue 0 START WITH 1`),
 				trx.raw(`ALTER SEQUENCE users_id_seq minvalue 0 START WITH 1`),
-				trx.raw(`ALTER SEQUENCE comments_id_seq minvalue 0 START WITH 1`),
-				trx.raw(`ALTER SEQUENCE endorsements_id_seq minvalue 0 START WITH 1`),
-        		trx.raw(`SELECT setval('organizations_id_seq', 0)`),
+				// trx.raw(`ALTER SEQUENCE comments_id_seq minvalue 0 START WITH 1`),
+				// trx.raw(`ALTER SEQUENCE endorsements_id_seq minvalue 0 START WITH 1`),
+        		// trx.raw(`SELECT setval('organizations_id_seq', 0)`),
         		trx.raw(`SELECT setval('users_id_seq', 0)`),
-        		trx.raw(`SELECT setval('comments_id_seq', 0)`),
-        		trx.raw(`SELECT setval('endorsements_id_seq', 0)`),
+        		// trx.raw(`SELECT setval('comments_id_seq', 0)`),
+        		// trx.raw(`SELECT setval('endorsements_id_seq', 0)`),
         	])
       	)
     )
