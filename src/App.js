@@ -5,6 +5,7 @@ import { Switch, Route } from 'react-router'
 import Register from './routes/register/Register'
 import Dashboard from './routes/dashboard/Dashboard'
 import Landing from './routes/landing/Landing'
+import NewActivity from './routes/new_activity/NewActivity'
 
 function App() {
 	return (
@@ -14,6 +15,7 @@ function App() {
 				<Route path='/login' component={Login} />
 				<Route path='/register' component={Register} />
 				<Route path='/dashboard' component={Dashboard} />
+				<Route path='/new-activity' component={NewActivity} />
 			</Switch>
 		</div>
 	)
