@@ -180,7 +180,6 @@ h5 {
 	margin: auto;
 	padding: 4px;
 	display: flex;
-	justify-content: space-evenly;
 }
 .expanded__info__btn__ctn button {
 	background-color: transparent;
@@ -196,6 +195,8 @@ h5 {
 .expanded__info__btn__ctn button:hover {
 	background-color: #ffc947;
 	color: hsla(0, 0%, 0%, 92%);
+	box-shadow: 0 8px 16px rgba(0, 0, 0, 0.19),
+		0 6px 6px rgba(0, 0, 0, 0.23);
 }
 
 @media screen and (min-width: 700px) {
