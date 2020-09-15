@@ -59,6 +59,10 @@ export default function Dashboard() {
 								{...activity}
 							/>
 						))}
+					<li>List</li>
+					<li>List</li>
+					<li>List</li>
+					<li>List</li>
 				</ul>
 			</section>
 		</main>
