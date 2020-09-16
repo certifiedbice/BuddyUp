@@ -45,11 +45,11 @@ activitiesRouter.get('/local', async (req, res, next) => {
   }
 });
 
-activitiesRouter.post('/', jsonBodyParser, async (req, res, next) => {
+activitiesRouter.post('/',requireAuth, jsonBodyParser, async (req, res, next) => {
   const { title, description, start_time, end_time } = req.body;
 
   const newActivity = {
-    title,
+  	title,
     description,
     zip_code: req.user.zip_code,
     user_id: req.user.id,
