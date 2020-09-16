@@ -10,7 +10,7 @@ exports.seed = function (knex) {
           description: 'Test event description 1',
           zip_code: 12345,
           user_id: 1,
-          start_time: '2020-010-20 15:00:00-00',
+          start_time: '2020-10-20 15:00:00-00',
           end_time: '2020-10-20 16:00:00-00',
         },
         {
