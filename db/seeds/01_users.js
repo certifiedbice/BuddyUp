@@ -44,7 +44,8 @@ exports.seed = function (knex) {
           username: 'demo@mail.com',
           name: 'Demo',
           password:
-            '$2a$12$4/hJrBJuOgROYNOu791oN.LgJg.LKuyDREdKUnzjNJmEeTsigmgrC', // unhashed: DemoPass#1
+            '$2a$12$4/hJrBJuOgROYNOu791oN.LgJg.LKuyDREdKUnzjNJmEeTsigmgrC', // unhashed: DemoPass#1,
+          zip_code: '12345',
         },
       ]);
     });
