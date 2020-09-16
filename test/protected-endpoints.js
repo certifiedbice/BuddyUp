@@ -19,10 +19,16 @@ describe.only(`Protected endpoints`,()=>{
   			method:supertest(app).post
 		},
 		{
-			name:'POST /api/signups/approved',
+			name:'GET /api/signups/approved',
 			path:'/api/signups/approved',
-  			method:supertest(app).post
+  			method:supertest(app).get
 		},
+		{
+			name:'PATCH /api/signups/approval/:id',
+			path:'/api/signups/approval/:id',
+  			method:supertest(app).patch
+		},
+		
 		{
 			name:'POST /api/activities',
 			path:'/api/activities',
