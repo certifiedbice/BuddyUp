@@ -8,16 +8,16 @@ before(() => {
 
 describe.only(`Protected endpoints`,()=>{
 	const protectedEndpoints=[
-		// {
-		// 	name:'POST /api/signups',
-		// 	path:'/api/signups',
-  		// 	method:supertest(app).get
-		// },
-		// {
-		// 	name:'POST /api/signups/approved',
-		// 	path:'/api/signups/approved',
-  		// 	method:supertest(app).post
-		// },
+		{
+			name:'POST /api/signups',
+			path:'/api/signups',
+  			method:supertest(app).get
+		},
+		{
+			name:'POST /api/signups/approved',
+			path:'/api/signups/approved',
+  			method:supertest(app).post
+		},
 		{
 			name:'POST /api/activities',
 			path:'/api/activities',
