@@ -78,7 +78,7 @@ activitiesRouter.get('/:id', async (req, res, next) => {
   }
 });
 
-activitiesRouter.patch('/:id', async (req, res, next) => {
+activitiesRouter.patch('/:id', jsonBodyParser, async (req, res, next) => {
   const { id } = req.params;
 
   try {
