@@ -1,24 +1,8 @@
 import React from 'react'
-import BasicDateTimePicker from '../../components/date/BasicDateTimePicker'
-import useForm from '../../hooks/useForm'
 import AddActivityForm from './AddActivityForm/AddActivityForm'
 import './NewActivity.css'
 
 export default function NewActivity() {
-	let today = new Date()
-
-	let dString = `${today
-		.toISOString()
-		.slice(0, 10)}T${today.toTimeString().slice(0, 5)}`
-
-	const { handleChange, values } = useForm({ date: dString })
-	const handleSubmit = (e) => {
-		e.preventDefault()
-		console.log(values, {
-			date: values.date + ':00.000Z',
-		})
-	}
-
 	return (
 		<main>
 			<header className='dashboard__header'>
