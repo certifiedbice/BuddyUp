@@ -77,7 +77,7 @@ signupsRouter.patch('/approval/:id', jsonBodyParser, async (req, res, next) => {
 
     await SignupsService.update(id, { is_approved: isApproved });
 
-    return res.status(204).send;
+    return res.status(204).send();
   } catch (error) {
     return next({ status: 500, message: error.message });
   }
