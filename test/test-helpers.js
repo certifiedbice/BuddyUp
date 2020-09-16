@@ -1,444 +1,280 @@
-const bcrypt=require('bcryptjs');
-const jwt=require('jsonwebtoken');
+const bcrypt = require('bcryptjs');
+const jwt = require('jsonwebtoken');
 
-function makeUsersArray(){
-	return [
-		{
-			id:1,
-			username:'user1', 
-			f_name:'jake', 
-			l_name:'todd', 
-			password:'somePass1', 
-			email:'jake.todd@email.com', 
-			city:'Tulsa', 
-			user_state:'OK', 
-			zipcode:'74008',
-			date_registered:'2020-08-07 15:21:25'
-		},
-	  	{	
-			id:2,
-			username:'user2',
-			f_name:'sarah',
-			l_name:'shelly',
-			password:'somePass2',
-			email:'sarah.shelly@email.com',
-			city:'New Orleans',
-			user_state:'LA',
-			zipcode:'70032',
-			date_registered:'2020-08-07 15:21:25'
-		},
-	  	{	
-			id:3,
-			username:'user3',
-			f_name:'tim',
-			l_name:'tebow',
-			password:'somePass3',
-			email:'ttebow@email.com',
-			city:'Sacramento',
-			user_state:'CA',
-			zipcode:'94203',
-			date_registered:'2020-08-07 15:21:25'
-		},
-	  	{	
-			id:4,
-			username:'user4',
-			f_name:'crystal',
-			l_name:'ball',
-			password:'somePass4',
-			email:'crystalsball@email.com',
-			city:'Chicago',
-			user_state:'IL',
-			zipcode:'60290',
-			date_registered:'2020-08-07 15:21:25'
-		},
-	  	{
-			id:5,
-			username:'user5',
-			f_name:'jimmy',
-			l_name:'schmidts',
-			password:'somePass5',
-			email:'takinaschmidts@email.com',
-			city:'Denver',
-			user_state:'CO',
-			zipcode:'80203',
-			date_registered:'2020-08-07 15:21:25'
-		}
-	];
+function makeUsersArray() {
+  return [
+    {
+      username: 'shawn@psych.com',
+      name: 'Shawn Spencer',
+      password: 'Zippy$$93',
+      zip_code: '93117',
+      date_registered: '2020-08-07 15:21:25',
+    },
+    {
+      username: 'red@hood.com',
+      name: 'Jason Todd',
+      password: 'Boopy##39',
+      zip_code: '70032',
+      date_registered: '2020-08-07 15:21:25',
+    },
+    {
+      username: 'forgetfootball@mets.com',
+      name: 'Tim Tebow',
+      password: 'Jiffy%%76',
+      zip_code: '11368',
+      date_registered: '2020-08-07 15:21:25',
+    },
+    {
+      username: 'fortuneteller@gmail.com',
+      name: 'Crystal Ball',
+      password: 'Puffy**21',
+      zip_code: '60290',
+      date_registered: '2020-08-07 15:21:25',
+    },
+    {
+      username: 'no1diehardfan@gmail.com',
+      name: 'Jake Peralta',
+      password: 'rappy!!45',
+      zip_code: '11215',
+      date_registered: '2020-08-07 15:21:25',
+    },
+  ];
 }
 
-function makeOrgsArray(){
-	return [
-		{
-			org_name:'Waterside Apartments',
-			org_phone:'9185997180',
-			org_st_addr:'1703 S Jackson Ave West',
-			org_city:'tulsa',
-			org_state:'OK',
-			org_zipcode:'74107',
-			pos_endorsements:'15',
-			neg_endorsements:'2',
-			org_type:'housing'
-		},
-		{
-			org_name:'The Giani Building', 
-			org_phone:'5045990987', 
-			org_st_addr:'600 Canal St', 
-			org_city:'New Orleans', 
-			org_state:'LA', 
-			org_zipcode:'70130', 
-			pos_endorsements:'3', 
-			neg_endorsements:'13', 
-			org_type:'housing'
-		},
-		{
-			org_name:'Broadleaf Apartments', 
-			org_phone:'9163915100', 
-			org_st_addr:'40 Park City Ct', 
-			org_city:'Sacramento', 
-			org_state:'CA', 
-			org_zipcode:'95831', 
-			pos_endorsements:'14', 
-			neg_endorsements:'56', 
-			org_type:'housing'
-		},
-		{
-			org_name:'Gateway West Loop', 
-			org_phone:'3129670513', 
-			org_st_addr:'11 S Green St', 
-			org_city:'Chicago', 
-			org_state:'IL', 
-			org_zipcode:'60607', 
-			pos_endorsements:'0', 
-			neg_endorsements:'69', 
-			org_type:'housing'
-		},
-		{
-			org_name:'Brownstone Realty LTD', 
-			org_phone:'3038328155', 
-			org_st_addr:'789 Sherman St', 
-			org_city:'Denver', 
-			org_state:'CO', 
-			org_zipcode:'80203', 
-			pos_endorsements:'1', 
-			neg_endorsements:'113', 
-			org_type:'housing'
-		}
-	];
+function makeActivitiesArray() {
+  return [
+    {
+      title: 'Test Event 1',
+      description: 'Test event description 1',
+      zip_code: 12345,
+      user_id: 1,
+      start_time: '2020-09-20 15:00:00-00',
+      end_time: '2020-09-20 16:00:00-00',
+    },
+    {
+      title: 'Test Event 2',
+      description: 'Test event description 2',
+      zip_code: 12345,
+      user_id: 2,
+      start_time: '2020-09-20 17:30:00-00',
+      end_time: '2020-09-20 20:00:00-00',
+    },
+    {
+      title: 'Test Event 3',
+      description: 'Test event description 3',
+      zip_code: 12345,
+      user_id: 1,
+      start_time: '2020-09-25 12:00:00-00',
+      end_time: '2020-09-25 13:00:00-00',
+    },
+  ];
 }
 
-function makeCommentsArray(users,orgs){
-	return [
-		{
-			id:1,
-			title:'Total waste of time!',
-			user_id:users[0].id,
-			org_id:orgs[0].id,
-			comment:'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
-			date_published:new Date('2029-01-22T16:28:32.615Z')
-		},
-  		{
-			id:2,
-			title:'Great Place',
-			user_id:users[1].id,
-			org_id:orgs[1].id,
-			comment:'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
-			date_published:new Date('2029-01-22T16:28:32.615Z')
-		},
-  		{
-			id:3,
-			title:'Terrible!',
-			user_id:users[2].id,
-			org_id:orgs[2].id,
-			comment:'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
-			date_published:new Date('2029-01-22T16:28:32.615Z')
-		},
-  		{
-			id:4,
-			title:'Unbelievable!',
-			user_id:users[3].id,
-			org_id:orgs[3].id,
-			comment:'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
-			date_published:new Date('2029-01-22T16:28:32.615Z')
-		},
-  		{
-			id:5,
-			title:'Highly recommend',
-			user_id:users[4].id,
-			org_id:orgs[4].id,
-			comment:'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
-			date_published:new Date('2029-01-22T16:28:32.615Z')
-		}
-	];
+function makeSignupsArray() {
+  return [
+    {
+      user_id: 1,
+      activity_id: 2,
+      contact_info: 'Test Contact Info',
+      is_approved: true,
+    },
+    {
+      user_id: 4,
+      activity_id: 2,
+      contact_info: 'Test Contact Info',
+      is_approved: true,
+    },
+    {
+      user_id: 2,
+      activity_id: 1,
+      contact_info: 'Test Contact Info',
+      is_approved: false,
+    },
+    {
+      user_id: 2,
+      activity_id: 3,
+      contact_info: 'Test Contact Info',
+      is_approved: false,
+    },
+  ];
 }
 
-function makeEndorsementsArray(users,orgs){
-	return [
-		{
-			id:1,
-			user_id:users[0].id,
-			org_id:orgs[0].id,
-			endorsement:0,
-			date_published:new Date('2029-01-22T16:28:32.615Z')
-		},
-		{
-			id:2,
-			user_id:users[1].id,
-			org_id:orgs[1].id,
-			endorsement:1,
-			date_published:new Date('2029-01-22T16:28:32.615Z')
-		},
-		{
-			id:3,
-			user_id:users[2].id,
-			org_id:orgs[2].id,
-			endorsement:0,
-			date_published:new Date('2029-01-22T16:28:32.615Z')
-		},
-		{
-			id:4,
-			user_id:users[3].id,
-			org_id:orgs[3].id,
-			endorsement:0,
-			date_published:new Date('2029-01-22T16:28:32.615Z')
-		},
-		{
-			id:5,
-			user_id:users[4].id,
-			org_id:orgs[4].id,
-			endorsement:1,
-			date_published:new Date('2029-01-22T16:28:32.615Z')
-		}
-	];
+function makeExpectedUser(user) {
+  return {
+    username: user.username,
+    name: user.name,
+    password: user.password,
+    zip_code: user.zip_code,
+    date_registered: user.date_registered,
+  };
 }
 
-function makeExpectedOrg(org){
-	return{
-		org_name:org.org_name,
-		org_phone:org.org_phone,
-		org_st_addr:org.org_st_addr,
-		org_city:org.org_city,
-		org_state:org.org_state,
-		org_zipcode:org.org_zipcode,
-		pos_endorsements:org.pos_endorsements,
-		neg_endorsements:org.neg_endorsements,
-		org_type:org.org_type
-	}
+function makeExpectedActivity(activity) {
+  return {
+    title: activity.title,
+    description: activity.description,
+    zip_code: activity.zip_code,
+    user_id: activity.user_id,
+    start_time: activity.start_time,
+    end_time: activity.end_time,
+  };
 }
 
-function makeNewOrg(){
-	return{
-		org_name:'Test APT',
-		org_phone:'0000000000',
-		org_st_addr:'123 S Test Ave',
-		org_city:'tulsa',
-		org_state:'OK',
-		org_zipcode:'74107',
-		org_type:'housing'
-	}
+function makeExpectedSignup(signup) {
+  return {
+    user_id: signup.user_id,
+    activity_id: signup.activity_id,
+    contact_info: signup.contact_info,
+    is_approved: signup.is_approved,
+  };
 }
 
-function makeNewEndorsement(){
-	return{
-		org_id:'1',
-		endorsement:'true'
-	}
+function makeNewActivity() {
+  return {
+    title: 'New Test Event',
+    description: 'New Test Event description',
+    zip_code: 12345,
+    user_id: 1,
+    start_time: '2020-09-20 15:00:00-00',
+    end_time: '2020-09-20 16:00:00-00',
+  };
 }
 
-function makeNewComment(){
-	return{
-		title:'test',
-		org_id:'1',
-		comment:'Lorem ipsum dolor sit amet, consectetur adipiscing elit.'
-	}
+function makeNewSignup() {
+  return {
+    user_id: 1,
+    activity_id: 1,
+    contact_info: 'New Contact Info',
+    is_approved: false,
+  };
 }
 
-function makeMaliciousOrg(){
-	const maliciousOrg={
-		id:911,
-		org_name:'Naughty naughty very naughty <script>alert("xss");</script>',
-		org_phone:'9185997180',
-		org_st_addr:`Bad image <img src="https://url.to.file.which/does-not.exist" onerror="alert(document.cookie);">. But not <strong>all</strong> bad.`,
-		org_city:'tulsa',
-		org_state:'OK',
-		org_zipcode:'74107',
-		pos_endorsements:15,
-		pos_endorsements:2,
-		org_type:'housing'	  
-	}
-	const expectedOrg={
-		...maliciousOrg,
-		org_name:'Naughty naughty very naughty &lt;script&gt;alert(\"xss\");&lt;/script&gt;',
-		org_st_addr:`Bad image <img src="https://url.to.file.which/does-not.exist">. But not <strong>all</strong> bad.`
-	}
-	return {
-		maliciousOrg,
-		expectedOrg,
-	}
+function makeMaliciousActivity() {
+  const maliciousActivity = {
+    id: 911,
+    title: 'Naughty naughty very naughty <script>alert("xss");</script>',
+    description: `Bad image <img src="https://url.to.file.which/does-not.exist" onerror="alert(document.cookie);">. But not <strong>all</strong> bad.`,
+    zip_code: 12345,
+    user_id: 1,
+    start_time: '2020-09-20 15:00:00-00',
+    end_time: '2020-09-20 16:00:00-00',
+  };
+  const expectedActivity = {
+    ...maliciousActivity,
+    title:
+      'Naughty naughty very naughty &lt;script&gt;alert("xss");&lt;/script&gt;',
+    description: `Bad image <img src="https://url.to.file.which/does-not.exist">. But not <strong>all</strong> bad.`,
+  };
+  return {
+    maliciousActivity,
+    expectedActivity,
+  };
 }
 
-function makeMaliciousComment(){
-	const maliciousComment={
-	  	id:911,
-	  	title:'Naughty naughty very naughty <script>alert("xss");</script>',
-		user_id:'1',
-		org_id:'1',
-		comment:`Bad image <img src="https://url.to.file.which/does-not.exist" onerror="alert(document.cookie);">. But not <strong>all</strong> bad.`,
-		date_published:new Date().toISOString()
-	}
-	const expectedComment={
-		...maliciousComment,
-		title:'Naughty naughty very naughty &lt;script&gt;alert(\"xss\");&lt;/script&gt;',
-		comment: `Bad image <img src="https://url.to.file.which/does-not.exist">. But not <strong>all</strong> bad.`
-	}
-	return {
-		maliciousComment,
-		expectedComment,
-	}
+function makeMaliciousSignup() {
+  const maliciousSignup = {
+    id: 911,
+    user_id: '1',
+    activity_id: '1',
+    contact_info: `Bad image <img src="https://url.to.file.which/does-not.exist" onerror="alert(document.cookie);">. But not <strong>all</strong> bad.`,
+    is_approved: false,
+  };
+  const expectedSignup = {
+    ...maliciousSignup,
+    contact_info: `Bad image <img src="https://url.to.file.which/does-not.exist">. But not <strong>all</strong> bad.`,
+  };
+  return {
+    maliciousSignup,
+    expectedSignup,
+  };
 }
 
-function makeMaliciousEndorsement(){
-	const maliciousEndorsement={
-	  	id:911,
-		user_id:'1',
-		org_id:'1',
-		endorsement:`Bad image <img src="https://url.to.file.which/does-not.exist" onerror="alert(document.cookie);">. But not <strong>all</strong> bad.`,
-		date_published:new Date().toISOString()
-	}
-	const expectedEndorsement={
-		...maliciousEndorsement,
-		endorsement: `Bad image <img src="https://url.to.file.which/does-not.exist">. But not <strong>all</strong> bad.`
-	}
-	return {
-		maliciousEndorsement,
-		expectedEndorsement,
-	}
+function makeActivitiesFixtures() {
+  const testUsers = makeUsersArray();
+  const testActivities = makeActivitiesArray();
+  const testSignups = makeSignupsArray(testUsers, testActivities);
+  return { testUsers, testActivities, testSignups };
 }
 
-function makeOrgsFixtures(){
-	const testUsers=makeUsersArray();
-	const testOrgs=makeOrgsArray();
-	const testComments=makeCommentsArray(testUsers,testOrgs);
-	return {testUsers,testOrgs,testComments};
+function makeSignupsFixtures() {
+  const testUsers = makeUsersArray();
+  const testActivities = makeActivitiesArray();
+  const testSignups = makeSignupsArray(testUsers, testActivities);
+  return { testUsers, testActivities, testSignups };
 }
 
-function makeEndorsementsFixtures(){
-	const testUsers=makeUsersArray();
-	const testOrgs=makeOrgsArray();
-	const testEndorsements=makeEndorsementsArray(testUsers,testOrgs);
-	return {testUsers,testOrgs,testEndorsements};
-}
-
-function makeCommentsFixtures(){
-	const testUsers=makeUsersArray();
-	const testOrgs=makeOrgsArray();
-	const testComments=makeCommentsArray(testUsers,testOrgs);
-	return {testUsers,testOrgs,testComments};
-}
-
-function cleanTables(db){
-    return db.transaction(trx=>
-    	trx.raw(
-        	`TRUNCATE
-				users
+function cleanTables(db) {
+  return db.transaction(
+    (trx) =>
+      trx.raw(
+        `TRUNCATE
+        signups,
+        activites,
+        users
 			`
-      	)
-      	.then(()=>
-        	Promise.all([
-				trx.raw(`ALTER SEQUENCE organizations_id_seq minvalue 0 START WITH 1`),
-				trx.raw(`ALTER SEQUENCE users_id_seq minvalue 0 START WITH 1`),
-				// trx.raw(`ALTER SEQUENCE comments_id_seq minvalue 0 START WITH 1`),
-				// trx.raw(`ALTER SEQUENCE endorsements_id_seq minvalue 0 START WITH 1`),
-        		// trx.raw(`SELECT setval('organizations_id_seq', 0)`),
-        		trx.raw(`SELECT setval('users_id_seq', 0)`),
-        		// trx.raw(`SELECT setval('comments_id_seq', 0)`),
-        		// trx.raw(`SELECT setval('endorsements_id_seq', 0)`),
-        	])
-      	)
-    )
+      )
+    // .then(() =>
+    //   Promise.all([
+    //     trx.raw(
+    //       `ALTER SEQUENCE organizations_id_seq minvalue 0 START WITH 1`
+    //     ),
+    //     trx.raw(`ALTER SEQUENCE users_id_seq minvalue 0 START WITH 1`),
+    //     trx.raw(`ALTER SEQUENCE comments_id_seq minvalue 0 START WITH 1`),
+    //     trx.raw(`ALTER SEQUENCE endorsements_id_seq minvalue 0 START WITH 1`),
+    //     trx.raw(`SELECT setval('organizations_id_seq', 0)`),
+    //     trx.raw(`SELECT setval('users_id_seq', 0)`),
+    //     trx.raw(`SELECT setval('comments_id_seq', 0)`),
+    //     trx.raw(`SELECT setval('endorsements_id_seq', 0)`),
+    //   ])
+    // )
+  );
 }
 
-function seedOrgsTables(db,orgs){
-	// use a transaction to group the queries and auto rollback on any failure
-	return db.transaction(async trx=>{
-		await trx.into('organizations').insert(orgs);
-		// Needs implementation, but won't work due to how I structured the org_id.
-
-		// update the auto sequence to match the forced id values
-		// await trx.raw(
-		// 	`SELECT setval('organizations_id_seq', ?)`,
-		// 	[orgs[orgs.length-1].id],
-		// )
-	});
+function seedUsersTables(db, users) {
+  const preppedUsers = users.map((user) => ({
+    ...user,
+    password: bcrypt.hashSync(user.password, 1),
+  }));
+  return db.into('users').insert(preppedUsers);
 }
 
-function seedUsersTables(db,users){
-	const preppedUsers=users.map(user=>({
-		...user,
-		password:bcrypt.hashSync(user.password,1)
-	}));
-	return db.into('users').insert(preppedUsers)
-		.then(()=>
-			// update the auto sequence to stay in sync
-			db.raw(
-				`SELECT setval('users_id_seq', ?)`,
-				[users[users.length-1].id],
-			)
-		)
+function seedActivitiesTable(db, activities) {
+  return db.into('activities').insert(activities);
 }
 
-function seedCommentsTables(db,comments){
-	// use a transaction to group the queries and auto rollback on any failure
-	return db.transaction(async trx=>{
-		await trx.into('comments').insert(comments);
-		// update the auto sequence to match the forced id values
-		await trx.raw(
-			`SELECT setval('comments_id_seq', ?)`,
-			[articles[comments.length-1].id],
-		)
-	});
+function seedSignupsTable(db, signups) {
+  return db.into('signups').insert(signups);
 }
 
-function seedEndorsementsTables(db,endorsements){
-	// use a transaction to group the queries and auto rollback on any failure
-	return db.transaction(async trx=>{
-		await trx.into('endorsements').insert(endorsements);
-		// update the auto sequence to match the forced id values
-		await trx.raw(
-				`SELECT setval('endorsements_id_seq', ?)`,
-				[endorsements[endorsements.length-1].id],
-		)
-	});
+function seedMaliciousActivity(db, activity) {
+  return db.into('activities').insert([activity]);
 }
 
-function seedMaliciousOrg(db,org){
-	return db.into('organizations').insert([org]);
+function makeAuthHeader(user, secret = process.env.JWT_SECRET) {
+  const token = jwt.sign({ user_id: user.id }, secret, {
+    subject: user.email,
+    algorithm: 'HS256',
+  });
+  return `Bearer ${token}`;
 }
 
-function makeAuthHeader(user,secret=process.env.JWT_SECRET){
-	const token=jwt.sign({user_id:user.id},secret,{subject:user.email,algorithm:'HS256'});
-	return `Bearer ${token}`;
-}
-
-module.exports={
-	makeUsersArray,
-	makeOrgsArray,
-	makeCommentsArray,
-	makeEndorsementsArray,
-	makeExpectedOrg,
-	makeNewOrg,
-	makeNewEndorsement,
-	makeNewComment,
-	makeMaliciousOrg,
-	makeMaliciousComment,
-	makeMaliciousEndorsement,
-	makeOrgsFixtures,
-	makeEndorsementsFixtures,
-	makeCommentsFixtures,
-	cleanTables,
-	seedUsersTables,
-	seedOrgsTables,
-	seedEndorsementsTables,
-	seedCommentsTables,
-	seedMaliciousOrg,
-	makeAuthHeader
-}
+module.exports = {
+  makeUsersArray,
+  makeActivitiesArray,
+  makeSignupsArray,
+  makeExpectedUser,
+  makeExpectedActivity,
+  makeExpectedSignup,
+  makeNewActivity,
+  makeNewSignup,
+  makeMaliciousActivity,
+  makeMaliciousSignup,
+  makeActivitiesFixtures,
+  makeSignupsFixtures,
+  cleanTables,
+  seedUsersTables,
+  seedActivitiesTable,
+  seedSignupsTable,
+  seedMaliciousActivity,
+  makeAuthHeader,
+};

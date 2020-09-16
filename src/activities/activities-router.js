@@ -1,6 +1,7 @@
 'use strict';
 
 const express = require('express');
+const {requireAuth}=require('../middleware/jwt-auth');
 const jsonBodyParser = express.json();
 
 const ActivitiesService = require('./activities-service');
@@ -28,7 +29,7 @@ activitiesRouter.get('/', jsonBodyParser, async (req, res, next) => {
   }
 });
 
-activitiesRouter.post('/', jsonBodyParser, async (req, res, next) => {
+activitiesRouter.post('/',requireAuth, jsonBodyParser, async (req, res, next) => {
   const {
     title,
     description,
@@ -46,11 +47,11 @@ activitiesRouter.post('/', jsonBodyParser, async (req, res, next) => {
     end_time,
   };
 
-  if (!isValidActivity(newActivity))
-    return next({
-      status: 400,
-      message: `An activity should include a title, description, ZIP code, start time, and end time`,
-    });
+//   if (!isValidActivity(newActivity))
+//     return next({
+//       status: 400,
+//       message: `An activity should include a title, description, ZIP code, start time, and end time`,
+//     });
 
   try {
     const activity = await ActivitiesService.create(newActivity);

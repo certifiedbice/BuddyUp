@@ -4,13 +4,9 @@
   "description": "Platform enables people to meet new people",
   "main": "index.js",
   "scripts": {
-    "seed": "psql -U postgres -d linus-server -f ./seeds/seed.linus_tables.sql",
-    "migrate": "postgrator --config postgrator-config.js",
-    "migrate:test": "env NODE_ENV=test npm run migrate",
-    "migrate:production": "env SSL=true DATABASE_URL=$(heroku config:get DATABASE_URL) npm run migrate",
+    "test": "dropdb --if-exists buddyup-test && createdb buddyup-test && cross-env NODE_ENV=test mocha --require test/setup.js --exit",
     "start": "node src/server.js",
     "dev": "nodemon src/server.js",
-    "test": "mocha --require test/setup.js",
     "predeploy": "npm audit && npm run migrate:production",
     "deploy": "git push heroku master"
   },
@@ -25,6 +21,7 @@
   "dependencies": {
     "bcryptjs": "^2.4.3",
     "cors": "^2.8.5",
+    "cross-env": "^7.0.2",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "helmet": "^3.21.2",
