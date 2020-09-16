@@ -46,6 +46,8 @@
 .text__container > textarea {
 	background-color: transparent;
 	border-bottom: 2px solid #ffc947;
+	font-family: 'Roboto', sans-serif;
+	letter-spacing: 1pt;
 	width: 80%;
 	margin: auto;
 }
@@ -55,6 +57,7 @@
 	border-bottom: 2px solid #ffc947;
 	resize: none;
 	height: 5rem;
+
 	width: 80%;
 	margin: auto;
 }
@@ -64,4 +67,23 @@
 	font-size: 12px;
 	letter-spacing: 1px;
 	font-family: 'Roboto', sans-serif;
+}
+.add__activity__date {
+	background-color: hsla(0, 0%, 100%, 0.81);
+	padding: 5px;
+	display: flex;
+	flex-direction: column;
+}
+#DatePicker,
+#StartTimePicker,
+#EndTimePicker {
+	letter-spacing: 1pt;
+	font-family: 'Montserrat', sans-serif;
+	font-weight: 500;
+}
+
+#DatePicker:hover,
+#StartTimePicker:hover,
+#EndTimePicker:hover {
+	cursor: pointer;
 }

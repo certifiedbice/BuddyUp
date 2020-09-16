@@ -1,4 +1,5 @@
 import React from 'react'
+import BasicDateTimePicker from '../../components/date/BasicDateTimePicker'
 import useForm from '../../hooks/useForm'
 import AddActivityForm from './AddActivityForm/AddActivityForm'
 import './NewActivity.css'
@@ -28,15 +29,6 @@ export default function NewActivity() {
 			</header>
 			<section className='event__section'>
 				<AddActivityForm />
-				<form id='date__form' onSubmit={handleSubmit}>
-					<input
-						name='date'
-						type='datetime-local'
-						defaultValue={values.date}
-						onChange={handleChange}
-					/>
-					<button type='submit'>Submit</button>
-				</form>
 			</section>
 		</main>
 	)
