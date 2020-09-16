@@ -7,6 +7,11 @@ Migration command
 
 Seed command (win) knex seed:run (mac) npx knex seed:run
 
+## Demo User Info
+
+- username: demo@mail.com
+- password: DemoPass#1
+
 ## End Points
 
 ### /api/auth/login
