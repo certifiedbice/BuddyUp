@@ -31,8 +31,6 @@ signupsRouter.get('/', jsonBodyParser, async (req, res, next) => {
         ? await ActivitiesService.getOne(req.body.activity_id)
         : null;
 
-    console.log(activity);
-
     if (typeof activity !== 'object' && activity.user_id !== req.user.id)
       return next({
         status: 401,
@@ -51,6 +49,35 @@ signupsRouter.get('/', jsonBodyParser, async (req, res, next) => {
       });
 
     return res.status(200).json(signups);
+  } catch (error) {
+    return next({ status: 500, message: error.message });
+  }
+});
+
+signupsRouter.patch('/approval/:id', jsonBodyParser, async (req, res, next) => {
+  const { id } = req.params;
+
+  try {
+    const signup = await SignupsService.getOne(id);
+    const activity = await ActivitiesService.getOne(signup.activity_id);
+
+    if (!signup)
+      return next({
+        status: 404,
+        message: `Unable to find signup with id ${id}.`,
+      });
+
+    if (activity.user_id !== req.user.id)
+      return next({
+        status: 401,
+        message: `You may not approve signups to activities owned by another user.`,
+      });
+
+    const isApproved = !signup.is_approved;
+
+    await SignupsService.update(id, { is_approved: isApproved });
+
+    return res.status(204).send;
   } catch (error) {
     return next({ status: 500, message: error.message });
   }
@@ -132,12 +159,18 @@ signupsRouter.patch('/:id', jsonBodyParser, async (req, res, next) => {
   const { id } = req.params;
 
   try {
+    if (req.body.is_approved)
+      return next({
+        status: 401,
+        message: `Unauthorized: Users may not approve themselves.`,
+      });
+
     const signup = await SignupsService.getOne(id);
 
     if (!signup)
       return next({
         status: 404,
-        message: `Unable to update signup with id ${id}.`,
+        message: `Unable to find signup with id ${id}.`,
       });
 
     if (signup.user_id !== req.user.id)
