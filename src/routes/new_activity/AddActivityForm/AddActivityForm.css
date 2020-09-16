@@ -1,0 +1,89 @@
+.activity__form {
+	max-width: 350px;
+	margin: auto;
+	background-color: #708690;
+	box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16),
+		0 3px 6px rgba(0, 0, 0, 0.23);
+}
+.activity__form header {
+	padding: 1em;
+	background-color: #445963;
+	border-bottom: 2px solid #1b3039;
+}
+.activity__form legend {
+	color: hsla(0, 0%, 100%, 0.81);
+	letter-spacing: 1pt;
+	font-size: 18px;
+}
+.add__activity__btn__ctn {
+	display: flex;
+	margin: 5px auto;
+	padding: 3px;
+	width: 80%;
+}
+.add__activity__btn__ctn > button {
+	align-self: flex-start;
+	color: rgba(0, 0, 0, 0.89);
+	font-weight: 500;
+	letter-spacing: 1pt;
+	background-color: transparent;
+	padding: 4px 8px;
+	border: none;
+	cursor: pointer;
+	transition: all 0.25s;
+}
+.add__activity__btn__ctn > button:hover {
+	background-color: #ffc947;
+	box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16),
+		0 3px 6px rgba(0, 0, 0, 0.23);
+}
+
+.text__container {
+	margin: 3px;
+	background: none;
+}
+.text__container > input,
+.text__container > textarea {
+	background-color: transparent;
+	border-bottom: 2px solid #ffc947;
+	font-family: 'Roboto', sans-serif;
+	letter-spacing: 1pt;
+	width: 80%;
+	margin: auto;
+}
+.text__container > textarea {
+	border: none;
+	border-radius: 3px;
+	border-bottom: 2px solid #ffc947;
+	resize: none;
+	height: 5rem;
+
+	width: 80%;
+	margin: auto;
+}
+.text__container > textarea::placeholder,
+.text__container > input::placeholder {
+	color: rgba(0, 0, 0, 0.692);
+	font-size: 12px;
+	letter-spacing: 1px;
+	font-family: 'Roboto', sans-serif;
+}
+.add__activity__date {
+	background-color: hsla(0, 0%, 100%, 0.81);
+	padding: 5px;
+	display: flex;
+	flex-direction: column;
+}
+#DatePicker,
+#StartTimePicker,
+#EndTimePicker {
+	letter-spacing: 1pt;
+	font-family: 'Montserrat', sans-serif;
+	font-weight: 500;
+}
+
+#DatePicker:hover,
+#StartTimePicker:hover,
+#EndTimePicker:hover {
+	cursor: pointer;
+}
