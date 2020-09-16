@@ -18,14 +18,14 @@ exports.seed = function (knex) {
           is_approved: true,
         },
         {
-          user_id: 2,
+          user_id: 6,
           activity_id: 1,
           contact_info: 'Test Contact Info',
           is_approved: false,
         },
         {
           user_id: 2,
-          activity_id: 3,
+          activity_id: 5,
           contact_info: 'Test Contact Info',
           is_approved: false,
         },

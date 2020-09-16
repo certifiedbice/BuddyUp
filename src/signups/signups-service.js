@@ -6,6 +6,9 @@ const SignupsService = {
   getAll() {
     return knex('signups');
   },
+  getAllForUser(user_id) {
+    return knex('signups').where({ user_id }).select('*');
+  },
   getAllForActivity(activity_id) {
     return knex('signups').where({ activity_id }).select('*');
   },

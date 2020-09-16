@@ -86,13 +86,15 @@ PATCH method to update activity with given id.
 
 GET method to fetch list of signups.
 
-- Responds with list of all signups by default.
+- Responds with list of all signups by created by the user by default.
 
 - Optional body: activity_id
 
-- If activity_id included in body, responds with signups with matching activity_id column values.
+- If activity_id included in body, responds with all signups with matching activity_id column values, regardless of creator.
 
 - activity_id value must be present within "activities" table.
+
+- Activity must belong to the user.
 
 ### /api/signups/approved
 

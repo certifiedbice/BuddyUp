@@ -107,10 +107,10 @@ activitiesRouter.patch('/:id', jsonBodyParser, async (req, res, next) => {
         message: `You may not update activity belonging to another user`,
       });
 
-    const updatedActivity = await ActivitiesService.update(id, req.body);
+    await ActivitiesService.update(id, req.body);
     console.log(activity);
 
-    return res.status(200).json(updatedActivity);
+    return res.status(204).send();
   } catch (error) {
     return next({ status: 500, message: error.message });
   }
@@ -134,9 +134,9 @@ activitiesRouter.delete('/:id', async (req, res, next) => {
         message: `You may not delete activity belonging to another user`,
       });
 
-    const deleted = await ActivitiesService.remove(id);
+    await ActivitiesService.remove(id);
 
-    return res.status(200).json(id);
+    return res.status(204).send();
   } catch (error) {
     return next({ status: 500, message: error.message });
   }
