@@ -65,6 +65,14 @@ signupsRouter.get('/approved', jsonBodyParser, async (req, res, next) => {
       });
 
     const { activity_id } = req.body;
+    const activity = await ActivitiesService.getOne(activity_id);
+
+    if (activity.user_id !== req.user.id)
+      return next({
+        status: 401,
+        message: `Unauthorized: This activity belongs to another user.`,
+      });
+
     const signups = await SignupsService.getApprovedForActivity(activity_id);
 
     if (!signups)

@@ -29,6 +29,12 @@ exports.seed = function (knex) {
           contact_info: 'Test Contact Info',
           is_approved: false,
         },
+        {
+          user_id: 1,
+          activity_id: 5,
+          contact_info: 'Test Contact Info',
+          is_approved: true,
+        },
       ]);
     });
 };
