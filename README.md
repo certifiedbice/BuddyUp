@@ -37,53 +37,65 @@ Responds with name, username, zip_code, and date_registered of user with given i
 
 ### /api/activities
 
-GET method for fetching list of activities.
+Endpoint protected with Bearer token authentication.
 
-Responds with list of all activities by default.
+GET method for fetching list of activities owned by user.
 
-Optional body: zip_code OR user_id.
+- No body required.
 
-If given zip_code or user_id, responds with list of activities with matching zip_code or user_id.
-
-If given both zip_code and user_id, only zip_code will be used.
+- Responds with array of all activities created by the user.
 
 POST method for creating new activities.
 
-Requires body with title string, description string, 5-digit zip_code integer, user_id integer (must exist in users table) start_time string, and end_time string.
+- Requires body with title string, description string, start_time string, and end_time string.
+
+- Responds with created activity object
+
+### /api/activities/local
+
+Endpoint protected with Bearer token authentication.
+
+GET method to find activities in user's ZIP code.
+
+- No body required.
+
+- Responds with array of all activities with zip_code fields matching the user's zip_code information.
 
 ### /api/activities/:id
 
+Endpoint protected with Bearer token authentication.
+
 GET method to fetch single activity by activity id.
 
-No body required.
+- No body required.
 
-Responds with activity with matching id.
+- Responds with activity with matching id.
 
 PATCH method to update activity with given id.
 
-Requires body with values to be updated.
+- Requires body with values to be updated.
 
-Responds with updated activity values
+- Responds with updated activity values
 
 ### /api/signups
 
 GET method to fetch list of signups.
 
-Responds with list of all signups by default.
+- Responds with list of all signups by default.
 
-Optional body: activity_id
+- Optional body: activity_id
 
-If activity_id included in body, responds with signups with matching activity_id column values.
+- If activity_id included in body, responds with signups with matching activity_id column values.
 
-activity_id value must be present within "activities" table.
+- activity_id value must be present within "activities" table.
 
 ### /api/signups/approved
 
 GET method to fetch list of signups for given activity which have been approved. Primarily for gathering activity attendees.
 
-Requires body with valid activity_id.
+- Requires body with valid activity_id.
 
-Responds with list of all signups with given activity_id column value and "true" is_approved column value.
+- Responds with list of all signups with given activity_id column value and "true" is_approved column value.
 
 ## GIST:
 
