@@ -15,14 +15,17 @@ export default function Dashboard() {
 		const getActivities = async () => {
 			try {
 				const response = await fetch(
-					`${config.API_ENDPOINT}/activities`,
+					`${config.API_ENDPOINT}/activities/local`,
 					{
 						method: 'GET',
+						headers: {
+							authorization: `Bearer ${TokenService.getAuthToken()}`,
+						},
 					}
 				)
 				const data = await response.json()
 				if (data.error) throw data.error
-
+				console.log(data)
 				setActivities(data)
 			} catch (error) {
 				setError(error)

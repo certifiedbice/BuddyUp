@@ -1,0 +1,13 @@
+.text__input {
+	border-radius: 3px;
+	border: none;
+	font-size: 14px;
+	font-family: 'Roboto', sans-serif;
+	padding: 4px;
+}
+
+.text__input input::placeholder {
+	font-size: small;
+	letter-spacing: 1px;
+	font-family: 'Roboto', sans-serif;
+}
