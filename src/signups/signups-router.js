@@ -90,7 +90,7 @@ signupsRouter.get('/:id', async (req, res, next) => {
   }
 });
 
-signupsRouter.patch('/:id', async (req, res, next) => {
+signupsRouter.patch('/:id', jsonBodyParser, async (req, res, next) => {
   const { id } = req.params;
 
   try {

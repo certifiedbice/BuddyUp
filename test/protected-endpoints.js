@@ -18,11 +18,6 @@ describe.only(`Protected endpoints`,()=>{
 		// 	path:'/api/signups/approved',
   		// 	method:supertest(app).post
 		// },
-		// {
-		// 	name:'POST /api/users',
-		// 	path:'/api/users',
-  		// 	method:supertest(app).post
-		// },
 		{
 			name:'POST /api/activities',
 			path:'/api/activities',
@@ -46,13 +41,13 @@ describe.only(`Protected endpoints`,()=>{
 					.expect(401,{error:'Missing bearer token'});
 			});
 			it(`responds 401 'Unauthorized request' when invalid JWT secret`,()=>{
-				const userNoCreds={email:'',password:''};
+				const userNoCreds={username:'',password:''};
 				return endpoint.method(endpoint.path)
 					.set('Authorization',helpers.makeAuthHeader(userNoCreds))
 					.expect(401,{error:'Unauthorized request'});
 			});
 			it('should return 401 \'Unauthorized request\' when invalid sub in payload',()=>{
-				const invalidUser={email:'badUser',password:''};
+				const invalidUser={username:'badUser',password:''};
 				return endpoint.method(endpoint.path)
 					.set('Authorization',helpers.makeAuthHeader(invalidUser))
 					.expect(401,{error:'Unauthorized request'});

@@ -40,6 +40,13 @@ exports.seed = function (knex) {
             '$2a$12$p2OVQBrQwpoAr355AKGI9ewidvGeIxr86FOPU8QxHLvgrx5fFxTnq', // unhashed: rappy!!45
           zip_code: '11215',
         },
+        {
+          username: 'demo@mail.com',
+          name: 'Demo',
+          password:
+            '$2a$12$4/hJrBJuOgROYNOu791oN.LgJg.LKuyDREdKUnzjNJmEeTsigmgrC', // unhashed: DemoPass#1,
+          zip_code: '12345',
+        },
       ]);
     });
 };
