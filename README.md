@@ -96,6 +96,24 @@ GET method to fetch list of signups.
 
 - Activity must belong to the user.
 
+### /api/signups/:id
+
+PATCH method to update user-owned signup by id in path
+
+- Responds with no content
+
+- Body must include field to be updated. Presently only "contact_info" has any reason to be updated.
+
+- User actively prevented from editing "is_approved" field.
+
+- Signup must belong to the user
+
+DELETE method to delete user-owned signups by id in path
+
+- No body required.
+
+- Signup must belong to the user
+
 ### /api/signups/approved
 
 GET method to fetch list of signups for given activity which have been approved. Primarily for gathering activity attendees.
@@ -103,6 +121,18 @@ GET method to fetch list of signups for given activity which have been approved.
 - Requires body with valid activity_id.
 
 - Responds with list of all signups with given activity_id column value and "true" is_approved column value.
+
+### /api/signups/approval/:id
+
+PATCH method to toggle "is_approved" value of signup by id in path
+
+- Responds with no content
+
+- No body required
+
+- Boolean "is_approved" value of given signup is swapped to opposite value
+
+- User must own activity the signup is for
 
 ## GIST:
 
