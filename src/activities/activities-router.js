@@ -5,43 +5,54 @@ const jsonBodyParser = express.json();
 
 const ActivitiesService = require('./activities-service');
 const { isValidActivity } = require('../../utils/isValidActivity');
+const { requireAuth } = require('../middleware/jwt-auth');
 
 const activitiesRouter = express.Router();
 
-activitiesRouter.get('/', jsonBodyParser, async (req, res, next) => {
+activitiesRouter.use(requireAuth).use(async (req, res, next) => {
   try {
-    const activities = req.body.zip_code
-      ? await ActivitiesService.getAllForZip(req.body.zip_code)
-      : req.body.user_id
-      ? await ActivitiesService.getAllForUser(req.body.user_id)
-      : await ActivitiesService.getAll();
-
-    if (!activities)
-      return next({
-        status: 404,
-        message: `No activities found`,
+    const userActivities = await ActivitiesService.getAllForUser(req.user.id);
+    if (!userActivities)
+      return res.status(404).json({
+        error: `You don't have any activities`,
       });
-
-    return res.status(200).json(activities);
+    req.userActivities = userActivities;
+    next();
   } catch (error) {
-    return next({ status: 500, message: error.message });
+    next(error);
+  }
+});
+
+activitiesRouter.get('/', async (req, res, next) => {
+  try {
+    res.status(200).json(req.userActivities);
+    next();
+  } catch (error) {
+    next({ status: 500, message: error.message });
+  }
+});
+
+activitiesRouter.get('/local', async (req, res, next) => {
+  try {
+    const localActivities = await ActivitiesService.getAllForZip(
+      req.user.zip_code
+    );
+
+    res.status(200).json(localActivities);
+    next();
+  } catch (error) {
+    next({ status: 500, message: error.message });
   }
 });
 
 activitiesRouter.post('/', jsonBodyParser, async (req, res, next) => {
-  const {
-    title,
-    description,
-    zip_code,
-    user_id,
-    start_time,
-    end_time,
-  } = req.body;
+  const { title, description, start_time, end_time } = req.body;
+
   const newActivity = {
     title,
     description,
-    zip_code,
-    user_id,
+    zip_code: req.user.zip_code,
+    user_id: req.user.id,
     start_time,
     end_time,
   };
@@ -82,8 +93,7 @@ activitiesRouter.patch('/:id', jsonBodyParser, async (req, res, next) => {
   const { id } = req.params;
 
   try {
-    const activity = await ActivitiesService.update(id, req.body);
-    console.log(activity);
+    const activity = await ActivitiesService.getOne(id);
 
     if (!activity)
       return next({
@@ -91,7 +101,16 @@ activitiesRouter.patch('/:id', jsonBodyParser, async (req, res, next) => {
         message: `Unable to update activity with id ${id}`,
       });
 
-    return res.status(200).json(activity);
+    if (activity.user_id !== req.user.id)
+      return next({
+        stats: 401,
+        message: `You may not update activity belonging to another user`,
+      });
+
+    const updatedActivity = await ActivitiesService.update(id, req.body);
+    console.log(activity);
+
+    return res.status(200).json(updatedActivity);
   } catch (error) {
     return next({ status: 500, message: error.message });
   }
@@ -101,13 +120,21 @@ activitiesRouter.delete('/:id', async (req, res, next) => {
   const { id } = req.params;
 
   try {
-    const activity = await ActivitiesService.remove(id);
+    const activity = await ActivitiesService.getOne(id);
 
     if (!activity)
       return next({
         status: 404,
         message: `Unable to find activity with id ${id}`,
       });
+
+    if (activity.user_id !== req.user.id)
+      return next({
+        stats: 401,
+        message: `You may not delete activity belonging to another user`,
+      });
+
+    const deleted = await ActivitiesService.remove(id);
 
     return res.status(200).json(id);
   } catch (error) {
