@@ -72,6 +72,7 @@ export default function Account() {
 						))}
 				</ul>
 			</section>
+
 			<section className='account-requests__section'>
 				<ul className='account-requests__list'>
 					{requests &&

@@ -17,6 +17,7 @@ export default function Activity({
 	let time = d.toLocaleTimeString()
 	let concat = description
 	const { name } = user
+
 	let expandedInfo = (
 		<div className='modal'>
 			<div className='event__item_expanded'>
