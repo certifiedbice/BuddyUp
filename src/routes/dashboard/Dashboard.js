@@ -46,13 +46,17 @@ export default function Dashboard() {
 			setError(error.message)
 		}
 	}
-
+	const text = {
+		subHeaderText: 'Find or create your next event',
+		numText: 'events in your area',
+	}
 	return (
 		<main>
 			<DashboardHeader
 				props={numActivities}
 				numActivities={numActivities}
 				handleLogOut={handleLogOut}
+				{...text}
 			/>
 			<section className='event__section'>
 				<ul className='event__list'>
