@@ -12,7 +12,7 @@ export default function Dashboard() {
 	const [activities, setActivities] = useState([])
 	const numActivities = activities.length || 0
 	useEffect(() => {
-		const getActivities = async () => {
+		const getLocalActivities = async () => {
 			try {
 				const response = await fetch(
 					`${config.API_ENDPOINT}/activities/local`,
@@ -33,7 +33,7 @@ export default function Dashboard() {
 		}
 
 		if (!error) {
-			getActivities()
+			getLocalActivities()
 		}
 		return () => {}
 	}, [error])
@@ -46,6 +46,7 @@ export default function Dashboard() {
 			setError(error.message)
 		}
 	}
+
 	return (
 		<main>
 			<DashboardHeader

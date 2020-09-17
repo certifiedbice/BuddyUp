@@ -21,10 +21,7 @@ export default function DashboardHeader({
 					>
 						Add Activity
 					</Link>
-					<Link
-						className='navlink__item'
-						to='activity-requests'
-					>
+					<Link className='navlink__item' to='/account'>
 						Requests
 					</Link>
 					<li
