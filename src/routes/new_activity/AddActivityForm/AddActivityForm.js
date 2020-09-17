@@ -61,6 +61,9 @@ export default function AddActivityForm() {
 			<form className='activity__form' onSubmit={handleSubmit}>
 				<header>
 					<legend>Enter Your Event Details Below</legend>
+					{error && (
+						<p syle={{ color: 'red' }}>{error.message}</p>
+					)}
 				</header>
 				<ThemeProvider theme={materialTheme}>
 					<div className='add__activity__date'>
