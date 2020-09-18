@@ -25,11 +25,13 @@ export default function Activity({
 
 	return (
 		<>
-			<div className='activity__list__item'>
-				<li onClick={() => handleToggle((prev) => !prev)}>
-					<h2>{title}</h2>
-				</li>
-			</div>
+			<li
+				className='activity__list__item'
+				onClick={() => handleToggle((prev) => !prev)}
+			>
+				<h2>{title}</h2>
+			</li>
+
 			{toggle && (
 				<div className='account__modal'>
 					<div className='expanded__activity'>

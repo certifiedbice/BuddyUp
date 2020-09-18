@@ -1,4 +1,4 @@
-.activity__list__item li {
+.activity__list__item {
 	flex: 0;
 	height: 60px;
 	text-align: left;
@@ -9,9 +9,16 @@
 	border-bottom: 2px solid #f9a825;
 	cursor: pointer;
 }
+.activity__list__item,
+.activity__list__item h2 {
+	transition: all 0.25s ease-in;
+}
 .activity__list__item:hover {
 	box-shadow: 0 10px 18px rgba(0, 0, 0, 0.12),
 		0 10px 18px rgba(0, 0, 0, 0.24);
+}
+.activity__list__item:hover h2 {
+	color: #f9a825;
 }
 
 .expanded__activity {
