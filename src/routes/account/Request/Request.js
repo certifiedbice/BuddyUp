@@ -1,10 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import {
-	FaCheck,
-	FaCheckCircle,
-	FaQuestion,
-	FaQuestionCircle,
-} from 'react-icons/fa'
+import { FaCheckCircle, FaQuestionCircle } from 'react-icons/fa'
 import config from '../../../config'
 import TokenService from '../../../services/token-service'
 import './Request.css'
@@ -87,12 +82,12 @@ export default function Request({
 				onClick={() => handleToggle((prev) => !prev)}
 			>
 				<div className='request__list__item__text'>
-					<h3 className=''>{title} </h3>
+					<h2 className=''>{title} </h2>
 					<p className=''>{name} </p>
 				</div>
 
 				<div className='icon__ctn'>
-					Status <span>{icon()}</span>
+					{statusString} <span>{icon()}</span>
 				</div>
 			</li>
 

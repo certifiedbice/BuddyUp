@@ -13,7 +13,6 @@ export default function Activity({
 	const [toggle, handleToggle] = useState(false)
 	let s = new Date(start_time)
 	let e = new Date(end_time)
-	let sDate = s.toLocaleDateString()
 	let sTime = s.toLocaleTimeString([], {
 		hour: '2-digit',
 		minute: '2-digit',

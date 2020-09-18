@@ -34,6 +34,9 @@
 	font-weight: 500;
 	letter-spacing: 2pt;
 }
+.account__nav button:hover {
+	background-color: #f9a825;
+}
 
 .account__nav button.on {
 	background-color: #f9a825;
@@ -48,7 +51,7 @@
 	width: 66%;
 	margin: 0 auto;
 	display: grid;
-	grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+	grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
 	gap: 3%;
 	height: 100%;
 }

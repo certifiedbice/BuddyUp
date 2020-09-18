@@ -3,6 +3,17 @@
 	background-color: #c1d5e0;
 	display: flex;
 	flex-direction: row;
+	border-radius: 3px;
+	align-items: center;
+	cursor: pointer;
+	transition: all 0.25s ease-in-out;
+}
+.request__list__item:hover {
+	box-shadow: 0 15px 23px rgba(0, 0, 0, 0.12),
+		0 15px 23px rgba(0, 0, 0, 0.24);
+}
+.request__list__item:hover h2 {
+	color: rgba(0, 0, 0, 0.6);
 }
 .request__list__item__text {
 	text-align: left;
@@ -11,17 +22,31 @@
 .icon__ctn {
 	padding: 2px;
 	flex: 1;
+	font-family: 'Roboto', sans-serif;
+	color: rgba(0, 0, 0, 0.6);
+	letter-spacing: 1pt;
+	font-size: smaller;
+	display: flex;
+	flex-direction: column;
 }
-.request__list__item__text h3,
+.request__list__item__text h2,
 .request__list__item__text p {
 	padding: 0;
 	margin: 0;
+	font-family: 'Roboto', sans-serif;
 	letter-spacing: 1pt;
 	display: block;
 	text-overflow: ellipsis;
+	transition: all 0.25s ease-in-out;
+}
+.request__list__item__text h2 {
+	color: #000000;
+	font-size: 20px;
 }
 .request__list__item__text p {
 	font-size: smaller;
+	font-weight: 500;
+	color: rgba(0, 0, 0, 0.6);
 }
 .icon {
 	font-size: 24px;
