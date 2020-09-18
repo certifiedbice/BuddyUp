@@ -6,6 +6,7 @@ import DashboardHeader from '../dashboard/DashboardHeader/DashboardHeader'
 import Activity from './Activity/Activity'
 import Request from './Request/Request'
 import './Account.css'
+import AccountActivityList from './AccountActivityList/AccountActivityList'
 
 export default function Account() {
 	const history = useHistory()
@@ -109,15 +110,9 @@ export default function Account() {
 					</nav>
 					{!toggleList ? (
 						<section className='account-activity__section'>
-							<ul className='account-activity__list'>
-								{activities &&
-									activities.map((activity) => (
-										<Activity
-											key={`activity-${activity.id}`}
-											{...activity}
-										/>
-									))}
-							</ul>
+							<AccountActivityList
+								activities={activities}
+							/>
 						</section>
 					) : (
 						<section className='account-requests__section'>
