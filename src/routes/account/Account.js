@@ -65,7 +65,9 @@ export default function Account() {
 
 	return (
 		<>
-			<DashboardHeader />
+			<DashboardHeader
+				handleLogOut={TokenService.clearAuthToken}
+			/>
 			<main>
 				<section className='account__section__wrapper '>
 					<nav className='account__nav'>

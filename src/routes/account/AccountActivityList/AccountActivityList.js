@@ -5,6 +5,7 @@ export default function AccountActivityList({
 	activities,
 	...props
 }) {
+	console.log(activities)
 	return (
 		<section className='account-activity__section'>
 			<ul className='account-activity__list'>

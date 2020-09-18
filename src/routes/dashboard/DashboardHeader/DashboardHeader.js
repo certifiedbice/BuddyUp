@@ -9,6 +9,11 @@ export default function DashboardHeader({
 	numText,
 }) {
 	const match = useRouteMatch()
+	const history = useHistory()
+	const logOut = () => {
+		handleLogOut()
+		history.push('/landing')
+	}
 
 	const renderMiddleButton = () => {
 		if (match.path !== '/account') {
@@ -45,7 +50,7 @@ export default function DashboardHeader({
 					</Link>
 					{renderMiddleButton()}
 					<li
-						onClick={handleLogOut}
+						onClick={() => logOut()}
 						className='navlink__item'
 					>
 						Log Out

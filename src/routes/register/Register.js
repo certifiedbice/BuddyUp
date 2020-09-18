@@ -58,6 +58,7 @@ export default function Register() {
 			const data = await response.json()
 			const { authToken } = data.password
 			const { saveAuthToken } = TokenService
+
 			saveAuthToken(authToken)
 			history.push('/dashboard')
 		} catch (error) {
