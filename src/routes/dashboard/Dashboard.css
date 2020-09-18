@@ -200,6 +200,14 @@ h5 {
 		0 6px 6px rgba(0, 0, 0, 0.23);
 }
 
+.registering__input {
+	padding: 5%;
+}
+
+.event__item_registering sup {
+	font-size: x-small;
+}
+
 @media screen and (min-width: 700px) {
 	.event__section {
 		margin: 0 auto;
