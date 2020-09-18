@@ -14,7 +14,10 @@ export default function Activity({
 
 	let d = new Date(start_time)
 	let date = d.toLocaleDateString()
-	let time = d.toLocaleTimeString()
+	let time = d.toLocaleTimeString([], {
+		hour: '2-digit',
+		minute: '2-digit',
+	})
 	let concat = description
 	const { name } = user
 

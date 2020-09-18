@@ -29,7 +29,7 @@ export default function DashboardHeader({
 		<header className='dashboard__header'>
 			<div className='header__text'>
 				<h1>BuddyUp</h1>
-				<h2>{subHeaderText}</h2>
+				{subHeaderText && <h2>{subHeaderText}</h2>}
 				{numActivities && numText ? (
 					<div>
 						{numActivities} {numText}

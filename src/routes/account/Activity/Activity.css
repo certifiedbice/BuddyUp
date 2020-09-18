@@ -1,4 +1,71 @@
 .expanded__activity {
-	background-color: azure;
+	background-color: #819ca9;
 	position: relative;
+	max-width: 320px;
+	min-width: 300px;
+}
+.expanded__activity__header {
+	display: flex;
+	flex-direction: column;
+	margin-bottom: 5px;
+	border-bottom: 3px solid #f9a825;
+	border-bottom-left-radius: 3px;
+	border-bottom-right-radius: 3px;
+	padding: 10px;
+	text-align: left;
+	background-color: #29434e;
+}
+.expanded__activity__header h3,
+h4 {
+	margin: 0;
+	color: #fff;
+	letter-spacing: 1pt;
+}
+.expanded__activity__header h4 {
+	color: rgba(255, 255, 255, 0.6);
+	letter-spacing: 2pt;
+}
+.activity__card__text {
+	text-align: left;
+	padding: 10px;
+}
+.activity__text {
+	color: #000;
+	padding: 0;
+	margin-bottom: 3px;
+	font-weight: 500;
+}
+.activity__card__text div {
+	margin-bottom: 5px;
+	border-bottom: 3px solid #f9a825;
+	border-radius: 3px;
+}
+.subtext,
+.sub_p {
+	letter-spacing: 1pt;
+}
+.sub_p {
+	font-size: smaller;
+	color: rgba(0, 0, 0, 0.5);
+}
+.expanded__activity__btn__ctn {
+	display: flex;
+	width: 90%;
+	margin: 0 auto;
+	padding: 6px;
+}
+.expanded__activity__btn__ctn button {
+	flex: 1;
+	border: 0;
+	background-color: transparent;
+	cursor: pointer;
+	padding: 6px;
+	letter-spacing: 1pt;
+	font-family: 'Roboto', sans-serif;
+	font-weight: 500;
+}
+.expanded__activity__btn__ctn button:hover {
+	background-color: #ffc947;
+	box-shadow: 0 6px 12px rgba(0, 0, 0, 0.19),
+		0 2px 2px rgba(0, 0, 0, 0.23);
 }
