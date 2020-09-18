@@ -1,0 +1,35 @@
+.request__list__item {
+	padding: 1em;
+	background-color: #c1d5e0;
+	display: flex;
+	flex-direction: row;
+}
+.request__list__item__text {
+	text-align: left;
+	flex: 3;
+}
+.icon__ctn {
+	padding: 2px;
+	flex: 1;
+}
+.request__list__item__text h3,
+.request__list__item__text p {
+	padding: 0;
+	margin: 0;
+	letter-spacing: 1pt;
+	display: block;
+	text-overflow: ellipsis;
+}
+.request__list__item__text p {
+	font-size: smaller;
+}
+.icon {
+	font-size: 24px;
+}
+
+.approved {
+	color: #43a047;
+}
+.pending {
+	color: #455a64;
+}

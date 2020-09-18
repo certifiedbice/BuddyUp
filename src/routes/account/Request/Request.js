@@ -7,7 +7,7 @@ import {
 } from 'react-icons/fa'
 import config from '../../../config'
 import TokenService from '../../../services/token-service'
-// import './Request.css'
+import './Request.css'
 
 export default function Request({
 	user_name,
@@ -30,12 +30,12 @@ export default function Request({
 
 	let { name } = user
 
-	const faString = is_approved
+	const icon = is_approved
 		? () => {
-				return <FaCheckCircle className='' />
+				return <FaCheckCircle className='icon approved' />
 		  }
 		: () => {
-				return <FaQuestionCircle className='' />
+				return <FaQuestionCircle className='icon pending' />
 		  }
 
 	const statusString = is_approved ? 'Approved!' : 'Pending...'
@@ -82,16 +82,20 @@ export default function Request({
 
 	return (
 		<>
-			<div>
-				<li onClick={() => handleToggle((prev) => !prev)}>
-					<p className=''>{title} </p>
+			<li
+				className='request__list__item'
+				onClick={() => handleToggle((prev) => !prev)}
+			>
+				<div className='request__list__item__text'>
+					<h3 className=''>{title} </h3>
 					<p className=''>{name} </p>
-					<div className=''>
-						{' '}
-						{statusString} {faString()}{' '}
-					</div>
-				</li>
-			</div>
+				</div>
+
+				<div className='icon__ctn'>
+					Status <span>{icon()}</span>
+				</div>
+			</li>
+
 			{toggle && (
 				<div className='account__modal'>
 					<div

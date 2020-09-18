@@ -7,6 +7,7 @@ import Activity from './Activity/Activity'
 import Request from './Request/Request'
 import './Account.css'
 import AccountActivityList from './AccountActivityList/AccountActivityList'
+import AccountRequestList from './AccountRequestList/AccountRequestList'
 
 export default function Account() {
 	const history = useHistory()
@@ -78,14 +79,14 @@ export default function Account() {
 										handleToggleList(false)
 									}
 								>
-									Button
+									Your Activities
 								</button>
 								<button
 									onClick={() =>
 										handleToggleList(true)
 									}
 								>
-									Button
+									Your Requests
 								</button>
 							</>
 						) : (
@@ -95,7 +96,7 @@ export default function Account() {
 										handleToggleList(false)
 									}
 								>
-									Button
+									Your Activities
 								</button>
 								<button
 									className='on'
@@ -103,7 +104,7 @@ export default function Account() {
 										handleToggleList(true)
 									}
 								>
-									Button
+									Your Requests
 								</button>
 							</>
 						)}
@@ -113,19 +114,7 @@ export default function Account() {
 							activities={activities}
 						/>
 					) : (
-						<section className='account-requests__section'>
-							<div className='account__section__flex'>
-								<ul className='account-requests__list'>
-									{requests &&
-										requests.map((request) => (
-											<Request
-												key={`request-${request.id}`}
-												{...request}
-											/>
-										))}
-								</ul>
-							</div>
-						</section>
+						<AccountRequestList requests={requests} />
 					)}
 				</section>
 			</main>

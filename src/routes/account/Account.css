@@ -52,6 +52,17 @@
 	gap: 3%;
 	height: 100%;
 }
+.request-activity__list {
+	list-style-type: none;
+	background-color: transparent;
+	padding: 2em;
+	width: 66%;
+	margin: 0 auto;
+	display: grid;
+	grid-template-columns: repeat(1, minmax(150px, 1fr));
+	gap: 3%;
+	height: 100%;
+}
 
 .account-activity__list h2 {
 	letter-spacing: 1pt;
