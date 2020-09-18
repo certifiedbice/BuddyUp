@@ -111,6 +111,13 @@ export default function AddActivityForm() {
 
 				<div className='add__activity__btn__ctn'>
 					<button
+						type='button'
+						className='mui-btn mui-btn--raised'
+						onClick={() => history.goBack()}
+					>
+						Go Back
+					</button>
+					<button
 						type='submit'
 						className='mui-btn mui-btn--raised'
 					>

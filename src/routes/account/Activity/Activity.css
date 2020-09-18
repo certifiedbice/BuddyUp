@@ -88,6 +88,7 @@ h4 {
 	letter-spacing: 1pt;
 	font-family: 'Roboto', sans-serif;
 	font-weight: 500;
+	transition: all 0.25s ease-in-out;
 }
 .expanded__activity__btn__ctn button:hover {
 	background-color: #ffc947;
