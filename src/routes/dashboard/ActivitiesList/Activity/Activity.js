@@ -1,7 +1,12 @@
 import React, { useState, useEffect } from 'react'
 import config from '../../../../config'
-import { FaUserCircle } from 'react-icons/fa'
+import { FaInfoCircle, FaUserCircle } from 'react-icons/fa'
+import ReactTooltip from 'react-tooltip'
+import TokenService from '../../../../services/token-service'
+import { useHistory } from 'react-router'
+
 export default function Activity({
+	id,
 	title,
 	description,
 	zip_code,
@@ -9,8 +14,10 @@ export default function Activity({
 	user_id,
 }) {
 	const [expanded, setExpanded] = useState(false)
+	const [registering, setRegistering] = useState(false)
 	const [user, setUser] = useState({})
 	const [error, setError] = useState(null)
+	const history = useHistory()
 
 	let d = new Date(start_time)
 	let date = d.toLocaleDateString()
@@ -20,6 +27,62 @@ export default function Activity({
 	})
 	let concat = description
 	const { name } = user
+
+	async function register(data) {
+		console.log(data)
+		const response = await fetch(
+			`${config.API_ENDPOINT}/signups`,
+			{
+				method: 'POST',
+				headers: {
+					'content-type': 'application/json',
+					authorization: `Bearer ${TokenService.getAuthToken()}`,
+				},
+				body: JSON.stringify(data),
+			}
+		)
+		return response.json()
+	}
+
+	function handleSubmit(e) {
+		e.preventDefault()
+		const { contact_info } = e.target
+		const data = {
+			contact_info: contact_info.value,
+			activity_id: id,
+		}
+		register(data).then(() => history.push('/account'))
+	}
+
+	const tooltipText =
+		'Please provide contact information so this user may communicate with you if you are accepted.'
+
+	const registeringInfo = (
+		<div className='expanded__info__btn__ctn'>
+			<form
+				onSubmit={handleSubmit}
+				className='event__item_registering'
+			>
+				<label htmlFor='contact_info'>
+					CONTACT INFO
+					<sup
+						data-tip={tooltipText}
+						className='registering__superscript'
+					>
+						<FaInfoCircle />
+					</sup>
+					<ReactTooltip />
+				</label>
+				<input
+					className='registering__input'
+					typeof='text'
+					name='contact_info'
+					placeholder='ex: "Whatsapp: YourInfo"'
+				/>
+				<button typeof='submit'>SUBMIT</button>
+			</form>
+		</div>
+	)
 
 	let expandedInfo = (
 		<div className='modal'>
@@ -52,20 +115,27 @@ export default function Activity({
 					</div>
 				</article>
 
-				<div className='expanded__info__btn__ctn'>
-					<button
-						type='button'
-						onClick={() => setExpanded((exp) => !exp)}
-					>
-						BACK
-					</button>
-					<button
-						type='button'
-						onClick={() => setExpanded((exp) => !exp)}
-					>
-						SUBSCRIBE
-					</button>
-				</div>
+				{!registering && (
+					<div className='expanded__info__btn__ctn'>
+						<button
+							type='button'
+							onClick={() => setExpanded((exp) => !exp)}
+						>
+							BACK
+						</button>
+
+						<button
+							type='button'
+							onClick={() =>
+								setRegistering((reg) => !reg)
+							}
+						>
+							SIGN UP
+						</button>
+					</div>
+				)}
+
+				{registering && registeringInfo}
 			</div>
 		</div>
 	)
