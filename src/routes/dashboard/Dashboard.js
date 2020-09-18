@@ -12,7 +12,7 @@ export default function Dashboard() {
 	const [activities, setActivities] = useState([])
 	const numActivities = activities.length || 0
 	useEffect(() => {
-		const getActivities = async () => {
+		const getLocalActivities = async () => {
 			try {
 				const response = await fetch(
 					`${config.API_ENDPOINT}/activities/local`,
@@ -25,7 +25,7 @@ export default function Dashboard() {
 				)
 				const data = await response.json()
 				if (data.error) throw data.error
-				console.log(data)
+
 				setActivities(data)
 			} catch (error) {
 				setError(error)
@@ -33,7 +33,7 @@ export default function Dashboard() {
 		}
 
 		if (!error) {
-			getActivities()
+			getLocalActivities()
 		}
 		return () => {}
 	}, [error])
@@ -46,12 +46,17 @@ export default function Dashboard() {
 			setError(error.message)
 		}
 	}
+	const text = {
+		subHeaderText: 'Find or create your next event',
+		numText: 'events in your area',
+	}
 	return (
 		<main>
 			<DashboardHeader
 				props={numActivities}
 				numActivities={numActivities}
 				handleLogOut={handleLogOut}
+				{...text}
 			/>
 			<section className='event__section'>
 				<ul className='event__list'>

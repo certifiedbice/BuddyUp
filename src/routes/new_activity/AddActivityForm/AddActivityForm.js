@@ -61,6 +61,9 @@ export default function AddActivityForm() {
 			<form className='activity__form' onSubmit={handleSubmit}>
 				<header>
 					<legend>Enter Your Event Details Below</legend>
+					{error && (
+						<p syle={{ color: 'red' }}>{error.message}</p>
+					)}
 				</header>
 				<ThemeProvider theme={materialTheme}>
 					<div className='add__activity__date'>
@@ -107,6 +110,13 @@ export default function AddActivityForm() {
 				</div>
 
 				<div className='add__activity__btn__ctn'>
+					<button
+						type='button'
+						className='mui-btn mui-btn--raised'
+						onClick={() => history.goBack()}
+					>
+						Go Back
+					</button>
 					<button
 						type='submit'
 						className='mui-btn mui-btn--raised'

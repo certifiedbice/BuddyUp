@@ -1,17 +1,39 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useHistory, useRouteMatch } from 'react-router-dom'
 import './DashboardHeader.css'
 
 export default function DashboardHeader({
-	numActivities,
+	numActivities = 0,
 	handleLogOut,
+	subHeaderText,
+	numText,
 }) {
+	const match = useRouteMatch()
+
+	const renderMiddleButton = () => {
+		if (match.path !== '/account') {
+			return (
+				<Link className='navlink__item' to='/account'>
+					Account
+				</Link>
+			)
+		}
+		return (
+			<Link className='navlink__item' to='/dashboard'>
+				Home
+			</Link>
+		)
+	}
 	return (
 		<header className='dashboard__header'>
 			<div className='header__text'>
 				<h1>BuddyUp</h1>
-				<h2>Find or create your next event</h2>
-				<div>{numActivities} events in your area</div>
+				{subHeaderText && <h2>{subHeaderText}</h2>}
+				{numActivities && numText ? (
+					<div>
+						{numActivities} {numText}
+					</div>
+				) : null}
 			</div>
 			<nav className='header__nav'>
 				<ul className='navlink__list'>
@@ -21,12 +43,7 @@ export default function DashboardHeader({
 					>
 						Add Activity
 					</Link>
-					<Link
-						className='navlink__item'
-						to='activity-requests'
-					>
-						Requests
-					</Link>
+					{renderMiddleButton()}
 					<li
 						onClick={handleLogOut}
 						className='navlink__item'
