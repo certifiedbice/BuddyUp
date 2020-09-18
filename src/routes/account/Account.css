@@ -36,6 +36,6 @@
 }
 .account__nav button:hover {
 }
-.account__nav button.highlighted {
+.account__nav button.on {
 	background-color: #f9a825;
 }

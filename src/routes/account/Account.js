@@ -6,7 +6,6 @@ import DashboardHeader from '../dashboard/DashboardHeader/DashboardHeader'
 import Activity from './Activity/Activity'
 import Request from './Request/Request'
 import './Account.css'
-import { NavLink } from 'react-router-dom'
 
 export default function Account() {
 	const history = useHistory()
@@ -64,26 +63,52 @@ export default function Account() {
 		return () => {}
 	}, [error])
 
-	const classField = toggleList ? 'highlighted' : ''
 	return (
 		<>
 			<DashboardHeader />
 			<main>
 				<section className='account__section__wrapper '>
 					<nav className='account__nav'>
-						<button
-							className={classField}
-							onClick={() =>
-								handleToggleList((prev) => !prev)
-							}
-						>
-							Button
-						</button>
-						<button>Button</button>
+						{!toggleList ? (
+							<>
+								<button
+									className='on'
+									onClick={() =>
+										handleToggleList(false)
+									}
+								>
+									Button
+								</button>
+								<button
+									onClick={() =>
+										handleToggleList(true)
+									}
+								>
+									Button
+								</button>
+							</>
+						) : (
+							<>
+								<button
+									onClick={() =>
+										handleToggleList(false)
+									}
+								>
+									Button
+								</button>
+								<button
+									className='on'
+									onClick={() =>
+										handleToggleList(true)
+									}
+								>
+									Button
+								</button>
+							</>
+						)}
 					</nav>
-
-					<section className='account-activity__section'>
-						{toggleList && (
+					{!toggleList ? (
+						<section className='account-activity__section'>
 							<ul className='account-activity__list'>
 								{activities &&
 									activities.map((activity) => (
@@ -93,20 +118,20 @@ export default function Account() {
 										/>
 									))}
 							</ul>
-						)}
-					</section>
-
-					<section className='account-requests__section'>
-						<ul className='account-requests__list'>
-							{requests &&
-								requests.map((request) => (
-									<Request
-										key={`request-${request.id}`}
-										{...request}
-									/>
-								))}
-						</ul>
-					</section>
+						</section>
+					) : (
+						<section className='account-requests__section'>
+							<ul className='account-requests__list'>
+								{requests &&
+									requests.map((request) => (
+										<Request
+											key={`request-${request.id}`}
+											{...request}
+										/>
+									))}
+							</ul>
+						</section>
+					)}
 				</section>
 				{/* <div className='modal'></div> */}
 			</main>
