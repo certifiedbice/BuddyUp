@@ -25,7 +25,7 @@ export default function Activity({
 
 	return (
 		<>
-			<div>
+			<div className='activity__list__item'>
 				<li onClick={() => handleToggle((prev) => !prev)}>
 					<h2>{title}</h2>
 				</li>
@@ -40,32 +40,32 @@ export default function Activity({
 							</header>
 							<article className='activity__card__text'>
 								<div>
-									<p className='sub_p'>
-										Description
-									</p>
 									<p className='activity__text'>
 										{description}
 									</p>
+									<p className='sub_p'>
+										Description
+									</p>
 								</div>
 								<div>
-									<p className='sub_p'>Zip Code</p>
 									<p className='activity__text'>
 										{zip_code}
 									</p>
+									<p className='sub_p'>Zip Code</p>
 								</div>
 								<div>
-									<p className='sub_p'>
-										Start Time
-									</p>
 									<p className='activity__text'>
 										{sTime}
 									</p>
+									<p className='sub_p'>
+										Start Time
+									</p>
 								</div>
 								<div>
-									<p className='sub_p'>End Time</p>
 									<p className='activity__text'>
 										{eTime}
 									</p>
+									<p className='sub_p'>End Time</p>
 								</div>
 							</article>
 							<div className='expanded__activity__btn__ctn'>

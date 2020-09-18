@@ -3,8 +3,8 @@
 }
 .event__section {
 	margin-top: 0;
-	max-height: 100vh;
-	min-height: 50vh;
+	max-height: 1200px;
+	min-height: 80vh;
 	overflow-y: scroll;
 	-ms-overflow-style: none;
 	scrollbar-width: none;

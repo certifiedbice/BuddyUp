@@ -1,11 +1,11 @@
 .account__section__wrapper {
 	margin-top: 0;
-	max-height: 100vh;
-	min-height: 50vh;
 	overflow-y: scroll;
 	-ms-overflow-style: none;
 	scrollbar-width: none;
 	max-width: 720px;
+	max-height: 1200px;
+	min-height: 80vh;
 	background-color: #1b3039;
 	position: relative;
 	margin: 0 auto;
@@ -38,31 +38,28 @@
 .account__nav button.on {
 	background-color: #f9a825;
 }
+.account-activity__section {
+	padding: 12px;
+}
 .account-activity__list {
 	list-style-type: none;
-	padding: 0;
-	max-width: 90%;
+	background-color: transparent;
+	padding: 2em;
+	width: 66%;
 	margin: 0 auto;
-	display: flex;
-	flex-direction: column;
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+	gap: 3%;
+	height: 100%;
 }
-.account-activity__list li {
-	flex: 1;
-	height: 60px;
-	text-align: left;
-	padding: 4px;
-	background-color: #718792;
-	border: none;
-	border-radius: 3px;
-	border-bottom: 2px solid #f9a825;
-	margin: 3px;
-	box-shadow: 0 10px 18px rgba(0, 0, 0, 0.12),
-		0 10px 18px rgba(0, 0, 0, 0.24);
+
+.account-activity__list h2 {
+	letter-spacing: 1pt;
+	font-weight: 500;
 }
+
 .account__section__flex {
 	display: flex;
-	flex-direction: column;
-	padding: 1em;
 }
 .account__modal {
 	background-color: rgba(0, 0, 0, 0.8);
