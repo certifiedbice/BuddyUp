@@ -7,6 +7,7 @@ const SignupsService = {
     return knex('signups')
       .join('users', 'signups.user_id', '=', 'users.id')
       .select(
+        'signups.id',
         knex.ref('users.name').as('user_name'),
         'signups.activity_id',
         'signups.contact_info',
@@ -18,6 +19,7 @@ const SignupsService = {
       .where({ user_id })
       .join('users', 'signups.user_id', '=', 'users.id')
       .select(
+        'signups.id',
         knex.ref('users.name').as('user_name'),
         'signups.activity_id',
         'signups.contact_info',
@@ -29,6 +31,7 @@ const SignupsService = {
       .where({ activity_id })
       .join('users', 'signups.user_id', '=', 'users.id')
       .select(
+        'signups.id',
         knex.ref('users.name').as('user_name'),
         'signups.activity_id',
         'signups.contact_info',
@@ -40,6 +43,7 @@ const SignupsService = {
       .where({ activity_id, is_approved: true })
       .join('users', 'signups.user_id', '=', 'users.id')
       .select(
+        'signups.id',
         knex.ref('users.name').as('user_name'),
         'signups.activity_id',
         'signups.contact_info',
@@ -51,6 +55,7 @@ const SignupsService = {
       .where('signups.id', id)
       .join('users', 'signups.user_id', '=', 'users.id')
       .first(
+        'signups.id',
         knex.ref('users.name').as('user_name'),
         'signups.activity_id',
         'signups.contact_info',
