@@ -1,5 +1,10 @@
 import React, { useState, useEffect } from 'react'
-import { FaCheck, FaQuestion } from 'react-icons/fa'
+import {
+	FaCheck,
+	FaCheckCircle,
+	FaQuestion,
+	FaQuestionCircle,
+} from 'react-icons/fa'
 import config from '../../../config'
 import TokenService from '../../../services/token-service'
 // import './Request.css'
@@ -27,10 +32,10 @@ export default function Request({
 
 	const faString = is_approved
 		? () => {
-				return <FaCheck className='' />
+				return <FaCheckCircle className='' />
 		  }
 		: () => {
-				return <FaQuestion className='' />
+				return <FaQuestionCircle className='' />
 		  }
 
 	const statusString = is_approved ? 'Approved!' : 'Pending...'
@@ -79,7 +84,12 @@ export default function Request({
 		<>
 			<div>
 				<li onClick={() => handleToggle((prev) => !prev)}>
-					{title} {name} {statusString} {faString()}
+					<p className=''>{title} </p>
+					<p className=''>{name} </p>
+					<div className=''>
+						{' '}
+						{statusString} {faString()}{' '}
+					</div>
 				</li>
 			</div>
 			{toggle && (
