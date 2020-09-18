@@ -18,9 +18,6 @@ export default function AccountActivityList({
 						))}
 				</ul>
 			</div>
-			<div className='account__modal'>
-				<div className='expanded__activity'>HELLO</div>
-			</div>
 		</section>
 	)
 }

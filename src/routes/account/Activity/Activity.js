@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import './Activity.css'
 
 export default function Activity({
@@ -10,12 +10,26 @@ export default function Activity({
 	user_id = 6,
 	zip_code = 12345,
 }) {
+	const [toggle, handleToggle] = useState(false)
+
 	return (
-		<div>
-			<li>
-				{title} {description}
-				{zip_code}
-			</li>
-		</div>
+		<>
+			<div>
+				<li onClick={() => handleToggle((prev) => !prev)}>
+					{title} {description}
+					{zip_code}
+				</li>
+			</div>
+			{toggle && (
+				<div className='account__modal'>
+					<div
+						className='expanded__activity'
+						onClick={() => handleToggle((prev) => !prev)}
+					>
+						{title}
+					</div>
+				</div>
+			)}
+		</>
 	)
 }
