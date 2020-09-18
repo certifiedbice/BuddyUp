@@ -25,7 +25,7 @@ export default function Dashboard() {
 				)
 				const data = await response.json()
 				if (data.error) throw data.error
-				console.log(data)
+
 				setActivities(data)
 			} catch (error) {
 				setError(error)
