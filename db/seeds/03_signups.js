@@ -35,6 +35,18 @@ exports.seed = function (knex) {
           contact_info: 'Test Contact Info',
           is_approved: true,
         },
+        {
+          user_id: 6,
+          activity_id: 2,
+          contact_info: "Demo Contact Info",
+          is_approved: false
+        }
+        {
+          user_id: 6,
+          activity_id: 3,
+          contact_info: "Demo Contact Info",
+          is_approved: true
+        }
       ]);
     });
 };
