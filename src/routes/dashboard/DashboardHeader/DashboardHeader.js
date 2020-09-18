@@ -9,7 +9,6 @@ export default function DashboardHeader({
 	numText,
 }) {
 	const match = useRouteMatch()
-	console.log(match)
 
 	const renderMiddleButton = () => {
 		if (match.path !== '/account') {
