@@ -6,14 +6,21 @@ export default function AccountActivityList({
 	...props
 }) {
 	return (
-		<ul className='account-activity__list'>
-			{activities &&
-				activities.map((activity) => (
-					<Activity
-						key={`activity-${activity.id}`}
-						{...activity}
-					/>
-				))}
-		</ul>
+		<section className='account-activity__section'>
+			<div className='account__section__flex'>
+				<ul className='account-activity__list'>
+					{activities &&
+						activities.map((activity) => (
+							<Activity
+								key={`activity-${activity.id}`}
+								{...activity}
+							/>
+						))}
+				</ul>
+			</div>
+			<div className='account__modal'>
+				<div className='expanded__activity'>HELLO</div>
+			</div>
+		</section>
 	)
 }

@@ -109,26 +109,25 @@ export default function Account() {
 						)}
 					</nav>
 					{!toggleList ? (
-						<section className='account-activity__section'>
-							<AccountActivityList
-								activities={activities}
-							/>
-						</section>
+						<AccountActivityList
+							activities={activities}
+						/>
 					) : (
 						<section className='account-requests__section'>
-							<ul className='account-requests__list'>
-								{requests &&
-									requests.map((request) => (
-										<Request
-											key={`request-${request.id}`}
-											{...request}
-										/>
-									))}
-							</ul>
+							<div className='account__section__flex'>
+								<ul className='account-requests__list'>
+									{requests &&
+										requests.map((request) => (
+											<Request
+												key={`request-${request.id}`}
+												{...request}
+											/>
+										))}
+								</ul>
+							</div>
 						</section>
 					)}
 				</section>
-				{/* <div className='modal'></div> */}
 			</main>
 		</>
 	)
