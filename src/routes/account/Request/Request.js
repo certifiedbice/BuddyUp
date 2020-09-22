@@ -9,19 +9,17 @@ export default function Request({
 	activity_id,
 	contact_info,
 	is_approved,
+	description,
+	zip_code,
+	start_time,
+	end_time,
 }) {
 	const [toggle, handleToggle] = useState(false)
 	const [activity, setActivity] = useState({})
 	const [user, setUser] = useState({})
 	const [error, setError] = useState('')
 
-	let {
-		title,
-		description,
-		zip_code,
-		start_time,
-		end_time,
-	} = activity
+	const { title } = activity
 
 	let { name } = user
 

@@ -62,11 +62,11 @@
 }
 
 input:checked + .slider {
-	background-color: #7cb342;
+	background-color: #43a047;
 }
 
 input:focus + .slider {
-	box-shadow: 0 0 1px #7cb342;
+	box-shadow: 0 0 1px #43a047;
 }
 
 input:checked + .slider:before {

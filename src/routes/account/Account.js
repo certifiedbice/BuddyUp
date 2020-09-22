@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react'
-import { useHistory } from 'react-router'
 import config from '../../config'
 import TokenService from '../../services/token-service'
 import DashboardHeader from '../dashboard/DashboardHeader/DashboardHeader'
@@ -8,7 +7,6 @@ import AccountActivityList from './AccountActivityList/AccountActivityList'
 import AccountRequestList from './AccountRequestList/AccountRequestList'
 
 export default function Account() {
-	const history = useHistory()
 	const [error, setError] = useState(null)
 	const [activities, setActivities] = useState([])
 	const [requests, setRequests] = useState([])

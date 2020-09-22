@@ -6,7 +6,6 @@ import './ActivityRequestItem.css'
 export default function ActivityRequestItem({
 	id = 8888,
 	user_name = 'Username',
-	user_id = 8888,
 	contact_info = 'Contact Info',
 	is_approved = false,
 }) {
