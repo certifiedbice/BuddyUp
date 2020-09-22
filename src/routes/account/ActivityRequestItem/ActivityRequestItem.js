@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import config from '../../../config'
 import TokenService from '../../../services/token-service'
 
-export default function ActivitySignupItem({
+export default function ActivityRequestItem({
 	id = 8888,
 	username = 'Username',
 	user_id = 8888,
@@ -11,11 +11,12 @@ export default function ActivitySignupItem({
 }) {
 	const [isApproved, setIsApproved] = useState(is_approved)
 	const [error, setError] = useState(null)
+	console.log(isApproved)
 
 	async function handleToggle() {
 		try {
 			const Response = await fetch(
-				`${config.API_ENDPOINT}/approval/${id}`,
+				`${config.API_ENDPOINT}/signups/approval/${id}`,
 				{
 					method: 'PATCH',
 					headers: {

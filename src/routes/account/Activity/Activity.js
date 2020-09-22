@@ -1,4 +1,7 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
+import config from '../../../config'
+import TokenService from '../../../services/token-service'
+import ActivityRequestsList from '../ActivityRequestsList/ActivityRequestsList'
 import './Activity.css'
 
 export default function Activity({
@@ -11,6 +14,37 @@ export default function Activity({
 	zip_code = 12345,
 }) {
 	const [toggle, handleToggle] = useState(false)
+	const [requests, setRequests] = useState([])
+	const [error, setError] = useState(null)
+
+	useEffect(() => {
+		const getActivityRequests = async () => {
+			try {
+				console.log('Hello!')
+				const response = await fetch(
+					`${config.API_ENDPOINT}/signups?activity_id=${id}`,
+					{
+						method: 'GET',
+						headers: {
+							'content-type': 'application/json',
+							authorization: `Bearer ${TokenService.getAuthToken()}`,
+						},
+					}
+				)
+				const data = await response.json()
+				if (data.error) throw data.error
+				console.log(data)
+				setRequests(data)
+			} catch (error) {
+				setError(error)
+			}
+		}
+		if (!error) {
+			getActivityRequests()
+		}
+		return () => {}
+	}, [id, error])
+
 	let s = new Date(start_time)
 	let e = new Date(end_time)
 	let sTime = s.toLocaleTimeString([], {
@@ -78,6 +112,9 @@ export default function Activity({
 									Cancel
 								</button>
 								<button>Something</button>
+								<ActivityRequestsList
+									requests={[...requests]}
+								/>
 							</div>
 						</div>
 					</div>
