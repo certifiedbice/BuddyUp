@@ -26,10 +26,9 @@ signupsRouter.use(requireAuth).use(async (req, res, next) => {
 
 signupsRouter.get('/', jsonBodyParser, async (req, res, next) => {
   try {
-    const activity =
-      typeof req.body.activity_id === 'number'
-        ? await ActivitiesService.getOne(req.body.activity_id)
-        : null;
+    const activity = !isNaN(req.body.activity_id)
+      ? await ActivitiesService.getOne(req.body.activity_id)
+      : null;
 
     if (typeof activity !== 'object' && activity.user_id !== req.user.id)
       return next({
@@ -37,10 +36,9 @@ signupsRouter.get('/', jsonBodyParser, async (req, res, next) => {
         message: `Unauthorized: This activity belongs to another user.`,
       });
 
-    const signups =
-      typeof req.body.activity_id === 'number'
-        ? await SignupsService.getAllForActivity(req.body.activity_id)
-        : await SignupsService.getAllForUser(req.user.id);
+    const signups = !isNaN(req.body.activity_id)
+      ? await SignupsService.getAllForActivity(req.body.activity_id)
+      : await SignupsService.getAllForUser(req.user.id);
 
     if (!signups)
       return next({
