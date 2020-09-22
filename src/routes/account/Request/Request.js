@@ -71,7 +71,9 @@ export default function Request({
 				setError(error)
 			}
 		}
-		!error && getActivity()
+		if (!error) {
+			getActivity()
+		}
 		return () => {}
 	}, [activity_id, error])
 
