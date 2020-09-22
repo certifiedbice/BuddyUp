@@ -33,7 +33,6 @@ export default function Activity({
 				)
 				const data = await response.json()
 				if (data.error) throw data.error
-				console.log(data)
 				setRequests(data)
 			} catch (error) {
 				setError(error)
@@ -43,7 +42,7 @@ export default function Activity({
 			getActivityRequests()
 		}
 		return () => {}
-	}, [id, error])
+	}, [id, error, toggle])
 
 	let s = new Date(start_time)
 	let e = new Date(end_time)
@@ -83,20 +82,15 @@ export default function Activity({
 						<div className=' expanded__activity__card'>
 							<article className='activity__card__text'>
 								<div>
-									<p className='sub_p'>Zip Code</p>
-								</div>
-								<div>
-									<p className='sub_p'>
-										Start Time
-									</p>
-								</div>
-								<div>
 									<p className='activity__text'>
 										{eTime}
 									</p>
 									<p className='sub_p'>End Time</p>
 								</div>
 							</article>
+							<ActivityRequestsList
+								requests={requests}
+							/>
 							<div className='expanded__activity__btn__ctn'>
 								<button
 									onClick={() =>
@@ -106,9 +100,6 @@ export default function Activity({
 									Cancel
 								</button>
 								<button>Something</button>
-								<ActivityRequestsList
-									requests={[...requests]}
-								/>
 							</div>
 						</div>
 					</div>

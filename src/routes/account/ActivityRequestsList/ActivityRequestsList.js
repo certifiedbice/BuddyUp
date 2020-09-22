@@ -4,7 +4,7 @@ import ActivityRequestItem from '../ActivityRequestItem/ActivityRequestItem'
 export default function ActivityRequestsList(props) {
 	console.log(props.requests)
 	return (
-		<ul>
+		<section className='user__select__section'>
 			{props.requests &&
 				props.requests.map((request) => (
 					<ActivityRequestItem
@@ -12,6 +12,6 @@ export default function ActivityRequestsList(props) {
 						{...request}
 					/>
 				))}
-		</ul>
+		</section>
 	)
 }

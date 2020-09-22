@@ -1,10 +1,11 @@
 import React, { useState } from 'react'
 import config from '../../../config'
 import TokenService from '../../../services/token-service'
+import './ActivityRequestItem.css'
 
 export default function ActivityRequestItem({
 	id = 8888,
-	username = 'Username',
+	user_name = 'Username',
 	user_id = 8888,
 	contact_info = 'Contact Info',
 	is_approved = false,
@@ -20,7 +21,6 @@ export default function ActivityRequestItem({
 				{
 					method: 'PATCH',
 					headers: {
-						'content-type': 'application/json',
 						authorization: `Bearer ${TokenService.getAuthToken()}`,
 					},
 				}
@@ -34,22 +34,32 @@ export default function ActivityRequestItem({
 	}
 
 	return (
-		<>
-			<li
-				className='activity__list__item'
-				onClick={() => handleToggle((prev) => !prev)}
-			>
-				<h2>{username}</h2>
-				<p>{contact_info}</p>
-				<input
-					typeof='checkbox'
-					id='approval'
-					name='approval'
-					onChange={handleToggle}
-					checked={isApproved}
-				/>
-				<label htmlFor='approval'>Accept user?</label>
-			</li>
-		</>
+		<div className='user__select__ctn'>
+			<div className='user__select__info'>
+				<span className='user__select__text__ctn'>
+					<p>{user_name}</p>
+					<label>Username</label>
+				</span>
+				<span className='user__select__text__ctn'>
+					<p>{contact_info}</p>
+					<label>Contact</label>
+				</span>
+			</div>
+			<div className='user__select__controls'>
+				<label className='switch'>
+					<input
+						type='checkbox'
+						name='approval'
+						onChange={handleToggle}
+						defaultChecked={isApproved}
+					/>
+					<span className='slider round'></span>
+				</label>
+
+				<label className='input__label' htmlFor='approval'>
+					Accept user?
+				</label>
+			</div>
+		</div>
 	)
 }

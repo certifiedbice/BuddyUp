@@ -79,6 +79,12 @@ export default function Activity({
 					name='contact_info'
 					placeholder='ex: "Whatsapp: YourInfo"'
 				/>
+				<button
+					type='button'
+					onClick={() => setExpanded((exp) => !exp)}
+				>
+					BACK
+				</button>
 				<button typeof='submit'>SUBMIT</button>
 			</form>
 		</div>
@@ -123,7 +129,6 @@ export default function Activity({
 						>
 							BACK
 						</button>
-
 						<button
 							type='button'
 							onClick={() =>
