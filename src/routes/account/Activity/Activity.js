@@ -28,36 +28,30 @@ export default function Activity({
 				className='activity__list__item'
 				onClick={() => handleToggle((prev) => !prev)}
 			>
-				<h2>{title}</h2>
+				<div className='activity__list__item__text'>
+					<div className='activity__list__item__header'>
+						<span>
+							<h2>{title}</h2>
+							<label>Title</label>
+						</span>
+						<span>
+							<p className='activity__text'>{sTime}</p>
+							<label>Start Time</label>
+						</span>
+					</div>
+					<p className='description__text'>{description}</p>
+				</div>
 			</li>
 
 			{toggle && (
 				<div className='account__modal'>
 					<div className='expanded__activity'>
 						<div className=' expanded__activity__card'>
-							<header className='expanded__activity__header'>
-								<h3>{title}</h3>
-								<h4 className='subtext'>Title</h4>
-							</header>
 							<article className='activity__card__text'>
 								<div>
-									<p className='activity__text'>
-										{description}
-									</p>
-									<p className='sub_p'>
-										Description
-									</p>
-								</div>
-								<div>
-									<p className='activity__text'>
-										{zip_code}
-									</p>
 									<p className='sub_p'>Zip Code</p>
 								</div>
 								<div>
-									<p className='activity__text'>
-										{sTime}
-									</p>
 									<p className='sub_p'>
 										Start Time
 									</p>

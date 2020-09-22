@@ -9,7 +9,7 @@
 }
 
 .header h1,
-p {
+.header p {
 	padding: 0.25rem;
 	letter-spacing: 1px;
 	font-family: 'Montserrat', sans-serif;
@@ -18,6 +18,11 @@ p {
 }
 .header p {
 	font-size: 0.7rem;
+}
+
+p {
+	word-wrap: normal;
+	word-break: break-all;
 }
 
 a {
