@@ -97,9 +97,8 @@ export default function Activity({
 										handleToggle((prev) => !prev)
 									}
 								>
-									Cancel
+									Go Back
 								</button>
-								<button>Something</button>
 							</div>
 						</div>
 					</div>

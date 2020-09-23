@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { FaCheckCircle, FaQuestionCircle } from 'react-icons/fa'
 import config from '../../../config'
 import TokenService from '../../../services/token-service'
+import ExpandedRequest from './ExpandedRequest'
 import './Request.css'
 
 export default function Request({
@@ -9,10 +10,6 @@ export default function Request({
 	activity_id,
 	contact_info,
 	is_approved,
-	description,
-	zip_code,
-	start_time,
-	end_time,
 }) {
 	const [toggle, handleToggle] = useState(false)
 	const [activity, setActivity] = useState({})
@@ -92,14 +89,13 @@ export default function Request({
 			</li>
 
 			{toggle && (
-				<div className='account__modal'>
-					<div
-						className='expanded__activity'
-						onClick={() => handleToggle((prev) => !prev)}
-					>
-						{title}
-					</div>
-				</div>
+				<ExpandedRequest
+					handleToggle={handleToggle}
+					contact_info={contact_info}
+					title={title}
+					{...activity}
+					{...user}
+				/>
 			)}
 		</>
 	)
