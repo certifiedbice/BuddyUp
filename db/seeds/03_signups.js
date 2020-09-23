@@ -26,7 +26,7 @@ exports.seed = function (knex) {
         {
           user_id: 2,
           activity_id: 5,
-          contact_info: 'Test Contact Info',
+          contact_info: 'Snapchat: BatmanIsAChump',
           is_approved: false,
         },
         {
