@@ -22,15 +22,18 @@ export default function ExpandedRequest({
 		<div className='account__modal'>
 			<div className='expanded__request'>
 				<header className='card__header'>
-					<FaUserCircle className='icon user__icon' />
-					<span>
-						<p className='card__title'>{title}</p>
-						<label>Title</label>
-					</span>
-					<span>
-						<p className='card__title'>{props.name}</p>
-						<label>Name</label>
-					</span>
+					<div>
+						<span>
+							<p className='card__title'>{title}</p>
+							<label>Title</label>
+						</span>
+						<span>
+							<p className='card__title'>
+								{props.name}
+							</p>
+							<label>Name</label>
+						</span>
+					</div>
 				</header>
 
 				<div className='card__ctn'>
@@ -61,7 +64,7 @@ export default function ExpandedRequest({
 						{sTime} - {eTime}
 					</p>
 				</div>
-				<div className='btn__ctn'>
+				<div className='req__btn__ctn'>
 					<button
 						onClick={() => handleToggle((prev) => !prev)}
 					>

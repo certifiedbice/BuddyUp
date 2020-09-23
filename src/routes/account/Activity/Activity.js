@@ -68,7 +68,7 @@ export default function Activity({
 							<label>Title</label>
 						</span>
 						<span>
-							<p className='activity__text'>{sTime}</p>
+							<p className='date__text'>{sTime}</p>
 							<label>Start Time</label>
 						</span>
 					</div>
@@ -81,24 +81,30 @@ export default function Activity({
 					<div className='expanded__activity'>
 						<div className=' expanded__activity__card'>
 							<article className='activity__card__text'>
-								<div>
-									<p className='activity__text'>
-										{eTime}
+								<div className='card__ctn'>
+									<h2 className='card__title'>
+										Start and End Times
+									</h2>
+									<p className='card__info date'>
+										{sTime} - {eTime}
 									</p>
-									<p className='sub_p'>End Time</p>
 								</div>
 							</article>
 							<ActivityRequestsList
 								requests={requests}
 							/>
-							<div className='expanded__activity__btn__ctn'>
-								<button
-									onClick={() =>
-										handleToggle((prev) => !prev)
-									}
-								>
-									Go Back
-								</button>
+							<div className='act__btn__ctn'>
+								<div className='act__btn'>
+									<button
+										onClick={() =>
+											handleToggle(
+												(prev) => !prev
+											)
+										}
+									>
+										Back
+									</button>
+								</div>
 							</div>
 						</div>
 					</div>

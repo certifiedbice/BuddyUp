@@ -1,13 +1,14 @@
 .activity__list__item {
-	text-align: left;
-	padding: 0;
-	background-color: #c1d5e0;
-	border: none;
+	padding: 1em;
+	background-color: #fff;
+	display: flex;
+	flex-direction: row;
 	border-radius: 3px;
-	border-bottom: 2px solid #f9a825;
+	align-items: center;
 	cursor: pointer;
-	height: 92px;
-	overflow: hidden;
+	box-shadow: 0 7px 14px rgba(0, 0, 0, 0.12),
+		0 5px 5px rgba(0, 0, 0, 0.24);
+	transition: all 0.25s ease-in-out;
 }
 .activity__list__item__text {
 	display: flex;
@@ -16,20 +17,33 @@
 	margin: 3px;
 	max-height: 100%;
 }
+.activity__list__item {
+	padding: 4px;
+}
 .activity__list__item__header {
 	display: flex;
 	flex: 1;
 	flex-direction: column;
 	justify-content: flex-start;
-	padding: 3px;
+	padding: 5px;
+	text-align: left;
+}
+.activity__list__item__header span {
+	margin: 2px;
 }
 
-p.activity__text {
+p.date__text {
 	margin: 0;
+	background-color: hsl(231, 100%, 59%);
+	border-radius: 4px;
+	padding: 4px;
+	color: rgba(255, 255, 255, 0.84);
+	width: fit-content;
 }
 .activity__list__item__header h2 {
 	color: #000000;
-	font-size: 14px;
+	font-size: 18px;
+	font-weight: 500;
 	transition: all 0.25s ease-in;
 	margin: 0;
 	padding: 0;
@@ -40,6 +54,7 @@ p.activity__text {
 	color: rgba(0, 0, 0, 0.6);
 	margin: 0;
 	padding: 0;
+	display: block;
 }
 .description__text {
 	flex: 2;
@@ -74,24 +89,26 @@ p.activity__text {
 		0 10px 18px rgba(0, 0, 0, 0.24);
 }
 .activity__list__item:hover h2 {
-	color: #f9a825;
+	color: #0026ca;
 }
 
 .expanded__activity {
-	background-color: #e2f1f8;
+	background-color: #fff;
 	position: relative;
 	max-width: 320px;
 	min-width: 300px;
-	height: 300px;
 	top: 25vh;
+	height: fit-content;
+	padding: 12px;
+	border-radius: 4px;
+	display: flex;
+	flex-direction: column;
 }
 .expanded__activity__header {
 	display: flex;
 	flex-direction: column;
 	margin-bottom: 5px;
-	border-bottom: 3px solid #f9a825;
-	border-bottom-left-radius: 3px;
-	border-bottom-right-radius: 3px;
+
 	padding: 10px;
 	text-align: left;
 	background-color: #29434e;
@@ -110,16 +127,12 @@ h4 {
 	text-align: left;
 	padding: 10px;
 }
-.activity__text {
+.date__text {
 	color: #000;
 	padding: 0;
 	font-weight: 500;
 }
-.activity__card__text div {
-	margin-bottom: 5px;
-	border-bottom: 3px solid #f9a825;
-	border-radius: 3px;
-}
+
 .subtext,
 .sub_p {
 	letter-spacing: 1pt;
@@ -130,25 +143,30 @@ h4 {
 	padding: 0;
 	margin-bottom: 3px;
 }
-.expanded__activity__btn__ctn {
+.act__btn__ctn {
 	display: flex;
-	width: 90%;
-	margin: 0 auto;
-	padding: 6px;
+	justify-content: flex-start;
+	align-self: end;
+	margin: 10px 0;
 }
-.expanded__activity__btn__ctn button {
-	flex: 1;
-	border: 0;
-	background-color: transparent;
+.act__btn__ctn button {
+	flex: 0.25;
 	cursor: pointer;
-	padding: 6px;
-	letter-spacing: 1pt;
+	border: 0;
+	border-radius: 4px;
+	background-color: transparent;
 	font-family: 'Roboto', sans-serif;
+	letter-spacing: 1pt;
+	font-size: 16px;
 	font-weight: 500;
+	color: hsl(231, 100%, 59%);
+	padding: 4px 8px;
+	box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12),
+		0 1px 2px rgba(0, 0, 0, 0.24);
 	transition: all 0.25s ease-in-out;
 }
-.expanded__activity__btn__ctn button:hover {
-	background-color: #ffc947;
-	box-shadow: 0 6px 12px rgba(0, 0, 0, 0.19),
-		0 2px 2px rgba(0, 0, 0, 0.23);
+
+.act__btn__ctn button:hover {
+	box-shadow: 0 7px 14px rgba(0, 0, 0, 0.25),
+		0 5px 5px rgba(0, 0, 0, 0.22);
 }

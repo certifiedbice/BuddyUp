@@ -9,6 +9,7 @@
 	margin: 0;
 }
 .user__select__info {
+	width: fit-content;
 	display: inline-flex;
 	text-align: left;
 	align-self: flex-start;
@@ -18,11 +19,12 @@
 }
 .user__select__text__ctn label,
 .input__label {
-	font-size: 12px;
+	font-size: 10px;
 	display: block;
 }
 .user__select__controls {
 	align-self: flex-end;
+	width: fit-content;
 }
 .switch {
 	position: relative;

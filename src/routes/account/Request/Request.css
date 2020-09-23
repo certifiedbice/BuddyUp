@@ -1,19 +1,21 @@
 .request__list__item {
 	padding: 1em;
-	background-color: #c1d5e0;
+	background-color: #fff;
 	display: flex;
 	flex-direction: row;
 	border-radius: 3px;
 	align-items: center;
 	cursor: pointer;
+	box-shadow: 0 7px 14px rgba(0, 0, 0, 0.12),
+		0 5px 5px rgba(0, 0, 0, 0.24);
 	transition: all 0.25s ease-in-out;
 }
 .request__list__item:hover {
-	box-shadow: 0 15px 23px rgba(0, 0, 0, 0.12),
-		0 15px 23px rgba(0, 0, 0, 0.24);
+	box-shadow: 0 14px 28px rgba(0, 0, 0, 0.12),
+		0 10px 10px rgba(0, 0, 0, 0.24);
 }
 .request__list__item:hover h2 {
-	color: rgba(0, 0, 0, 0.6);
+	color: hsla(229, 100%, 40%, 0.89);
 }
 .request__list__item__text {
 	text-align: left;
@@ -39,9 +41,13 @@
 	text-overflow: ellipsis;
 	transition: all 0.25s ease-in-out;
 }
+
 .request__list__item__text h2 {
 	color: #000000;
-	font-size: 20px;
+	font-size: 16px;
+	font-weight: 500;
+	letter-spacing: 1pt;
+	font-family: 'Montserrat', sans-serif;
 }
 .request__list__item__text p {
 	font-size: smaller;
@@ -64,6 +70,15 @@
 	display: flex;
 	gap: 8px;
 	align-items: baseline;
+	background-color: hsl(231, 100%, 59%);
+	border-radius: 4px;
+	padding: 4px;
+}
+.card__header span {
+	flex: 0.5;
+}
+.card__header label {
+	color: rgba(255, 255, 255, 84%);
 }
 hr.inset__divider {
 	margin: auto;
@@ -80,14 +95,22 @@ h2.card__title {
 	color: black;
 	font-weight: 500;
 }
+p.card__title {
+	font-family: 'Roboto', sans-serif;
+	letter-spacing: 2pt;
+	font-size: 18px;
+	color: rgb(255, 255, 255);
+	font-weight: 500;
+	margin: 0;
+}
 .info__ctn {
 	margin: 4px 0;
 }
-.btn__ctn {
+.req__btn__ctn {
 	display: flex;
 	justify-content: flex-start;
 }
-.btn__ctn button {
+.req__btn__ctn button {
 	flex: 0.25;
 	cursor: pointer;
 	border: 0;
@@ -97,12 +120,15 @@ h2.card__title {
 	letter-spacing: 1pt;
 	font-size: 16px;
 	font-weight: 500;
-	color: #304fff;
+	color: hsl(231, 100%, 59%);
 	padding: 4px;
+	box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12),
+		0 1px 2px rgba(0, 0, 0, 0.24);
+	transition: all 0.25s ease-in-out;
 }
-.btn__ctn button:hover {
-	background-color: #304fff;
-	color: rgba(255, 255, 255, 0.84);
+.req__btn__ctn button:hover {
+	box-shadow: 0 7px 14px rgba(0, 0, 0, 0.25),
+		0 5px 5px rgba(0, 0, 0, 0.22);
 }
 .card__ctn {
 	text-align: left;
@@ -113,9 +139,10 @@ h2.card__title {
 .user__icon {
 	flex: 0.5;
 	font-size: 36px;
+	color: rgba(255, 255, 255, 84%);
 	align-self: center;
 }
-p.card__title,
+
 p.card__info {
 	font-size: 16px;
 	font-family: 'Roboto', sans-serif;
@@ -126,14 +153,27 @@ p.card__info {
 p.card__info {
 	font-weight: 400;
 }
+p.date {
+	text-align: center;
+	border-radius: 8px;
+	font-weight: 500;
+	color: rgba(255, 255, 255, 0.96);
+	padding: 4px;
+	background-color: hsl(231, 100%, 59%);
+	flex: 0.25;
+	margin: 4px 0;
+	box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12),
+		0 1px 2px rgba(0, 0, 0, 0.24);
+}
 .expanded__request {
 	background-color: #fff;
 	position: relative;
 	max-width: 320px;
 	min-width: 300px;
-	max-height: 50%;
 	top: 25vh;
-	padding: 5px;
+	height: 500px;
+	padding: 12px;
+	border-radius: 4px;
 }
 .expanded__request label {
 	display: block;

@@ -45,19 +45,21 @@ export default function ActivityRequestItem({
 				</span>
 			</div>
 			<div className='user__select__controls'>
-				<label className='switch'>
-					<input
-						type='checkbox'
-						name='approval'
-						onChange={handleToggle}
-						defaultChecked={isApproved}
-					/>
-					<span className='slider round'></span>
-				</label>
+				<form aria-label='Approve User Form'>
+					<label className='switch'>
+						<input
+							type='checkbox'
+							name='approval'
+							aria-label='Approve User'
+							onChange={handleToggle}
+							defaultChecked={isApproved}
+						/>
+						<span className='slider round'></span>
+						Toggle
+					</label>
+				</form>
 
-				<label className='input__label' htmlFor='approval'>
-					Accept user?
-				</label>
+				<label className='input__label'>Accept user?</label>
 			</div>
 		</div>
 	)

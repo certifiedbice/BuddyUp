@@ -106,6 +106,7 @@ export default function Account() {
 							</>
 						)}
 					</nav>
+					<hr className='account__divider' />
 					{!toggleList ? (
 						<AccountActivityList
 							activities={activities}
