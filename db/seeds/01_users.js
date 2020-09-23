@@ -27,8 +27,8 @@ exports.seed = function (knex) {
           zip_code: '11368',
         },
         {
-          username: 'fortuneteller@gmail.com',
-          name: 'Crystal Ball',
+          username: 'krieger@algersoft.net',
+          name: 'Algernop Krieger',
           password:
             '$2a$12$mkmyCkhCimVhctVH6c2dD.yZ.ELrdlXRpeTkR6.3Ci35ox0.xl1Jy', // unhashed: Puffy**21
           zip_code: '60290',
@@ -42,7 +42,7 @@ exports.seed = function (knex) {
         },
         {
           username: 'demo@mail.com',
-          name: 'Demo',
+          name: 'Joe Demo',
           password:
             '$2a$12$4/hJrBJuOgROYNOu791oN.LgJg.LKuyDREdKUnzjNJmEeTsigmgrC', // unhashed: DemoPass#1,
           zip_code: '12345',
