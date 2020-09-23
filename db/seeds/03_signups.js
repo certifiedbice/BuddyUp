@@ -38,15 +38,15 @@ exports.seed = function (knex) {
         {
           user_id: 6,
           activity_id: 2,
-          contact_info: "Telegram: JoeDemo",
-          is_approved: false
-        }
+          contact_info: 'Telegram: JoeDemo',
+          is_approved: false,
+        },
         {
           user_id: 6,
           activity_id: 3,
-          contact_info: "WeChat: JoeDemo",
-          is_approved: true
-        }
+          contact_info: 'WeChat: JoeDemo',
+          is_approved: true,
+        },
       ]);
     });
 };
