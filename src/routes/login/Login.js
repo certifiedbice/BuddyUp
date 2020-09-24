@@ -51,9 +51,7 @@ export default function Login() {
 	return (
 		<>
 			<header className='header'>
-				<h1>
-					<Link to='/'>BuddyUp</Link>
-				</h1>
+				<h1>BuddyUp</h1>
 				<p>
 					Welcome back to BuddyUp! Log in to find your next
 					buddy!

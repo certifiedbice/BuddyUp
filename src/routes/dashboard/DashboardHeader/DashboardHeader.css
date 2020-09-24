@@ -1,7 +1,7 @@
 .dashboard__header {
 	display: flex;
 	flex-direction: column;
-	background-color: #1b3039;
+	background-color: #0039cb;
 }
 .dashboard__header h1,
 h2 {
@@ -19,6 +19,8 @@ h2 {
 }
 .header__text {
 	padding: 0.5rem;
+	display: flex;
+	justify-content: space-around;
 }
 
 .navlink__list {
@@ -53,5 +55,5 @@ h2 {
 }
 
 .header__nav {
-	background-color: #445963;
+	background-color: transparent;
 }

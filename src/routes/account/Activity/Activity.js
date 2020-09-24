@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react'
+import StartEndTimes from '../../../components/card/StartEndTimes'
 import config from '../../../config'
 import TokenService from '../../../services/token-service'
 import ActivityRequestsList from '../ActivityRequestsList/ActivityRequestsList'
@@ -54,6 +55,10 @@ export default function Activity({
 		hour: '2-digit',
 		minute: '2-digit',
 	})
+	let times = {
+		eTime,
+		sTime,
+	}
 
 	return (
 		<>
@@ -81,14 +86,7 @@ export default function Activity({
 					<div className='expanded__activity'>
 						<div className=' expanded__activity__card'>
 							<article className='activity__card__text'>
-								<div className='card__ctn'>
-									<h2 className='card__title'>
-										Start and End Times
-									</h2>
-									<p className='card__info date'>
-										{sTime} - {eTime}
-									</p>
-								</div>
+								<StartEndTimes {...times} />
 							</article>
 							<ActivityRequestsList
 								requests={requests}

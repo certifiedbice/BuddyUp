@@ -44,25 +44,16 @@ hr.account__divider {
 .account-activity__section {
 	padding: 12px;
 }
-.account-activity__list {
+.account-activity__list,
+.request-activity__list {
 	list-style-type: none;
 	background-color: transparent;
-	padding: 2em;
-	width: 66%;
+	padding: 0;
+	width: 80%;
 	margin: 0 auto;
 	display: grid;
 	grid-template-columns: repeat(1, minmax(150px, 1fr));
 	gap: 3px;
-}
-.request-activity__list {
-	list-style-type: none;
-	background-color: transparent;
-	padding: 2em;
-	width: 66%;
-	margin: 0 auto;
-	display: grid;
-	grid-template-columns: repeat(1, minmax(150px, 1fr));
-	gap: 3%;
 }
 
 .account-activity__list h2 {

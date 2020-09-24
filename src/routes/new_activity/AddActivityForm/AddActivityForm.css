@@ -1,19 +1,20 @@
 .activity__form {
 	max-width: 350px;
 	margin: auto;
-	background-color: #708690;
 	box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16),
 		0 3px 6px rgba(0, 0, 0, 0.23);
 }
 .activity__form header {
 	padding: 1em;
-	background-color: #445963;
+
+	background-color: #304fff;
 	border-bottom: 2px solid #1b3039;
 }
 .activity__form legend {
-	color: hsla(0, 0%, 100%, 0.81);
+	color: rgba(255, 255, 255, 92%);
+
 	letter-spacing: 1pt;
-	font-size: 18px;
+	font-size: 20px;
 }
 .add__activity__btn__ctn {
 	display: flex;
@@ -33,7 +34,6 @@
 	transition: all 0.25s;
 }
 .add__activity__btn__ctn > button:hover {
-	background-color: #ffc947;
 	box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16),
 		0 3px 6px rgba(0, 0, 0, 0.23);
 }
@@ -45,7 +45,7 @@
 .text__container > input,
 .text__container > textarea {
 	background-color: transparent;
-	border-bottom: 2px solid #ffc947;
+	border-bottom: 2px solid #304fff;
 	font-family: 'Roboto', sans-serif;
 	letter-spacing: 1pt;
 	width: 80%;
@@ -54,7 +54,7 @@
 .text__container > textarea {
 	border: none;
 	border-radius: 3px;
-	border-bottom: 2px solid #ffc947;
+	border-bottom: 2px solid #304fff;
 	resize: none;
 	height: 5rem;
 

@@ -4,21 +4,20 @@ import { DatePicker, TimePicker } from '@material-ui/pickers'
 import './AddActivityForm.css'
 import { createMuiTheme } from '@material-ui/core'
 import { ThemeProvider } from '@material-ui/styles'
-import { blueGrey } from '@material-ui/core/colors'
 import config from '../../../config'
 import TokenService from '../../../services/token-service'
 import { useHistory } from 'react-router'
+import { blue } from '@material-ui/core/colors'
 
 export default function AddActivityForm() {
 	const history = useHistory()
 	const [selectedDate, handleDateChange] = useState(new Date())
-
 	const [startTime, handleStartTimeChange] = useState(new Date())
 	const [endTime, handleEndTimeChange] = useState(new Date())
 	const [error, setError] = useState(null)
 	const materialTheme = createMuiTheme({
 		palette: {
-			primary: blueGrey,
+			primary: { main: blue['A700'] },
 		},
 	})
 
@@ -108,22 +107,17 @@ export default function AddActivityForm() {
 						required
 					/>
 				</div>
-
-				<div className='add__activity__btn__ctn'>
+				<div className='expanded__info__btn__ctn register__btn__ctn'>
 					<button
 						type='button'
-						className='mui-btn mui-btn--raised'
 						onClick={() => history.goBack()}
 					>
 						Go Back
 					</button>
-					<button
-						type='submit'
-						className='mui-btn mui-btn--raised'
-					>
-						Submit
-					</button>
+					<button type='submit'>Submit</button>
 				</div>
+
+				<div className='add__activity__btn__ctn'></div>
 			</form>
 		</>
 	)
