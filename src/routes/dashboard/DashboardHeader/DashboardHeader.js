@@ -12,7 +12,7 @@ export default function DashboardHeader({
 	const history = useHistory()
 	const logOut = () => {
 		handleLogOut()
-		history.push('/landing')
+		history.push('/')
 	}
 
 	const renderMiddleButton = () => {
