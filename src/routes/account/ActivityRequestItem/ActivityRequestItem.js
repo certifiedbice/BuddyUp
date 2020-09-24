@@ -11,7 +11,6 @@ export default function ActivityRequestItem({
 }) {
 	const [isApproved, setIsApproved] = useState(is_approved)
 	const [error, setError] = useState(null)
-	console.log(isApproved)
 
 	async function handleToggle() {
 		try {
@@ -45,20 +44,27 @@ export default function ActivityRequestItem({
 				</span>
 			</div>
 			<div className='user__select__controls'>
-				<form aria-label='Approve User Form'>
-					<label className='switch'>
-						<input
-							type='checkbox'
-							name='approval'
-							aria-label='Approve User'
-							onChange={handleToggle}
-							defaultChecked={isApproved}
-						/>
-						<span className='slider round'></span>
-					</label>
-				</form>
-
-				<label className='input__label'>Accept user?</label>
+				{error ? (
+					<p style={{ color: 'red' }}>
+						Ooops something went wrong
+					</p>
+				) : (
+					<form aria-label='Approve User Form'>
+						<label className='switch'>
+							<input
+								type='checkbox'
+								name='approval'
+								aria-label='Approve User'
+								onChange={handleToggle}
+								defaultChecked={isApproved}
+							/>
+							<span className='slider round'></span>
+						</label>
+						<label className='input__label'>
+							Accept user?
+						</label>
+					</form>
+				)}
 			</div>
 		</div>
 	)
