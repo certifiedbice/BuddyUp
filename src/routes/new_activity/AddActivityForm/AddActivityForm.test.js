@@ -1,3 +1,4 @@
+// make React available
 import React from 'react'
 
 // make the ReactDOM available, necessary for rendering the component
@@ -5,7 +6,7 @@ import ReactDOM from 'react-dom'
 import { BrowserRouter as Router } from 'react-router-dom'
 
 // make the Landing component available
-import App from './App'
+import AddActivityForm from './AddActivityForm'
 import { MuiPickersUtilsProvider } from '@material-ui/pickers'
 import DateFnsUtils from '@date-io/date-fns'
 // this is the test case
@@ -17,7 +18,7 @@ it('renders without crashing', () => {
 	ReactDOM.render(
 		<Router>
 			<MuiPickersUtilsProvider utils={DateFnsUtils}>
-				<App />
+				<AddActivityForm />
 			</MuiPickersUtilsProvider>
 		</Router>,
 		div
