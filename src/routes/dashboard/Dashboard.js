@@ -59,6 +59,12 @@ export default function Dashboard() {
 				{...text}
 			/>
 			<section className='event__section'>
+				{activities.length < 1 && (
+					<p>
+						There are no activities in your area. Try
+						making one of your own!
+					</p>
+				)}
 				<ul className='event__list'>
 					{activities &&
 						activities.map((activity) => (
