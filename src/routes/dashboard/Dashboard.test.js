@@ -1,21 +1,28 @@
-import { it } from 'date-fns/locale';
-import React from 'react';
-import Dashboard from './Dashboard';
-import ReactDOM from "react-dom";
-import toJson from 'enzyme-to-json'
-import { shallow } from 'enzyme';
+import React from 'react'
 
-describe(`Dashboard component`, () => {
-    it('should display the users dashboard component', ()=> {
-        const wrapper = shallow(<Dashboard />)
-        expect(toJson(wrapper)).toMatchSnapshot()
+// make the ReactDOM available, necessary for rendering the component
+import ReactDOM from 'react-dom'
+import { BrowserRouter as Router } from 'react-router-dom'
 
-    })
+// make the Landing component available
+import Dashboard from './Dashboard'
+import { MuiPickersUtilsProvider } from '@material-ui/pickers'
+import DateFnsUtils from '@date-io/date-fns'
+// this is the test case
+it('renders without crashing', () => {
+	// first create a DOM element to render the component into
+	const div = document.createElement('div')
+
+	// render the component, this is the actual test, if something is wrong it will fail here
+	ReactDOM.render(
+		<Router>
+			<MuiPickersUtilsProvider utils={DateFnsUtils}>
+				<Dashboard />
+			</MuiPickersUtilsProvider>
+		</Router>,
+		div
+	)
+
+	// clean up code
+	ReactDOM.unmountComponentAtNode(div)
 })
-
-it('renders the complete form', () => {
-    const wrapper = shallow(<Dashboard />)
-    expect(toJson(wrapper)).toMatchSnapshot()
-  })
-ReactDOM.unmountComponentAtNode('')
-export default Dashboard

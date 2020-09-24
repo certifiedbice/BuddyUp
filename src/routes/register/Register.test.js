@@ -1,10 +1,28 @@
-import React from 'react';
-import { render } from '@testing-library/react';
-import Register from './Register';
-import Json from 'enzyme-to-Json';
+import React from 'react'
 
-it('should render the entire form', () => {
-    const { getByText } = render(<Register />);
-    const linkElement = getByText(/learn react/i);
-    expect(linkElement).toBeInTheDocument();
-});
+// make the ReactDOM available, necessary for rendering the component
+import ReactDOM from 'react-dom'
+import { BrowserRouter as Router } from 'react-router-dom'
+
+// make the Landing component available
+import Register from './Register'
+import { MuiPickersUtilsProvider } from '@material-ui/pickers'
+import DateFnsUtils from '@date-io/date-fns'
+// this is the test case
+it('renders without crashing', () => {
+	// first create a DOM element to render the component into
+	const div = document.createElement('div')
+
+	// render the component, this is the actual test, if something is wrong it will fail here
+	ReactDOM.render(
+		<Router>
+			<MuiPickersUtilsProvider utils={DateFnsUtils}>
+				<Register />
+			</MuiPickersUtilsProvider>
+		</Router>,
+		div
+	)
+
+	// clean up code
+	ReactDOM.unmountComponentAtNode(div)
+})

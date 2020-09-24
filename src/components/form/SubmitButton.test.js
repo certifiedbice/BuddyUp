@@ -5,7 +5,7 @@ import ReactDOM from 'react-dom'
 import { BrowserRouter as Router } from 'react-router-dom'
 
 // make the Landing component available
-import App from './App'
+import SubmitButton from './SubmitButton'
 import { MuiPickersUtilsProvider } from '@material-ui/pickers'
 import DateFnsUtils from '@date-io/date-fns'
 // this is the test case
@@ -17,7 +17,7 @@ it('renders without crashing', () => {
 	ReactDOM.render(
 		<Router>
 			<MuiPickersUtilsProvider utils={DateFnsUtils}>
-				<App />
+				<SubmitButton />
 			</MuiPickersUtilsProvider>
 		</Router>,
 		div
