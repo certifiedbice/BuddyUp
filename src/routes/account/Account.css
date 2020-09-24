@@ -22,7 +22,7 @@ hr.account__divider {
 	gap: 5px;
 }
 .account__nav button {
-	flex: 0.25;
+	flex: 0.5;
 	padding: 1em;
 	background-color: transparent;
 	border: none;

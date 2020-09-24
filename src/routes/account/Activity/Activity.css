@@ -16,6 +16,7 @@
 	justify-content: space-between;
 	margin: 3px;
 	max-height: 100%;
+	width: 100%;
 }
 .activity__list__item {
 	padding: 4px;
