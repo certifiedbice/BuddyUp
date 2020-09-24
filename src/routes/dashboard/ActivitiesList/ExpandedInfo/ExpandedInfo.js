@@ -10,6 +10,7 @@ export default function ExpandedInfo({
 	name,
 	zip_code,
 	times,
+	title,
 	description,
 	tooltipText,
 }) {
@@ -24,6 +25,10 @@ export default function ExpandedInfo({
 							<label className='info-bold'>
 								Event Host
 							</label>
+						</div>
+						<div className='expanded__header__text'>
+							<h3>{title}</h3>
+							<label className='info-bold'>Title</label>
 						</div>
 					</div>
 				</header>

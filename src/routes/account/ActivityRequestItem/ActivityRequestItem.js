@@ -55,7 +55,6 @@ export default function ActivityRequestItem({
 							defaultChecked={isApproved}
 						/>
 						<span className='slider round'></span>
-						Toggle
 					</label>
 				</form>
 
