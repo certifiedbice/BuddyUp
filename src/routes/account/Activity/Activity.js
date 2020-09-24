@@ -19,7 +19,6 @@ export default function Activity({
 	useEffect(() => {
 		const getActivityRequests = async () => {
 			try {
-				console.log('Hello!')
 				const response = await fetch(
 					`${config.API_ENDPOINT}/signups?activity_id=${id}`,
 					{

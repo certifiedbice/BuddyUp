@@ -37,7 +37,6 @@ export default function Activity({
 	const { name } = user
 
 	async function register(data) {
-		console.log(data)
 		const response = await fetch(
 			`${config.API_ENDPOINT}/signups`,
 			{
