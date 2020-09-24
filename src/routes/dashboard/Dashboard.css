@@ -130,6 +130,7 @@ h5 {
 	max-width: 70%;
 	height: fit-content;
 	margin: auto;
+	padding: 12px;
 	box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12),
 		0 20px 42px rgba(0, 0, 0, 0.24);
 }
@@ -144,8 +145,7 @@ h5.info-bold {
 .expanded__info header {
 	width: 100%;
 	background-color: #304fff;
-	border-top-left-radius: 4px;
-	border-top-right-radius: 4px;
+	border-radius: 4px;
 }
 div.expanded__info__text {
 	margin: 5px;

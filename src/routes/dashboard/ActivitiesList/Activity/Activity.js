@@ -80,6 +80,7 @@ export default function Activity({
 			description={description}
 			times={times}
 			zip_code={zip_code}
+			title={title}
 		/>
 	)
 
