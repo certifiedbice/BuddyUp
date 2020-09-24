@@ -11,8 +11,6 @@ export default function Activity({
 	id = 5,
 	start_time = '2020-12-25T12:00:00.000Z',
 	title = 'Test Event 5',
-	user_id = 6,
-	zip_code = 12345,
 }) {
 	const [toggle, handleToggle] = useState(false)
 	const [requests, setRequests] = useState([])

@@ -1,7 +1,5 @@
 import React, { useState, useEffect } from 'react'
 import config from '../../../../config'
-import { FaInfoCircle, FaUserCircle } from 'react-icons/fa'
-import ReactTooltip from 'react-tooltip'
 import TokenService from '../../../../services/token-service'
 import { useHistory } from 'react-router'
 import ExpandedInfo from '../ExpandedInfo/ExpandedInfo'
@@ -20,7 +18,7 @@ export default function Activity({
 	const [user, setUser] = useState({})
 	const [error, setError] = useState(null)
 	const history = useHistory()
-	console.log(end_time)
+
 	let s = new Date(start_time)
 	let e = new Date(end_time)
 	let date = s.toLocaleDateString()
