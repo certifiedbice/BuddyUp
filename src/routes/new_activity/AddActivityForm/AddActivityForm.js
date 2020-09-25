@@ -11,10 +11,16 @@ import { blue } from '@material-ui/core/colors'
 
 export default function AddActivityForm() {
 	const history = useHistory()
+	/**
+	 * set state variables as current date object - placeholder form date/time picker
+	 */
 	const [selectedDate, handleDateChange] = useState(new Date())
 	const [startTime, handleStartTimeChange] = useState(new Date())
 	const [endTime, handleEndTimeChange] = useState(new Date())
 	const [error, setError] = useState(null)
+	/**
+	 * set theme for date/time picker to match 'blue A700'
+	 */
 	const materialTheme = createMuiTheme({
 		palette: {
 			primary: { main: blue['A700'] },
@@ -36,7 +42,9 @@ export default function AddActivityForm() {
 			)
 			const data = await res.json()
 			if (data.error) throw data.error
-
+			/**
+			 * send user to '/dashboard' after successful post
+			 */
 			history.push('/dashboard')
 		} catch (error) {
 			setError(error)

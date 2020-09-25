@@ -11,7 +11,13 @@ import PrivateRoute from './routes/PrivateRoute/PrivateRoute'
 import { UserContext } from './context/UserContext'
 
 function App() {
+	/**
+	 *  will render if state variable ischanged
+	 */
 	const [isLogged] = useState(useContext(UserContext))
+	/**
+	 * This component returns all views in the app
+	 */
 	return (
 		<div className='App'>
 			<Switch>

@@ -3,6 +3,9 @@ import AddActivityForm from './AddActivityForm/AddActivityForm'
 import './NewActivity.css'
 
 export default function NewActivity() {
+	/**
+	 * This component returns a form component and a header
+	 */
 	return (
 		<main>
 			<header className='dashboard__header'>

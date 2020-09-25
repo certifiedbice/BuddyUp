@@ -12,7 +12,10 @@ export default function Login() {
 	const [error, setError] = useState(null)
 	const history = useHistory()
 	const { setIsLogged } = useContext(UserContext)
-
+	/**
+	 * This component renders the login form as well as a header
+	 * after sucessful login, set browser token, set context to 'true' and send user to '/dashboard'
+	 */
 	const { values, handleChange, reset } = useForm({
 		username: '',
 		password: '',
@@ -42,6 +45,9 @@ export default function Login() {
 					body: JSON.stringify(user),
 				}
 			)
+			/**
+			 * after fetch, save token and set context to 'true', send user to '/dashboard'
+			 */
 			const data = await response.json()
 			TokenService.saveAuthToken(data.authToken)
 			setIsLogged()
