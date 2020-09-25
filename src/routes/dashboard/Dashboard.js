@@ -12,6 +12,11 @@ export default function Dashboard() {
 	const [activities, setActivities] = useState([])
 	const numActivities = activities.length || 0
 	useEffect(() => {
+		/**
+		 * on mount, fetch local activities.
+		 *  This is an unprotected api route.
+		 *
+		 */
 		const getLocalActivities = async () => {
 			try {
 				const response = await fetch(
@@ -38,13 +43,9 @@ export default function Dashboard() {
 		return () => {}
 	}, [error])
 
-	const handleLogOut = async () => {
-		try {
-			await TokenService.clearAuthToken()
-			history.push('/')
-		} catch (error) {
-			setError(error.message)
-		}
+	const handleLogOut = () => {
+		TokenService.clearAuthToken()
+		history.push('/')
 	}
 	const text = {
 		subHeaderText: 'Find or create your next event',

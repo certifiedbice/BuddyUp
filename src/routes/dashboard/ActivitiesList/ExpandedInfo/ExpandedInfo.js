@@ -14,6 +14,10 @@ export default function ExpandedInfo({
 	description,
 	tooltipText,
 }) {
+	/**
+	 * renders expanded activity info in a custom css modal
+	 * isRegistering is boolean - controls form display
+	 */
 	return (
 		<div className='modal'>
 			<div className='expanded__info'>

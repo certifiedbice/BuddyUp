@@ -5,6 +5,9 @@ export default function AccountActivityList({
 	activities,
 	...props
 }) {
+	/**
+	 * this component maps over  the activity list and returns the activity component as well as a frienly message if there are no activities
+	 */
 	return (
 		<section className='account-activity__section'>
 			{activities.length < 1 && (

@@ -8,13 +8,18 @@ export default function DashboardHeader({
 	subHeaderText,
 	numText,
 }) {
+	/**
+	 * this component renders the main dashboard header and navigation
+	 */
 	const match = useRouteMatch()
 	const history = useHistory()
 	const logOut = () => {
 		handleLogOut()
 		history.push('/')
 	}
-
+	/**
+	 * middle nav button is conditionally rendered, depending on the current location
+	 */
 	const renderMiddleButton = () => {
 		if (match.path !== '/account') {
 			return (

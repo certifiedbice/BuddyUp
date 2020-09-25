@@ -1,6 +1,8 @@
 import jwtDecode from 'jwt-decode'
 import config from '../config'
-
+/**
+ * service object to assist in saving, removing, verifying browser token
+ */
 let _timeoutId
 const _TEN_SECONDS_IN_MS = 10000
 

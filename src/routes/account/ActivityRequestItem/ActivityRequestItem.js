@@ -11,26 +11,27 @@ export default function ActivityRequestItem({
 }) {
 	const [isApproved, setIsApproved] = useState(is_approved)
 	const [error, setError] = useState(null)
-
+	/**
+	 * this component renders the list of users waiting to be accepted to the activity
+	 */
 	async function handleToggle() {
 		try {
-			const Response = await fetch(
+			const response = await fetch(
 				`${config.API_ENDPOINT}/signups/approval/${id}`,
 				{
 					method: 'PATCH',
 					headers: {
+						'content-type': 'application/json',
 						authorization: `Bearer ${TokenService.getAuthToken()}`,
 					},
 				}
 			)
-			const data = await Response.json()
-			if (data.error) throw data.error
+			if (!response.ok) throw await response.json()
 			setIsApproved((prev) => !prev)
 		} catch (error) {
-			setError(error)
+			setError(error.message)
 		}
 	}
-
 	return (
 		<div className='user__select__ctn'>
 			<div className='user__select__info'>

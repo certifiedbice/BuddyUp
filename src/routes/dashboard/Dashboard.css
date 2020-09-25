@@ -252,8 +252,13 @@ label.registering {
 	letter-spacing: 1pt;
 }
 
-.registering sup {
-	font-size: x-small;
+sup.registering__superscript {
+	vertical-align: super;
+	max-width: 50px;
+	font-size: 75%;
+	line-height: 0;
+	position: relative;
+	vertical-align: baseline;
 }
 
 @media screen and (min-width: 700px) {

@@ -13,12 +13,17 @@ export default function Activity({
 	end_time = '',
 	user_id,
 }) {
+	/**
+	 * this component renders the activity, children include expanded view and a form
+	 */
 	const [expanded, setExpanded] = useState(false)
 	const [registering, setRegistering] = useState(false)
 	const [user, setUser] = useState({})
 	const [error, setError] = useState(null)
 	const history = useHistory()
-
+	/**
+	 * parse prop date values to show appropriate start and end times
+	 */
 	let s = new Date(start_time)
 	let e = new Date(end_time)
 	let date = s.toLocaleDateString()
@@ -36,6 +41,12 @@ export default function Activity({
 	}
 	const { name } = user
 
+	/**
+	 *
+	 * @param {string} data
+	 *
+	 * function used on the signup form, date will represent user preferred contact information
+	 */
 	async function register(data) {
 		const response = await fetch(
 			`${config.API_ENDPOINT}/signups`,
@@ -64,6 +75,9 @@ export default function Activity({
 	const tooltipText =
 		'Please provide contact information so this user may communicate with you if you are accepted.'
 
+	/**
+	 * create object for register form to use in the expanded view
+	 */
 	const forRegister = {
 		isRegistering: registering,
 		tooltipText,

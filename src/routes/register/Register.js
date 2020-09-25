@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import useForm from '../../hooks/useForm'
 import SubmitButton from '../../components/form/SubmitButton'
 import Input from '../../components/form/Input'
@@ -6,10 +6,17 @@ import { Link, useHistory } from 'react-router-dom'
 import './Register.css'
 import config from '../../config'
 import TokenService from '../../services/token-service'
+import { UserContext } from '../../context/UserContext'
 
 export default function Register() {
 	const history = useHistory()
 	const [error, setError] = useState(null)
+	const { setIsLogged } = useContext(UserContext)
+	/**
+	 * this component renders the registration form
+	 * uses a custom form hook to process values.
+	 * after successul post, save browser token and send user to '/dashboard'
+	 */
 	const { values, handleChange, reset } = useForm({
 		name: '',
 		username: '',
@@ -60,6 +67,7 @@ export default function Register() {
 			const { saveAuthToken } = TokenService
 
 			saveAuthToken(authToken)
+			setIsLogged()
 			history.push('/dashboard')
 		} catch (error) {
 			setError(error.error)
