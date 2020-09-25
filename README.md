@@ -4,7 +4,7 @@ BuddyUp is an application that allows you to organize and create activities in y
 
 ## Landing Page
 
-[Landing Page] (/assets/buddyup-landing.png)
+![Landing Page](./assets/buddyup-landing.png)
 
 ## Authors
 
