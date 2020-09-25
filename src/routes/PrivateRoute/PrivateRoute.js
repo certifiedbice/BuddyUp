@@ -5,7 +5,6 @@ import { UserContext } from '../../context/UserContext'
 export default function PrivateRoute({ component, ...props }) {
 	const Component = component
 	const [context] = useState(useContext(UserContext))
-	console.log(context.isLogged)
 	return (
 		<Route
 			{...props}
