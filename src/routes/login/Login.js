@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import './Login.css'
 import Input from '../../components/form/Input'
 import { Link, useHistory } from 'react-router-dom'
@@ -6,10 +6,12 @@ import useForm from '../../hooks/useForm'
 import SubmitButton from '../../components/form/SubmitButton'
 import config from '../../config'
 import TokenService from '../../services/token-service'
+import { UserContext } from '../../context/UserContext'
 
 export default function Login() {
 	const [error, setError] = useState(null)
 	const history = useHistory()
+	const { setIsLogged } = useContext(UserContext)
 
 	const { values, handleChange, reset } = useForm({
 		username: '',
@@ -43,11 +45,13 @@ export default function Login() {
 			)
 			const data = await response.json()
 			TokenService.saveAuthToken(data.authToken)
+			setIsLogged()
 			history.push('/dashboard')
 		} catch (error) {
 			setError(error.error)
 		}
 	}
+
 	return (
 		<>
 			<header className='header'>
