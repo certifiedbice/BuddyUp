@@ -11,7 +11,9 @@ export default function ActivityRequestItem({
 }) {
 	const [isApproved, setIsApproved] = useState(is_approved)
 	const [error, setError] = useState(null)
-
+	/**
+	 * this component renders the list of users waiting to be accepted to the activity
+	 */
 	async function handleToggle() {
 		try {
 			const response = await fetch(

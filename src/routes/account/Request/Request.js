@@ -15,7 +15,10 @@ export default function Request({
 	const [activity, setActivity] = useState({})
 	const [user, setUser] = useState({})
 	const [error, setError] = useState('')
-
+	/**
+	 * this component renders the users requested activites
+	 * on mount it fetches the requests from the database
+	 */
 	const { title } = activity
 
 	let { name } = user

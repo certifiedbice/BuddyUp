@@ -8,6 +8,9 @@ export default function RegisteringInfo({
 	tooltipText,
 	setRegistering,
 }) {
+	/**
+	 * this component renders a form allowing the user to input preferred contact information
+	 */
 	return (
 		<form
 			onSubmit={handleSubmit}

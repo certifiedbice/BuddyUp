@@ -16,6 +16,9 @@ export default function Activity({
 	const [requests, setRequests] = useState([])
 	const [error, setError] = useState(null)
 
+	/**
+	 * on mount of this component, fetch the activity requests to display on the expanded view
+	 */
 	useEffect(() => {
 		const getActivityRequests = async () => {
 			try {
@@ -41,7 +44,9 @@ export default function Activity({
 		}
 		return () => {}
 	}, [id, error, toggle])
-
+	/**
+	 * parse date objects to local time
+	 */
 	let s = new Date(start_time)
 	let e = new Date(end_time)
 	let sTime = s.toLocaleTimeString([], {

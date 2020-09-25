@@ -11,7 +11,13 @@ export default function Account() {
 	const [activities, setActivities] = useState([])
 	const [requests, setRequests] = useState([])
 	const [toggleList, handleToggleList] = useState(false)
-
+	/**
+	 * this component renders the account page
+	 * on mount fetch the user activities, which is a protected api route,
+	 * as well as the user requests
+	 *
+	 * both views are rendered conditionally by the nav controls
+	 */
 	useEffect(() => {
 		const getUserActivities = async () => {
 			try {

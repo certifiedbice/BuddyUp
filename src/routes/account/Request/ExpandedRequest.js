@@ -6,6 +6,9 @@ export default function ExpandedRequest({
 	title,
 	...props
 }) {
+	/**
+	 * this component returns a detailed card view of the requested activity in a custom css modal
+	 */
 	const s = new Date(props.start_time)
 	const e = new Date(props.end_time)
 	let sTime = s.toLocaleTimeString([], {

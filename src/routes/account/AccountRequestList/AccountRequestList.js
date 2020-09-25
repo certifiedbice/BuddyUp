@@ -2,6 +2,9 @@ import React from 'react'
 import Request from '../Request/Request'
 
 export default function AccountRequestList({ requests, ...props }) {
+	/**
+	 * this component maps over the user's requests and renders the user's pending or accepted requests
+	 */
 	return (
 		<section className='account-activity__section'>
 			{requests.length < 1 && (
