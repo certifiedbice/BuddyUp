@@ -3,7 +3,7 @@
 module.exports = {
   development: {
     client: 'pg',
-    connection: 'postgresql://buddyup@localhost/buddyup',
+    connection: process.env.DATABASE_URL,
     migrations: {
       directory: __dirname + '/db/migrations',
     },
@@ -13,15 +13,14 @@ module.exports = {
   },
   test: {
     client: 'pg',
-    connection: 'postgresql://buddyup@localhost/buddyup-test',
+    connection: process.env.TEST_DATABASE_URL,
     migrations: {
       directory: __dirname + '/db/migrations',
     },
     seeds: {
-      directory: __dirname + '/db/test/seeds',
+      directory: __dirname + '/db/seeds',
     },
   },
-
   production: {
     client: 'pg',
     connection: process.env.DATABASE_URL,

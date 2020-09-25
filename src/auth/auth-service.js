@@ -1,10 +1,11 @@
 const bcrypt=require('bcryptjs');
 const jwt=require('jsonwebtoken');
 const config=require('../config');
+const knex = require('../../db/knex');
 
 const AuthService={
 	getUserWithUserName(db,username){
-		return db('users')
+		return knex('users')
 		.where({username})
 		.first();
 	},

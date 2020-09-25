@@ -4,15 +4,42 @@ const express = require('express');
 const jsonBodyParser = express.json();
 
 const SignupsService = require('./signups-service');
+const ActivitiesService = require('../activities/activities-service');
 const { isValidSignup } = require('../../utils/isValidSignup');
+const { requireAuth } = require('../middleware/jwt-auth');
 
 const signupsRouter = express.Router();
 
-signupsRouter.get('/', jsonBodyParser, async (req, res, next) => {
+signupsRouter.use(requireAuth).use(async (req, res, next) => {
   try {
-    const signups = req.body.activity_id
-      ? await SignupsService.getAllForActivity(req.body.activity_id)
-      : await SignupsService.getAll();
+    const userSignups = await SignupsService.getAllForUser(req.user.id);
+    if (!userSignups)
+      return res.status(404).json({
+        error: `You don't have any activities`,
+      });
+    req.userSignups = userSignups;
+    next();
+  } catch (error) {
+    next(error);
+  }
+});
+
+signupsRouter.get('/', jsonBodyParser, async (req, res, next) => {
+  console.log(req.query);
+  try {
+    const activity = !isNaN(req.query.activity_id)
+      ? await ActivitiesService.getOne(req.query.activity_id)
+      : null;
+
+    if (typeof activity !== 'object' && activity.user_id !== req.user.id)
+      return next({
+        status: 401,
+        message: `Unauthorized: This activity belongs to another user.`,
+      });
+
+    const signups = !isNaN(req.query.activity_id)
+      ? await SignupsService.getAllForActivity(req.query.activity_id)
+      : await SignupsService.getAllForUser(req.user.id);
 
     if (!signups)
       return next({
@@ -21,6 +48,35 @@ signupsRouter.get('/', jsonBodyParser, async (req, res, next) => {
       });
 
     return res.status(200).json(signups);
+  } catch (error) {
+    return next({ status: 500, message: error.message });
+  }
+});
+
+signupsRouter.patch('/approval/:id', jsonBodyParser, async (req, res, next) => {
+  const { id } = req.params;
+
+  try {
+    const signup = await SignupsService.getOne(id);
+    const activity = await ActivitiesService.getOne(signup.activity_id);
+
+    if (!signup)
+      return next({
+        status: 404,
+        message: `Unable to find signup with id ${id}.`,
+      });
+
+    if (activity.user_id !== req.user.id)
+      return next({
+        status: 401,
+        message: `You may not approve signups to activities owned by another user.`,
+      });
+
+    const isApproved = !signup.is_approved;
+
+    await SignupsService.update(id, { is_approved: isApproved });
+
+    return res.status(204).send();
   } catch (error) {
     return next({ status: 500, message: error.message });
   }
@@ -35,6 +91,14 @@ signupsRouter.get('/approved', jsonBodyParser, async (req, res, next) => {
       });
 
     const { activity_id } = req.body;
+    const activity = await ActivitiesService.getOne(activity_id);
+
+    if (activity.user_id !== req.user.id)
+      return next({
+        status: 401,
+        message: `Unauthorized: This activity belongs to another user.`,
+      });
+
     const signups = await SignupsService.getApprovedForActivity(activity_id);
 
     if (!signups)
@@ -50,9 +114,9 @@ signupsRouter.get('/approved', jsonBodyParser, async (req, res, next) => {
 });
 
 signupsRouter.post('/', jsonBodyParser, async (req, res, next) => {
-  const { user_id, activity_id, contact_info } = req.body;
+  const { activity_id, contact_info } = req.body;
   const newSignup = {
-    user_id,
+    user_id: req.user.id,
     activity_id,
     contact_info,
     is_approved: false,
@@ -90,20 +154,33 @@ signupsRouter.get('/:id', async (req, res, next) => {
   }
 });
 
-signupsRouter.patch('/:id', async (req, res, next) => {
+signupsRouter.patch('/:id', jsonBodyParser, async (req, res, next) => {
   const { id } = req.params;
 
   try {
-    const signup = await SignupsService.update(id, req.body);
-    console.log(signup);
+    if (req.body.is_approved)
+      return next({
+        status: 401,
+        message: `Unauthorized: Users may not approve themselves.`,
+      });
+
+    const signup = await SignupsService.getOne(id);
 
     if (!signup)
       return next({
         status: 404,
-        message: `Unable to update signup with id ${id}`,
+        message: `Unable to find signup with id ${id}.`,
       });
 
-    return res.status(200).json(signup);
+    if (signup.user_id !== req.user.id)
+      return next({
+        status: 401,
+        message: `You may not update a signup owned by another user.`,
+      });
+
+    await SignupsService.update(id, req.body);
+
+    return res.status(204).send();
   } catch (error) {
     return next({ status: 500, message: error.message });
   }
@@ -113,7 +190,7 @@ signupsRouter.delete('/:id', async (req, res, next) => {
   const { id } = req.params;
 
   try {
-    const signup = await SignupsService.remove(id);
+    const signup = await SignupsService.getOne(id);
 
     if (!signup)
       return next({
@@ -121,7 +198,15 @@ signupsRouter.delete('/:id', async (req, res, next) => {
         message: `Unable to find signup with id ${id}`,
       });
 
-    return res.status(200).json(id);
+    if (signup.user_id !== req.user.id)
+      return next({
+        status: 401,
+        message: `You may not delete a signup owned by another user.`,
+      });
+
+    await SignupsService.remove(id);
+
+    return res.status(204).send();
   } catch (error) {
     return next({ status: 500, message: error.message });
   }

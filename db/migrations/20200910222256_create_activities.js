@@ -4,7 +4,12 @@ exports.up = function (knex) {
     table.text('title').notNullable();
     table.text('description').notNullable();
     table.integer('zip_code').notNullable();
-    table.integer('user_id').references('id').inTable('users').notNullable();
+    table
+      .integer('user_id')
+    //   .references('id')
+    //   .inTable('users')
+      .notNullable()
+    //   .onDelete('CASCADE');
     table.timestamp('start_time').notNullable();
     table.timestamp('end_time').notNullable();
   });
