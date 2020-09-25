@@ -134,6 +134,25 @@ PATCH method to toggle "is_approved" value of signup by id in path
 
 - User must own activity the signup is for
 
+## Authors
+
+Camden Miller, Kenneth Bice, Matt Patterson, Christopher Bogan, & George Brown
+
+## Technologies
+
+- Javascript
+- Express.js
+- Knex.js
+- PosgreSQL
+- Bcrypt.js
+- CORS
+- JWT
+- Postgrator
+- XSS
+- Chai
+- Mocha
+- NodeMon
+
 ## GIST:
 
 https://gist.github.com%2FCamdenQ%2F2711c1e9243373e3017c4edcf86099af
@@ -151,3 +170,72 @@ https://github.com/thinkful-ei-panda/buddyup-api.git
 ## Trello
 
 https://trello.com/b/gnD5pmC0/buddyup
+
+# BuddyUp Client!
+
+BuddyUp is an application that allows you to organize and create activities in your area. Meet new friends while doing the activies you enjoy with BuddyUp!
+
+## Landing Page
+
+This is the initial view upon navigating to the app's home page.
+![Landing Page](./assets/buddyup-landing.png)
+
+## Registration
+
+Here you can register with an email (which will be the user's username), password, name, and ZIP code (for displaying only local activities)
+![Registration](./assets/buddyup-register.png)
+
+## Login
+
+Here the user can log in
+![Login](./assets/buddyup-login.png)
+
+## Dashboard
+
+This shows all activities in the user's area. This page can be navigated to from most pages by clicking "Home" in the navigation bar.
+![Dashboard](./assets/buddyup-dashboard.png)
+
+This is what it looks like when the user clicks an activity. Many additional details are displayed.
+![Dashboard Activity Details](./assets/buddyup-dashboard-activity-details.png)
+
+This is what it looks like when the user clicks "Sign up" on an activity. A contact method is requested so the activity creator and the user can communicate, as there is no messaging service in this app (yet).
+![Dashboard Activity Signup](./assets/buddyup-dashboard-activity-signup.png)
+
+## Activity Creation
+
+This is the form for creating a new activity.
+![Create Activity](./assets/buddyup-create-activity.png)
+
+This is how the user chooses the time and date for the activity
+![Create Activity Time Picker](./assets/buddyup-create-activity-time-picker.png)
+
+## Account Overview
+
+On the "Account" page, the user can see the activities and signup requests the user has made. This is the list of activities, which can be seen by clicking "Activities".
+![Account Activities](./assets/buddyup-account-activity-list.png)
+
+This is what it looks like when the user clicks an activity, showing additional details including who, if anybody, has signed up for the event. This view is how these signups are accepted, by clicking the toggle to the right of the user's name and contact information.
+![Account Activity Details](./assets/buddyup-account-activity-details.png)
+
+This is the list of signups, which can be seen by clicking "Requests"
+![Account Signups](./assets/buddyup-account-signups-list.png)
+
+This is what it looks like when an individual request is clicked in the link, showing the details of the event the user has signed up for.
+![Account Signup Details](./assets/buddyup-account-signup-details.png)
+
+## Authors
+
+Matt Patterson, Camden Miller, Christopher Bogan, Kenneth Bice, & George Brown
+
+## Technologies
+
+- Javascript
+- HTML 5
+- CSS 3
+- Node.js
+- React.js
+- JWT
+- Material UI
+- Date-IO
+- Chai
+- Mocha
