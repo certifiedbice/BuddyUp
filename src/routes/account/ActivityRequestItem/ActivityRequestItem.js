@@ -24,7 +24,6 @@ export default function ActivityRequestItem({
 					},
 				}
 			)
-			console.log(response)
 			if (!response.ok) throw await response.json()
 			setIsApproved((prev) => !prev)
 		} catch (error) {

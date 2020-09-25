@@ -1,5 +1,5 @@
-const { createContext } = require('react')
-const { default: TokenService } = require('../services/token-service')
+import { createContext } from 'react'
+import TokenService from '../services/token-service'
 
 const user = {
 	isLogged: TokenService.hasAuthToken(),
