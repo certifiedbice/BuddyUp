@@ -65,6 +65,12 @@ export default function Dashboard() {
 						making one of your own!
 					</p>
 				)}
+				{activities.length > 0 && (
+					<p>
+						Click an activity card to see more details and
+						to sign up!
+					</p>
+				)}
 				<ul className='event__list'>
 					{activities &&
 						activities.map((activity) => (
