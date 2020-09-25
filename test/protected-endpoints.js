@@ -6,7 +6,7 @@ before(() => {
 	return knex.migrate.latest().then(() => knex.seed.run());
 });
 
-describe.only(`Protected endpoints`,()=>{
+describe(`Protected endpoints`,()=>{
 	const protectedEndpoints=[
 		{
 			name:'GET /api/signups',
@@ -28,7 +28,6 @@ describe.only(`Protected endpoints`,()=>{
 			path:'/api/signups/approval/:id',
   			method:supertest(app).patch
 		},
-		
 		{
 			name:'POST /api/activities',
 			path:'/api/activities',

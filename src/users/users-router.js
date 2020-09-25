@@ -9,7 +9,6 @@ usersRouter.get('/:id', async (req, res, next) => {
 
   try {
     const user = await UsersService.getOne(id);
-
     if (!user)
       return next({
         status: 404,
@@ -18,7 +17,7 @@ usersRouter.get('/:id', async (req, res, next) => {
 
     return res.status(200).json(user);
   } catch (error) {
-    return next({ status: 500, message: error.message });
+    return next({ status: 404, message: error.message });
   }
 });
 
@@ -39,7 +38,7 @@ usersRouter.post('/', jsonBodyParser, (req, res, next) => {
   UsersService.hasUserWithUserName(req.app.get('db'), username)
     .then((hasUserWithUsername) => {
       if (hasUserWithUsername) {
-        return res.status(400).json({ error: `username already taken` });
+        return res.status(400).json({ error: `Username already taken` });
       }
       return UsersService.hashPassword(password).then((hashedPassword) => {
         const newUser = {

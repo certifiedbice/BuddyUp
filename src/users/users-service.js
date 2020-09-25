@@ -7,19 +7,19 @@ const AuthService = require('../auth/auth-service');
 
 const UsersService = {
   getOne(id) {
-    return knex('users')
+  	return knex('users')
       .select('username', 'name', 'zip_code', 'date_registered')
       .where({ id })
       .first();
   },
   hasUserWithUserName(db, username) {
-    return db('users')
+    return knex('users')
       .where({ username })
       .first()
       .then((user) => !!user);
   },
   insertUser(db, newUser) {
-    return db
+    return knex
       .insert(newUser)
       .into('users')
       .returning('*')

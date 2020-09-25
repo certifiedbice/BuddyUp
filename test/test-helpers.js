@@ -2,43 +2,48 @@ const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 
 function makeUsersArray() {
-  return [
-    {
-      username: 'shawn@psych.com',
-      name: 'Shawn Spencer',
-      password: 'Zippy$$93',
-      zip_code: '93117',
-      date_registered: '2020-08-07 15:21:25',
-    },
-    {
-      username: 'red@hood.com',
-      name: 'Jason Todd',
-      password: 'Boopy##39',
-      zip_code: '70032',
-      date_registered: '2020-08-07 15:21:25',
-    },
-    {
-      username: 'forgetfootball@mets.com',
-      name: 'Tim Tebow',
-      password: 'Jiffy%%76',
-      zip_code: '11368',
-      date_registered: '2020-08-07 15:21:25',
-    },
-    {
-      username: 'fortuneteller@gmail.com',
-      name: 'Crystal Ball',
-      password: 'Puffy**21',
-      zip_code: '60290',
-      date_registered: '2020-08-07 15:21:25',
-    },
-    {
-      username: 'no1diehardfan@gmail.com',
-      name: 'Jake Peralta',
-      password: 'rappy!!45',
-      zip_code: '11215',
-      date_registered: '2020-08-07 15:21:25',
-    },
-  ];
+	return [
+		{
+		id:13,
+		username: 'shawn@psych.com',
+		name: 'Shawn Spencer',
+		password: 'Zippy$$93',
+		zip_code: 93117,
+		date_registered: '2020-09-25T11:09:30.888Z',
+		},
+		{
+		id:2,
+		username: 'red@hood.com',
+		name: 'Jason Todd',
+		password: 'Boopy##39',
+		zip_code: '70032',
+		date_registered: '2020-08-07 15:21:25',
+		},
+		{
+		id:3,
+		username: 'forgetfootball@mets.com',
+		name: 'Tim Tebow',
+		password: 'Jiffy%%76',
+		zip_code: '11368',
+		date_registered: '2020-08-07 15:21:25',
+		},
+		{
+		id:4,
+		username: 'fortuneteller@gmail.com',
+		name: 'Crystal Ball',
+		password: 'Puffy**21',
+		zip_code: '60290',
+		date_registered: '2020-08-07 15:21:25',
+		},
+		{
+		id:5,
+		username: 'no1diehardfan@gmail.com',
+		name: 'Jake Peralta',
+		password: 'rappy!!45',
+		zip_code: '11215',
+		date_registered: '2020-08-07 15:21:25',
+		},
+	];
 }
 
 function makeActivitiesArray() {

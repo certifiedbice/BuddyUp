@@ -46,7 +46,7 @@ exports.seed = function (knex) {
           description:
             "The weather is supposed to be nice, so let's go for a hike! Skype or Snapchat preferred.",
           zip_code: 12345,
-          user_id: 6,
+          user_id: 3,
           start_time: '2020-12-25 12:00:00-00',
           end_time: '2020-12-25 13:00:00-00',
         },
@@ -55,7 +55,7 @@ exports.seed = function (knex) {
           description:
             "I'm going swimming in the river later! Any takers? Skype or Snapchat preferred.",
           zip_code: 12345,
-          user_id: 6,
+          user_id: 1,
           start_time: '2020-12-25 12:00:00-00',
           end_time: '2020-12-25 13:00:00-00',
         },
