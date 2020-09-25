@@ -27,7 +27,6 @@ export default function Login() {
 		} else if (password.split().join() === ' ') {
 			setError('Passwords cannot be blank')
 		} else {
-			console.log(values)
 			handleLogin({ username, password })
 			reset()
 		}

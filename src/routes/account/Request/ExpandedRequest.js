@@ -6,7 +6,6 @@ export default function ExpandedRequest({
 	title,
 	...props
 }) {
-	console.log(props)
 	const s = new Date(props.start_time)
 	const e = new Date(props.end_time)
 	let sTime = s.toLocaleTimeString([], {
