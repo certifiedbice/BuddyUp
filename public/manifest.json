@@ -1,6 +1,6 @@
 {
-	"short_name": "React App",
-	"name": "Create React App Sample",
+	"short_name": "BuddyUp",
+	"name": "BuddyUp: Find local activities and people!",
 	"icons": [
 		{
 			"src": "favicon.ico",
