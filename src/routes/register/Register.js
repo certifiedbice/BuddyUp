@@ -63,6 +63,7 @@ export default function Register() {
 				}
 			)
 			const data = await response.json()
+			if (data.error) throw data.error
 			const { authToken } = data.password
 			const { saveAuthToken } = TokenService
 
@@ -70,7 +71,7 @@ export default function Register() {
 			setIsLogged()
 			history.push('/dashboard')
 		} catch (error) {
-			setError(error.error)
+			setError(error)
 		}
 	}
 	return (

@@ -19,15 +19,13 @@ export default function Login() {
 	const { values, handleChange, reset } = useForm({
 		username: '',
 		password: '',
-		password_2: '',
 	})
 
 	const handleSubmit = (e) => {
 		e.preventDefault()
-		const { username, password, password_2 } = values
-		if (password !== password_2) {
-			setError('Passwords do not match')
-		} else if (password.split().join() === ' ') {
+		const { username, password } = values
+
+		if (password.split().join() === ' ') {
 			setError('Passwords cannot be blank')
 		} else {
 			handleLogin({ username, password })
@@ -49,7 +47,7 @@ export default function Login() {
 			 * after fetch, save token and set context to 'true', send user to '/dashboard'
 			 */
 			const data = await response.json()
-			if(data.error) throw data.error
+			if (data.error) throw data.error
 			TokenService.saveAuthToken(data.authToken)
 			setIsLogged()
 			history.push('/dashboard')
@@ -94,20 +92,6 @@ export default function Login() {
 							value={values.password}
 							required
 						/>
-						{values.password && (
-							<Input
-								aria-label='Confirm Password'
-								placeholder='Confirm Password'
-								name='password_2'
-								type='password'
-								value={values.password_2}
-								onChange={(e) => {
-									handleChange(e)
-									setError(null)
-								}}
-								required
-							/>
-						)}
 					</div>
 
 					<SubmitButton
