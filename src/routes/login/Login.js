@@ -49,11 +49,12 @@ export default function Login() {
 			 * after fetch, save token and set context to 'true', send user to '/dashboard'
 			 */
 			const data = await response.json()
+			if(data.error) throw data.error
 			TokenService.saveAuthToken(data.authToken)
 			setIsLogged()
 			history.push('/dashboard')
 		} catch (error) {
-			setError(error.error)
+			setError(error)
 		}
 	}
 
