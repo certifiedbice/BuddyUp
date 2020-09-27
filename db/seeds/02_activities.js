@@ -10,7 +10,7 @@ exports.seed = function (knex) {
           description:
             "I'll be holding a free séance in the park. Up to 3 people are welcome! Leave your WhatsApp, WeChat, or Snapchat and let's talk to some spirits!",
           zip_code: 12345,
-          user_id: 1,
+          user_id: 19,
           start_time: '2020-10-20 15:00:00-00',
           end_time: '2020-10-20 16:00:00-00',
         },
@@ -55,7 +55,7 @@ exports.seed = function (knex) {
           description:
             "I'm going swimming in the river later! Any takers? Skype or Snapchat preferred.",
           zip_code: 12345,
-          user_id: 1,
+          user_id: 19,
           start_time: '2020-12-25 12:00:00-00',
           end_time: '2020-12-25 13:00:00-00',
         },

@@ -82,6 +82,12 @@ PATCH method to update activity with given id.
 
 - Responds with updated activity values
 
+DELETE method to delete activity by activity id.
+
+- No body required.
+
+- Responds with status 204.
+
 ### /api/signups
 
 GET method to fetch list of signups.

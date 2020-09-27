@@ -4,7 +4,7 @@ const jwt = require('jsonwebtoken');
 function makeUsersArray() {
 	return [
 		{
-		id:13,
+		id:19,
 		username: 'shawn@psych.com',
 		name: 'Shawn Spencer',
 		password: 'Zippy$$93',
@@ -52,7 +52,7 @@ function makeActivitiesArray() {
       title: 'Test Event 1',
       description: 'Test event description 1',
       zip_code: 12345,
-      user_id: 1,
+      user_id: 19,
       start_time: '2020-09-20 15:00:00-00',
       end_time: '2020-09-20 16:00:00-00',
     },
@@ -68,7 +68,7 @@ function makeActivitiesArray() {
       title: 'Test Event 3',
       description: 'Test event description 3',
       zip_code: 12345,
-      user_id: 1,
+      user_id: 19,
       start_time: '2020-09-25 12:00:00-00',
       end_time: '2020-09-25 13:00:00-00',
     },
@@ -78,7 +78,7 @@ function makeActivitiesArray() {
 function makeSignupsArray() {
   return [
     {
-      user_id: 1,
+      user_id: 13,
       activity_id: 2,
       contact_info: 'Test Contact Info',
       is_approved: true,
@@ -255,7 +255,7 @@ function seedMaliciousActivity(db, activity) {
   return db.into('activities').insert([activity]);
 }
 
-function makeAuthHeader(user, secret = process.env.JWT_SECRET) {
+function makeAuthHeader(user, secret = 'im so lonely') {
   const token = jwt.sign({ user_id: user.id }, secret, {
     subject: user.username,
     algorithm: 'HS256',

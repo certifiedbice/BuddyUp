@@ -1,11 +1,7 @@
 const knex = require('../db/knex');
 const app=require('../src/app');
 const helpers=require('./test-helpers');
-
-before(() => {
-	return knex.migrate.latest().then(() => knex.seed.run());
-});
-
+before(()=>{return knex.migrate.latest().then(()=>knex.seed.run());});
 describe(`Protected endpoints`,()=>{
 	const protectedEndpoints=[
 		{

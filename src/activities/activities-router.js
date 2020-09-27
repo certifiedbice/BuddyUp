@@ -73,7 +73,6 @@ activitiesRouter.post('/',requireAuth, jsonBodyParser, async (req, res, next) =>
 
 activitiesRouter.get('/:id', async (req, res, next) => {
   const { id } = req.params;
-
   try {
     const activity = await ActivitiesService.getOne(id);
 
@@ -108,7 +107,6 @@ activitiesRouter.patch('/:id', jsonBodyParser, async (req, res, next) => {
       });
 
     await ActivitiesService.update(id, req.body);
-    console.log(activity);
 
     return res.status(204).send();
   } catch (error) {
@@ -121,19 +119,17 @@ activitiesRouter.delete('/:id', async (req, res, next) => {
 
   try {
     const activity = await ActivitiesService.getOne(id);
-
     if (!activity)
       return next({
         status: 404,
         message: `Unable to find activity with id ${id}`,
       });
-
-    if (activity.user_id !== req.user.id)
+    if (activity.user_id !== req.user.id){
       return next({
-        stats: 401,
+        status: 401,
         message: `You may not delete activity belonging to another user`,
       });
-
+	}
     await ActivitiesService.remove(id);
 
     return res.status(204).send();

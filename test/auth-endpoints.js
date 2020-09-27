@@ -1,4 +1,4 @@
-const knex = require('../db/knex');
+const knex = require('../db/knex');//({pool: { min: 0, max: 7 }});;
 const jwt=require('jsonwebtoken');
 const app=require('../src/app');
 const helpers=require('./test-helpers');
@@ -6,11 +6,8 @@ const config=require('../src/config');// Can be removed if references to process
 describe('Auth Endpoints',function(){
   	const {testUsers}=helpers.makeActivitiesFixtures();
   	const testUser=testUsers[0];
-  	before(() => {
-		return knex.migrate.latest().then(() => knex.seed.run());
-	});
-
-  	describe(`POST /api/auth/login`,()=>{
+  	before(()=>{return knex.migrate.latest().then(()=>knex.seed.run())});
+	describe(`POST /api/auth/login`,()=>{
 		const requiredFields=['username','password'];
 		requiredFields.forEach(field=>{
 			const loginAttemptBody={

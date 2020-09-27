@@ -3,15 +3,10 @@ const bcrypt=require('bcryptjs');
 const app=require('../src/app');
 const AuthService=require('../src/auth/auth-service');
 const helpers=require('./test-helpers');
-
 describe('Users Endpoints',function(){
 	const {testUsers}=helpers.makeActivitiesFixtures();
 	const testUser=testUsers[0];
-
-	before(() => {
-		return knex.migrate.latest().then(() => knex.seed.run());
-	});
-
+	before(()=>{return knex.migrate.latest().then(()=>knex.seed.run());});
 	describe(`POST /api/users`,()=>{
 		context(`User Validation`,()=>{
 			const requiredFields=['username','name','password','zip_code'];
@@ -115,7 +110,7 @@ describe('Users Endpoints',function(){
 		context('Given there are users in the database',()=>{
 			it('responds with 200 and the specified user',()=>{
 				return supertest(app)
-					.get(`/api/users/13`)
+					.get(`/api/users/19`)
 					.expect(200);
 			});
 		});
