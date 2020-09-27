@@ -38,6 +38,8 @@ export default function Register() {
 			setError('Passwords do not match')
 		} else if (password.split().join() === ' ') {
 			setError('Passwords cannot be blank')
+		} else if (zip_code.length !== 5 || isNaN(zip_code)) {
+			setError('Zip Code must be a 5-digit number')
 		} else {
 			let user = {
 				name,
