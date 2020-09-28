@@ -3,10 +3,13 @@ exports.seed = function (knex) {
   return knex('signups')
     .del()
     .then(function () {
+		return knex.raw('ALTER SEQUENCE signups_id_seq RESTART WITH 1')
+	})
+	.then(function () {
       // Inserts seed entries
       return knex('signups').insert([
         {
-          user_id: 13,
+          user_id: 1,
           activity_id: 2,
           contact_info: 'Telegram: AmazingPsychMan',
           is_approved: true,
@@ -30,7 +33,7 @@ exports.seed = function (knex) {
           is_approved: false,
         },
         {
-          user_id: 13,
+          user_id: 1,
           activity_id: 5,
           contact_info: 'Snapchat: AmazingPsychMan',
           is_approved: true,

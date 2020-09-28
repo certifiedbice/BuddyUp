@@ -10,6 +10,6 @@ module.exports = {
     'postgresql:/buddyup:buddyup@localhost/buddyup-test',
   JWT_SECRET:'im so lonely',
 //   JWT_SECRET: process.env.JWT_SECRET || 'im so lonely',
+//   JWT_EXPIRY:'3h',
   JWT_EXPIRY:'3h',
-//   JWT_EXPIRY: process.env.JWT_EXPIRY || '3h',
 };

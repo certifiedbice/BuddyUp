@@ -2,7 +2,7 @@ const knex = require('../db/knex');//({pool: { min: 0, max: 7 }});;
 const jwt=require('jsonwebtoken');
 const app=require('../src/app');
 const helpers=require('./test-helpers');
-const config=require('../src/config');// Can be removed if references to process.env worked.
+const config=require('../src/config');
 describe('Auth Endpoints',function(){
   	const {testUsers}=helpers.makeActivitiesFixtures();
   	const testUser=testUsers[0];
@@ -37,14 +37,11 @@ describe('Auth Endpoints',function(){
 			});
 			it(`responds 200 and JWT auth token using secret when valid credentials`, () => {
 				const userValidCreds={username:testUser.username,password:testUser.password};
-				// Sparadic results here, sometimes this test unexpectedly fails and other times it doesn't, noticed a long execution time.
-				console.log(userValidCreds)
-				console.log(testUser)
 				const expectedToken=jwt.sign(
-					{user_id:7},process.env.JWT_SECRET, // Reference here to process.env.JWT_SECRET wouldn't work.
+					{user_id:1},config.JWT_SECRET,
 				  	{
 					  subject:testUser.username,
-					  expiresIn:config.JWT_EXPIRY, // Reference here to process.env.JWT_EXPIRY wouldn't work.
+					  expiresIn:config.JWT_EXPIRY,
 					  algorithm:'HS256'
 					}
 				);

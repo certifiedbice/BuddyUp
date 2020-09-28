@@ -43,7 +43,7 @@ describe('Activities Endpoints',function(){
 		context(`Given activity`,()=>{
 	  		it(`responds with 204`,()=>{
 				return supertest(app)
-		  		.patch('/api/activities/19')
+		  		.patch('/api/activities/1')
 			  	.set('Authorization',helpers.makeAuthHeader(testUsers[0]))
 				.send({'title':'foobar'})
 		  		.expect(204);
@@ -54,7 +54,7 @@ describe('Activities Endpoints',function(){
 		context(`Given activity`,()=>{
 	  		it(`responds with 204`,()=>{
 				return supertest(app)
-		  		.delete('/api/activities/19')
+		  		.delete('/api/activities/1')
 			  	.set('Authorization',helpers.makeAuthHeader(testUsers[0]))
 		  		.expect(204);
 	  		});

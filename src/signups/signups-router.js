@@ -60,18 +60,19 @@ signupsRouter.patch('/approval/:id', jsonBodyParser, async (req, res, next) => {
     const signup = await SignupsService.getOne(id);
     const activity = await ActivitiesService.getOne(signup.activity_id);
 
-    if (!signup)
+    if (!signup){
       return next({
         status: 404,
         message: `Unable to find signup with id ${id}.`,
       });
-
-    if (activity.user_id !== req.user.id)
+	}
+    if (activity.user_id !== req.user.id){
+		
       return next({
         status: 401,
         message: `You may not approve signups to activities owned by another user.`,
       });
-
+	}
     const isApproved = !signup.is_approved;
 
     await SignupsService.update(id, { is_approved: isApproved });
@@ -138,16 +139,15 @@ signupsRouter.post('/', jsonBodyParser, async (req, res, next) => {
 
 signupsRouter.get('/:id', async (req, res, next) => {
   const { id } = req.params;
-
   try {
     const signup = await SignupsService.getOne(id);
 
-    if (!signup)
+    if (!signup){
       return next({
         status: 404,
         message: `Unable to find signup with id ${id}`,
       });
-
+	}
     return res.status(200).json(signup);
   } catch (error) {
     return next({ status: 500, message: error.message });
@@ -156,28 +156,26 @@ signupsRouter.get('/:id', async (req, res, next) => {
 
 signupsRouter.patch('/:id', jsonBodyParser, async (req, res, next) => {
   const { id } = req.params;
-
   try {
-    if (req.body.is_approved)
+    if (req.body.is_approved){
       return next({
         status: 401,
         message: `Unauthorized: Users may not approve themselves.`,
       });
-
+	}
     const signup = await SignupsService.getOne(id);
-
-    if (!signup)
+    if (!signup){
       return next({
         status: 404,
         message: `Unable to find signup with id ${id}.`,
       });
-
-    if (signup.user_id !== req.user.id)
+	}
+    if (signup.user_id !== req.user.id){
       return next({
         status: 401,
         message: `You may not update a signup owned by another user.`,
       });
-
+	}
     await SignupsService.update(id, req.body);
 
     return res.status(204).send();

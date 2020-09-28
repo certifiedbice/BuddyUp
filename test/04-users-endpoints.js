@@ -110,7 +110,7 @@ describe('Users Endpoints',function(){
 		context('Given there are users in the database',()=>{
 			it('responds with 200 and the specified user',()=>{
 				return supertest(app)
-					.get(`/api/users/19`)
+					.get(`/api/users/1`)
 					.expect(200);
 			});
 		});

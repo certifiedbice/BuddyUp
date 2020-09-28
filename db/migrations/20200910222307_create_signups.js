@@ -3,16 +3,16 @@ exports.up = function (knex) {
     table.increments().primary().notNullable();
     table
       .integer('user_id')
-    //   .references('id')
-    //   .inTable('users')
+      .references('id')
+      .inTable('users')
       .notNullable()
-    //   .onDelete('CASCADE');
+      .onDelete('CASCADE');
     table
       .integer('activity_id')
-    //   .references('id')
-    //   .inTable('activities')
+      .references('id')
+      .inTable('activities')
       .notNullable()
-    //   .onDelete('CASCADE');
+      .onDelete('CASCADE');
     table.text('contact_info').notNullable();
     table.boolean('is_approved').defaultTo(true).notNullable();
   });

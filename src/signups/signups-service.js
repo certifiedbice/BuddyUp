@@ -56,6 +56,7 @@ const SignupsService = {
       .join('users', 'signups.user_id', '=', 'users.id')
       .first(
         'signups.id',
+		'user_id',
         knex.ref('users.name').as('user_name'),
         'signups.activity_id',
         'signups.contact_info',
