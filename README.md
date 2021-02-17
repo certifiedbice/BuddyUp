@@ -190,62 +190,62 @@ BuddyUp is an application that allows you to organize and create activities in y
 
 This is the initial view upon navigating to the app's home page.
 
-<img src="https://github.com/thinkful-ei-panda/buddyup-client/blob/master/assets/buddyup-landing.png" width="200" />
+<img src="images/buddyup-landing.png" width="200" />
 
 ## Registration
 
 Here you can register with an email (which will be the user's username), password, name, and ZIP code (for displaying only local activities)
 
 
-<img src="https://github.com/thinkful-ei-panda/buddyup-client/blob/master/assets/buddyup-register.png" width="200" />
+<img src="images/buddyup-register.png" width="200" />
 
 ## Login
 
 Here the user can log in
 
-<img src="https://github.com/thinkful-ei-panda/buddyup-client/blob/master/assets/buddyup-login.png" width="200" />
+<img src="images/buddyup-login.png" width="200" />
 
 ## Dashboard
 
 This shows all activities in the user's area. This page can be navigated to from most pages by clicking "Home" in the navigation bar.
 
-<img src="https://github.com/thinkful-ei-panda/buddyup-client/blob/master/assets/buddyup-dashboard.png" width="200" />
+<img src="images/buddyup-dashboard.png" width="200" />
 
 This is what it looks like when the user clicks an activity. Many additional details are displayed.
 
-<img src="https://github.com/thinkful-ei-panda/buddyup-client/blob/master/assets/buddyup-dashboard-activity-details.png" width="200" />
+<img src="images/buddyup-dashboard-activity-details.png" width="200" />
 
 This is what it looks like when the user clicks "Sign up" on an activity. A contact method is requested so the activity creator and the user can communicate, as there is no messaging service in this app (yet).
 
-<img src="https://github.com/thinkful-ei-panda/buddyup-client/blob/master/assets/buddyup-dashboard-activity-signup.png" width="200" />
+<img src="images/buddyup-dashboard-activity-signup.png" width="200" />
 
 ## Activity Creation
 
 This is the form for creating a new activity.
 
-<img src="https://github.com/thinkful-ei-panda/buddyup-client/blob/master/assets/buddyup-create-activity.png" width="200" />
+<img src="images/buddyup-create-activity.png" width="200" />
 
 This is how the user chooses the time and date for the activity
 
-<img src="https://github.com/thinkful-ei-panda/buddyup-client/blob/master/assets/buddyup-create-activity-time-picker.png" width="200" />
+<img src="images/buddyup-create-activity-time-picker.png" width="200" />
 
 ## Account Overview
 
 On the "Account" page, the user can see the activities and signup requests the user has made. This is the list of activities, which can be seen by clicking "Activities".
 
-<img src="https://github.com/thinkful-ei-panda/buddyup-client/blob/master/assets/buddyup-account-activity-list.png" width="200" />
+<img src="images/buddyup-account-activity-list.png" width="200" />
 
 This is what it looks like when the user clicks an activity, showing additional details including who, if anybody, has signed up for the event. This view is how these signups are accepted, by clicking the toggle to the right of the user's name and contact information.
 
-<img src="https://github.com/thinkful-ei-panda/buddyup-client/blob/master/assets/buddyup-account-activity-details.png" width="200" />
+<img src="images/buddyup-account-activity-details.png" width="200" />
 
 This is the list of signups, which can be seen by clicking "Requests"
 
-<img src="https://github.com/thinkful-ei-panda/buddyup-client/blob/master/assets/buddyup-account-signups-list.png" width="200" />
+<img src="images/buddyup-account-signups-list.png" width="200" />
 
 This is what it looks like when an individual request is clicked in the link, showing the details of the event the user has signed up for.
 
-<img src="https://github.com/thinkful-ei-panda/buddyup-client/blob/master/assets/buddyup-account-signup-details.png" width="200" />
+<img src="images/buddyup-account-signup-details.png" width="200" />
 
 ## Authors
 
